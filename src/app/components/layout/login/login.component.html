@@ -1,0 +1,47 @@
+<div class="container-fluid vh-100 d-flex">
+  <div class="row flex-fill">
+    <div class="col-md-6 left-section">
+      <img src="../../../../assets/background_cesta.png" alt="Imagem do Sistema" class="img-fluid h-100">
+    </div>
+    <div class="col-md-6 d-flex align-items-center justify-content-center right-section">
+      <div class="login-form justify-content-center">
+        <p class="fw-bold m-0 fs-3">Bem Vindo de Volta</p>
+        <p>Insira seu acesso</p>
+        <div class="input-group mb-3">
+          <span class="input-group-text no-border-just-bottom">
+            <img src="../../../../assets/icons/iconperson.png" alt="Icone de Usuário">
+          </span>
+          <input type="text" id="usuario" class="form-control no-border-just-bottom"  placeholder="Usuário" [(ngModel)]="login.usuario" (keyup.enter)="logar()"/>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text no-border-just-bottom">
+            <img src="../../../../assets/icons/iconsenha.png" alt="Icone de Senha">
+          </span>
+          <input type="password" id="senha" class="form-control no-border-just-bottom" placeholder="Senha" [(ngModel)]="login.senha" (keyup.enter)="logar()"/>
+        </div>
+        <div class="input-group mb-3">
+          <div class="form-check custom-style">
+              <input mdbCheckbox class="form-check-input" type="checkbox" value="" id="lembrarSenha" />
+              <label class="form-check-label" for="lembrarSenha" >lembrar senha por 7 dias</label>
+              <a class="form-check-label " for="lembrarSenha" href="/esqueceusenha">esqueceu sua senha?</a>
+          </div>
+        </div>
+        <div class="input-group mb-3 justify-content-center align-items-center">
+          <div class="form-check">
+            <button type="button" class="btn button-logar p-3 me-2" mdbRipple (click)="logar()">Acessar</button>
+          </div>
+        </div>
+        <div class="input-group mb-3 justify-content-center">
+          <span class="justify-content-center">
+            <img src="../../../../assets/icons/icongoogle.png" alt="Icone de Usuário">
+          </span>
+          <a class="align-items-center mt-1 fw-bold no-decorated" href="/acessarpelogoogle">Acessar pelo Google</a>
+        </div>
+        <div class="input-group justify-content-center margem">
+          <label class="form-check-label">Não possui uma conta?</label>
+          <a class="align-items-center fw-bold no-decorated ms-2" href="/cadastrese">Cadastre-se</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

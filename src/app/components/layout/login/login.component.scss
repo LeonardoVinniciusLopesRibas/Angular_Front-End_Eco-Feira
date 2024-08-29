@@ -1,0 +1,106 @@
+.left-section {
+    width: 60%;
+    padding: 0;
+    overflow-y: hidden;
+}
+
+.right-section {
+    width: 40%;
+    overflow-y: hidden;
+    padding-bottom: 10%;
+    padding-top: 10%;
+}
+
+.img-fluid {
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+
+    .left-section,
+    .right-section {
+        width: 100%;
+    }
+}
+
+.login-form {
+    align-items: center;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.no-border-just-bottom {
+    border: none !important;
+    border-bottom: 1px solid #000 !important;
+    border-radius: 0 !important;
+    outline: none !important;
+}
+
+.no-border-just-bottom:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input-group-text {
+    border: none !important;
+    border-bottom: 1px solid #000 !important;
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input-group-text:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.custom-style {
+    font-size: 14px;
+}
+
+.custom-style .form-check-label {
+    margin-right: 15px;
+}
+
+.custom-style a {
+    text-decoration: none !important;
+    color: inherit;
+    margin-right: 30px; 
+}
+
+.button-logar {
+    align-items: center;
+    width: 300px;
+    color: white;
+    background: linear-gradient(to right, #00BB13, #049913);
+    border: none;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+.button-logar::before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 142%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../../assets/icons/detalhe_button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+}
+
+.no-decorated{
+    text-decoration: none !important;
+    color: inherit;
+    padding-left: 5px;
+}
+
+.margem{
+    margin-top: 35%;
+}
