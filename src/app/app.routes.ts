@@ -4,6 +4,7 @@ import { loginGuard } from './auth/login.guard';
 import { PrincipalprodutorComponent } from './components/layout/produtor/principalprodutor/principalprodutor.component';
 import { VisaogeralcardsprodutorComponent } from './components/layout/produtor/visaogeralcardsprodutor/visaogeralcardsprodutor.component';
 import { ProdutodetailsComponent } from './components/layout/produtor/produtodetails/produtodetails.component';
+import { GrupoprodutosdetailsComponent } from './components/layout/produtor/grupoprodutosdetails/grupoprodutosdetails.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -13,7 +14,8 @@ export const routes: Routes = [
         path: 'admin/produtor', component: PrincipalprodutorComponent, canActivate: [loginGuard],
         children: [
             {path: 'centraldados', component: VisaogeralcardsprodutorComponent, canActivate: [loginGuard]},
-            {path: 'produto', component: ProdutodetailsComponent, canActivate: [loginGuard]}
+            {path: 'produto', component: ProdutodetailsComponent, canActivate: [loginGuard]},
+            {path: 'grupoprodutos', component: GrupoprodutosdetailsComponent, canActivate: [loginGuard]}
 
         ]
     }//,
