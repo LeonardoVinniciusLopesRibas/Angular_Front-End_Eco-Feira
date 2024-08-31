@@ -5,18 +5,17 @@ import { Login } from './login';
 import { Usuario } from './usuario';
 import { LoginResponseDto } from './LoginResponseDto'; 
 import { jwtDecode, JwtPayload } from "jwt-decode";
+import { UsuarioResponseDto } from './usuarioResponseDto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  http = inject(HttpClient);
-  API = "http://localhost:8080/api/usuario/login";
+  API = "http://192.168.1.107:8080/api/usuario/login";
 
 
-  constructor() { }
-
+  constructor(private http: HttpClient) { }
 
   logar(login: Login): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(this.API, login, {});
@@ -37,22 +36,35 @@ export class LoginService {
   jwtDecode() {
     let token = this.getToken();
     if (token) {
-      return jwtDecode<JwtPayload>(token);
+      const decodedToken = jwtDecode<JwtPayload>(token);
+      console.log('Token decodificado:', decodedToken);
+      return decodedToken;
     }
     return "";
   }
+  
 
   hasPermission(role: string) {
-    let user = this.jwtDecode() as Usuario;
-    if (user.role == role)
+    const user = this.jwtDecode() as any;
+    console.log('Usuário decodificado:', user);
+    
+    if (user.perfil === role) {
       return true;
-    else
-      return false;
+    }
+    return false;
   }
+  
+  
+  
 
   getUsuarioLogado() {
     return this.jwtDecode() as Usuario;
   }
 
+  getUsuario(): UsuarioResponseDto | null {
+    const usuario = localStorage.getItem('usuario');
+    return usuario ? JSON.parse(usuario) : null;
+  }
+  
 
 }

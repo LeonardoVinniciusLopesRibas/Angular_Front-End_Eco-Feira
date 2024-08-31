@@ -1,6 +1,6 @@
 export class UsuarioResponseDto {
-    username!: string;
-    role!: string;
+    usuario!: string;
+    perfil!: string;
     suporte!: boolean;
     produtor!: boolean;
     prefeitura!: boolean;

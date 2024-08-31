@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,8 +6,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './suporte.component.html',
-  styleUrl: './suporte.component.scss'
+  styleUrls: ['./suporte.component.scss']
 })
 export class SuporteComponent {
-
 }

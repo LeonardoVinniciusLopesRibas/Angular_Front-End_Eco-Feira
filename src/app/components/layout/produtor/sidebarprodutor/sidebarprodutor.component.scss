@@ -1,0 +1,84 @@
+.container-sidebar {
+    width: 16%;
+    height: auto;
+}
+
+.sidebar {
+    background-color: #fff;
+    border-radius: 0 10px 10px 0;
+    width: 250px;
+    height: auto;
+    padding: 20px;
+    transition: width 0.3s;
+    box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10%;
+    cursor: pointer;
+    transition: background-color 0.3s, padding-left 0.3s;
+    border-radius: 15px;
+    box-shadow: 10px 0px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+.nav-item:hover {
+    background-color: #0c790a;
+    padding-left: 10px;
+    color: #fff;
+}
+
+.icon {
+    padding-right: 10px;
+    font-size: 16px;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    color: inherit; /* Herdando a cor da nav-item para hover */
+}
+
+.sub-menus {
+    background-color: #21CF1D;
+    border-radius: 15px;
+    box-shadow: 10px 0px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+.bt-interno{
+    background-color: #0c790a;
+}
+
+.main-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #21CF1D;
+}
+
+.submenu {
+    padding: 15px;
+}
