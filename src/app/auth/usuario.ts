@@ -1,3 +1,6 @@
+import { Empresaassociation } from "../model/empresa/empresaassociation";
+import { Prefeituraassociation } from "../model/prefeitura/prefeituraassociation";
+
 export class Usuario {
     id!: number;
     username!: string;
@@ -6,4 +9,7 @@ export class Usuario {
     suporte!: boolean;
     produtor!: boolean;
     prefeitura!: boolean;
+
+    empresaAssociation!: Empresaassociation;
+    prefeituraAssociation!: Prefeituraassociation;
   }

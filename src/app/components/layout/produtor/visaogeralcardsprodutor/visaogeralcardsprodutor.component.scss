@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Grande Card ocupa 2 partes e os pequenos ocupam 1 */
+    gap: 20px; /* Espaço entre os cards */
+    margin-right: 70px;
+    padding: 20px;
+    height: 80vh; /* Para ocupar a altura total da tela */
+}
+
+.big-card {
+    background-color: white;
+    height: 100%; /* Ocupa toda a altura do container */
+    display: flex;
+    align-items: flex-start; /* Alinha o conteúdo no topo */
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: 2px solid #9A9A9A;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px; /* Adicione um pouco de padding para afastar o texto da borda */
+}
+
+.small-cards {
+    width: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dois cards em cada linha */
+    grid-template-rows: 1fr 1fr;
+    gap: 20px; /* Espaço entre os cards menores */
+}
+
+.small-card {
+    border: 2px solid #9A9A9A;
+    background-color: white;
+    display: flex;
+    align-items: flex-start; /* Alinha o conteúdo no topo */
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    height: 100%; /* Ocupa toda a altura disponível dentro da grade */
+    padding: 10px; /* Adicione um pouco de padding para afastar o texto da borda */
+}

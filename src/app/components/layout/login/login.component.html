@@ -19,11 +19,9 @@
           </span>
           <input type="password" id="senha" class="form-control no-border-just-bottom" placeholder="Senha" [(ngModel)]="login.senha" (keyup.enter)="logar()"/>
         </div>
-        <div class="input-group mb-3">
-          <div class="form-check custom-style">
-              <input mdbCheckbox class="form-check-input" type="checkbox" value="" id="lembrarSenha" />
-              <label class="form-check-label" for="lembrarSenha" >lembrar senha por 7 dias</label>
-              <a class="form-check-label " for="lembrarSenha" href="/esqueceusenha">esqueceu sua senha?</a>
+        <div class="input-group mb-3" style="justify-content: center;">
+          <div class="form-check custom-style ">
+              <a class="form-check-label"  for="lembrarSenha" href="/esqueceusenha">esqueceu sua senha?</a>
           </div>
         </div>
         <div class="input-group mb-3 justify-content-center align-items-center">

@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
+import { UsuarioResponseDto } from '../../../../auth/usuarioResponseDto';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { LoginService } from '../../../../auth/login.service';
 
 @Component({
   selector: 'app-homebarprodutor',
@@ -10,13 +14,28 @@ import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 })
 export class HomebarprodutorComponent {
 
+  usuarioLogado: UsuarioResponseDto | null = null;
+  iniciais: string = '';
+  nomeempresa: string = '';
+
+  router = inject(Router);
+  loginService = inject(LoginService);
+
+  constructor() {
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      this.usuarioLogado = JSON.parse(usuarioString);
+      this.iniciais = this.usuarioLogado?.usuario ? this.usuarioLogado.usuario.substring(0, 2).toUpperCase() : '';
+      this.nomeempresa = this.usuarioLogado?.empresaAssociation.nomeFantasia ? this.usuarioLogado.empresaAssociation.nomeFantasia : '';
+    }
+  }
+
 
   toggleNotification() {
     const number = document.getElementById('number');
     const notificationDropdown = document.getElementById('notification-dropdown');
     const profileDropdown = document.getElementById('profile-dropdown');
 
-    // Fecha o dropdown de imagem se estiver aberto
     if (profileDropdown && profileDropdown.classList.contains('visible')) {
       profileDropdown.classList.remove('visible');
       setTimeout(() => {
@@ -50,7 +69,6 @@ export class HomebarprodutorComponent {
     const notificationDropdown = document.getElementById('notification-dropdown');
     const number = document.getElementById('number');
 
-    // Fecha o dropdown de notificações se estiver aberto
     if (notificationDropdown && notificationDropdown.classList.contains('visible')) {
       notificationDropdown.classList.remove('visible');
       setTimeout(() => {
@@ -73,6 +91,30 @@ export class HomebarprodutorComponent {
         }, 10);
       }
     }
+  }
+
+  deslogar(): void {
+    Swal.fire({
+      title: "Você tem certeza?",
+      text: "Você deseja mesmo deslogar?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim!",
+      cancelButtonText: "Não",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+        this.loginService.removerToken();
+        localStorage.removeItem('usuario');
+        Swal.fire({
+          title: "Deslogado!",
+          text: "O usuário "+this.usuarioLogado?.usuario+" foi deslogado com sucesso!",
+          icon: "success"
+        });
+      }
+    });
   }
 
 
