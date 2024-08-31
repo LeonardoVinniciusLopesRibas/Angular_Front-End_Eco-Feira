@@ -2,14 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { LoginService } from '../../../../auth/login.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
-import { LoginResponseDto } from '../../../../auth/LoginResponseDto';
+import { Router, RouterLink } from '@angular/router';
 import { UsuarioResponseDto } from '../../../../auth/usuarioResponseDto';
 
 @Component({
   selector: 'app-sidebarprodutor',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './sidebarprodutor.component.html',
   styleUrl: './sidebarprodutor.component.scss'
 })

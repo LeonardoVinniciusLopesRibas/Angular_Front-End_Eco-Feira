@@ -1,5 +1,9 @@
-<div>
+<div class="layout-container">
     <app-sidebarprodutor></app-sidebarprodutor>
-    <app-homebarprodutor></app-homebarprodutor>
+    <div class="content-wrapper">
+        <app-homebarprodutor></app-homebarprodutor>
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
-<router-outlet></router-outlet>

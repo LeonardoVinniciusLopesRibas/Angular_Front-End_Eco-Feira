@@ -1,21 +1,33 @@
-div {
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  app-sidebarprodutor {
-    width: 200px;
-  }
-  
-  app-homebarprodutor {
-    flex-grow: 1;
-    margin-left: 8%;
-    margin-top: 2%;
-    align-self: flex-start;
-  }
-  
-  
-  router-outlet {
-    margin-top: 20px;
-  }
-  
+.layout-container {
+  display: flex;
+  height: 100vh;
+}
+
+app-sidebarprodutor {
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+
+app-homebarprodutor {
+  width: 100%;
+  margin: 0;
+  padding: 1% 0 1% 8%;
+}
+
+.content-area {
+  flex-grow: 1;
+  margin-top: 2vh;
+  margin-left: 10vh;
+  padding: 1% 2%;
+  background-color: #ffffff;
+}
