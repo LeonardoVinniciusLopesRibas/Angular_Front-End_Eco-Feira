@@ -1,1 +1,62 @@
-<p>grupoprodutosdetails works!</p>
+<div class="container">
+    <div class="search">
+        <input type="search" class="form-control rounded no-border" placeholder="Pesquisar" aria-label="Pesquisar" />
+        <div class="input-group mb-3 nav-item" [routerLink]="['']">
+            <button type="button" class="btn btn-warning button fw-bold" mdbRipple>Novo</button>
+        </div>
+    </div>
+
+    <!-- Dropdown para selecionar o número de itens por página -->
+
+    <div class="pagination">
+        <pagination-controls (pageChange)="page = $event" class="fw-bold"></pagination-controls>
+        <div class="pagination-settings">
+            <label for="itemsPerPageBottom" class="fw-bold" style="width: 25vh;">Itens por página:</label>
+            <select id="itemsPerPageBottom" class="form-control" style="height: 30px;"
+                (change)="onItemsPerPageChange($event)" [value]="itemsPerPage">
+                <option *ngFor="let option of pageSizeOptions" [value]="option">{{option}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Descrição</th>
+                    <th>Usuário</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let categoriaResponse of listCategorias | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+                    <td>{{categoriaResponse.idGrupoProduto}}</td>
+                    <td>{{categoriaResponse.descricaoGrupoProduto}}</td>
+                    <td>{{categoriaResponse.nomeUsuario}}</td>
+                    <td>
+                        <div class="button-container">
+                          <div [routerLink]="['']">
+                            <button type="button" class="btn btn-info button fw-bold" mdbRipple>Editar</button>
+                          </div>
+                          <div [routerLink]="['']">
+                            <button type="button" class="btn btn-danger button fw-bold" style="margin-bottom: 20px;" mdbRipple>Excluir</button>
+                          </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <pagination-controls (pageChange)="page = $event" class="fw-bold"></pagination-controls>
+        <div class="pagination-settings">
+            <label for="itemsPerPageBottom" class="fw-bold" style="width: 25vh;">Itens por página:</label>
+            <select id="itemsPerPageBottom" class="form-control" style="height: 30px;"
+                (change)="onItemsPerPageChange($event)" [value]="itemsPerPage">
+                <option *ngFor="let option of pageSizeOptions" [value]="option">{{option}}</option>
+            </select>
+        </div>
+    </div>
+</div>

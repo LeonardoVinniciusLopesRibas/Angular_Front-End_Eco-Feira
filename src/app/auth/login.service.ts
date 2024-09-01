@@ -6,16 +6,24 @@ import { Usuario } from './usuario';
 import { LoginResponseDto } from './LoginResponseDto'; 
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { UsuarioResponseDto } from './usuarioResponseDto';
+import { routes } from '../app.routes';
+import { Router } from '@angular/router';
+import { API_BASE_URL } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  API = "http://192.168.1.107:8080/api/usuario/login";
+  API = `${API_BASE_URL}api/usuario/login`;
+  private inactivityTimeout: any;
+  router = inject(Router);
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.resetInactivityTimeout();
+    this.setupInactivityListener();
+  }
 
   logar(login: Login): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(this.API, login, {});
@@ -54,9 +62,6 @@ export class LoginService {
     return false;
   }
   
-  
-  
-
   getUsuarioLogado() {
     return this.jwtDecode() as Usuario;
   }
@@ -66,5 +71,28 @@ export class LoginService {
     return usuario ? JSON.parse(usuario) : null;
   }
   
+  private resetInactivityTimeout() {
+    if (this.router.url !== '/login') {
+    this.clearInactivityTimeout();
+
+    this.inactivityTimeout = setTimeout(() => {
+      this.removerToken();
+      this.router.navigate(['/login']);
+      
+    },  3600000);
+    }
+  }
+
+  private clearInactivityTimeout() {
+    if (this.inactivityTimeout) {
+      clearTimeout(this.inactivityTimeout);
+    }
+  }
+
+  private setupInactivityListener() {
+    document.addEventListener('mousemove', () => this.resetInactivityTimeout());
+    document.addEventListener('keypress', () => this.resetInactivityTimeout());
+    document.addEventListener('click', () => this.resetInactivityTimeout());
+  }
 
 }
