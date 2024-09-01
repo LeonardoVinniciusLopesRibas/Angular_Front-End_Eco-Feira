@@ -1,42 +1,393 @@
-.container {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Grande Card ocupa 2 partes e os pequenos ocupam 1 */
-    gap: 20px; /* Espaço entre os cards */
-    margin-right: 70px;
-    padding: 20px;
-    height: 80vh; /* Para ocupar a altura total da tela */
+@media(max-width: 1054.40px) {
+
+    .container {
+        display: grid;
+        
+        grid-template-columns: 1fr; /* Uma coluna */
+        grid-template-rows: 5fr 1fr 1fr 1fr 1fr; 
+        gap: 20px;
+        padding: 20px;
+        height: 80vh;
+    }
+    
+    .big-card {
+        width: 550px;
+        background-color: white;
+        height: 600px; 
+        display: flex;
+        align-items: flex-start; 
+        justify-content: center;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px; 
+        grid-row: 1 / 2; /* Ocupa a primeira linha */
+    }
+    
+    .small-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas */
+        grid-template-rows: 1fr 1fr; /* Duas linhas */
+        gap: 20px;
+        
+        height: 600px;
+        grid-row: 2 / 6; /* Ocupa da segunda à última linha */
+       
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 0.8rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%; 
+        width: 265px;
+        padding: 10px; 
+    }
+
 }
 
-.big-card {
-    background-color: white;
-    height: 100%; /* Ocupa toda a altura do container */
-    display: flex;
-    align-items: flex-start; /* Alinha o conteúdo no topo */
-    justify-content: center;
-    font-size: 2rem;
-    border-radius: 10px;
-    border: 2px solid #9A9A9A;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 10px; /* Adicione um pouco de padding para afastar o texto da borda */
+@media (min-width: 1054.40px) and (max-width: 1197px) {
+
+    .container {
+        display: grid;
+        
+        grid-template-columns: 1fr; /* Uma coluna */
+        grid-template-rows: 5fr 1fr 1fr 1fr 1fr; 
+        gap: 20px;
+        padding: 20px;
+        height: 80vh;
+    }
+    
+    .big-card {
+        width: 700px;
+        background-color: white;
+        height: 600px; 
+        display: flex;
+        align-items: flex-start; 
+        justify-content: center;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px; 
+        grid-row: 1 / 2; /* Ocupa a primeira linha */
+    }
+    
+    .small-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas */
+        grid-template-rows: 1fr 1fr; /* Duas linhas */
+        gap: 20px;
+        
+        height: 600px;
+        grid-row: 2 / 6; /* Ocupa da segunda à última linha */
+       
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%; 
+        width: 340px;
+        padding: 10px; 
+    }
 }
 
-.small-cards {
-    width: 80vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dois cards em cada linha */
-    grid-template-rows: 1fr 1fr;
-    gap: 20px; /* Espaço entre os cards menores */
+
+@media (min-width: 1198.18px) and (max-width: 1317px) {
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr; /* Uma coluna */
+        grid-template-rows: 5fr 1fr 1fr 1fr 1fr; 
+        gap: 20px;
+        padding: 20px;
+        height: 80vh;
+    }
+    
+    .big-card {
+        background-color: white;
+        height: 600px; 
+        display: flex;
+        align-items: flex-start; 
+        justify-content: center;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px; 
+        grid-row: 1 / 2; /* Ocupa a primeira linha */
+    }
+    
+    .small-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas */
+        grid-template-rows: 1fr 1fr; /* Duas linhas */
+        gap: 20px;
+        width: 800px;
+        height: 600px;
+        grid-row: 2 / 6; /* Ocupa da segunda à última linha */
+       
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%; 
+        padding: 10px; 
+    }
 }
 
-.small-card {
-    border: 2px solid #9A9A9A;
-    background-color: white;
-    display: flex;
-    align-items: flex-start; /* Alinha o conteúdo no topo */
-    justify-content: center;
-    font-size: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    height: 100%; /* Ocupa toda a altura disponível dentro da grade */
-    padding: 10px; /* Adicione um pouco de padding para afastar o texto da borda */
+@media(min-width: 1317px){
+    .container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        padding: 20px;
+        height: 80vh;
+    }
+    
+    .big-card {
+        background-color: white;
+        height: 100%; 
+        display: flex;
+        width: auto;
+        align-items: flex-start; 
+        justify-content: center;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px; 
+    }
+    
+    .small-cards {
+        width: 80vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 1rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%; 
+        padding: 10px; 
+    }
+    
+}
+
+@media (min-width: 1647.5px) {
+
+    .container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        padding: 20px;
+        height: 80vh;
+    }
+    
+    .big-card {
+        background-color: white;
+        height: 100%; 
+        display: flex;
+        width: auto;
+        align-items: flex-start; 
+        justify-content: center;
+        font-size: 1.8rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px; 
+    }
+    
+    .small-cards {
+        width: 80vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 1.4rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%; 
+        padding: 10px; 
+    }
+}
+
+@media (min-width: 2636px) {
+
+    .container {
+        display: grid;
+        grid-template-columns: 4fr 4fr;
+        gap: 20px;
+        height: 80vh;
+        margin: 0;
+    }
+    
+    .big-card {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        grid-column: 1 / 2; 
+        grid-row: 1 / 3; 
+        width: 800px; 
+        height: auto;
+        max-width: 100%;
+    }
+    
+    .small-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 1fr 1fr; 
+        gap: 20px;
+        grid-column: 2 / 3; 
+        grid-row: 1 / 3; 
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        justify-content: center; 
+        font-size: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 3953px) {
+
+    .container {
+        display: grid;
+        grid-template-columns: 4fr 4fr;
+        gap: 20px;
+        height: 80vh;
+        margin: 0;
+    }
+    
+    .big-card {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        font-size: 4rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        grid-column: 1 / 2; 
+        grid-row: 1 / 3; 
+        width: 1220px; 
+        height: auto;
+        max-width: 100%;
+    }
+    
+    .small-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 1fr 1fr; 
+        gap: 20px;
+        grid-column: 2 / 3; 
+        grid-row: 1 / 3; 
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        justify-content: center; 
+        font-size: 3rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 5272px) {
+
+    .container {
+        display: grid;
+        grid-template-columns: 4fr 4fr;
+        gap: 20px;
+        height: 80vh;
+        margin: 0;
+    }
+    
+    .big-card {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        font-size: 4rem;
+        border-radius: 10px;
+        border: 2px solid #9A9A9A;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        grid-column: 1 / 2; 
+        grid-row: 1 / 3; 
+        width: 1650px; 
+        height: auto;
+        max-width: 100%;
+    }
+    
+    .small-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 1fr 1fr; 
+        gap: 20px;
+        grid-column: 2 / 3; 
+        grid-row: 1 / 3; 
+    }
+    
+    .small-card {
+        border: 2px solid #9A9A9A;
+        background-color: white;
+        display: flex;
+        justify-content: center; 
+        font-size: 3rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        height: 100%;
+        padding: 10px;
+    }
 }

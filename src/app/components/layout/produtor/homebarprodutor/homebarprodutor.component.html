@@ -1,11 +1,9 @@
-<nav class="navbar navbar-light bg-light sombra largura">
-  <div class="container-fluid homebar">
-    <form class="d-flex input-group w-auto">
+<nav class="container-homebar">
       <span class="input-group-text border-0" id="search-addon">
         <i class="fas fa-search"></i>
       </span>
-      <input type="pesquisar" class="form-control rounded no-border" style="width: 117vh;" placeholder="Pesquisar" aria-label="Pesquisar" />
-      <div class="d-flex align-items-center ms-auto alinha">
+      <input type="text" class="input-search" placeholder="Pesquisar" aria-label="Pesquisar" />
+      <div class="d-flex align-items-center">
         <a class="nav-link dropdown-toggle hidden-arrow me-3" (click)="toggleNotification()" id="navbarDropdownMenuLink" role="button" mdbDropdownToggle aria-expanded="false">
           <div id="notification-container">
             <i class="fas fa-bell"></i>
@@ -42,6 +40,4 @@
           </li>
         </ul>
       </div>
-    </form>
-  </div>
 </nav>

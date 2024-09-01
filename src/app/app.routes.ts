@@ -5,6 +5,7 @@ import { PrincipalprodutorComponent } from './components/layout/produtor/princip
 import { VisaogeralcardsprodutorComponent } from './components/layout/produtor/visaogeralcardsprodutor/visaogeralcardsprodutor.component';
 import { ProdutodetailsComponent } from './components/layout/produtor/produtodetails/produtodetails.component';
 import { GrupoprodutosdetailsComponent } from './components/layout/produtor/grupoprodutosdetails/grupoprodutosdetails.component';
+import { GrupoprodutoseditnewComponent } from './components/layout/produtor/grupoprodutoseditnew/grupoprodutoseditnew.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -15,7 +16,8 @@ export const routes: Routes = [
         children: [
             {path: 'centraldados', component: VisaogeralcardsprodutorComponent, canActivate: [loginGuard]},
             {path: 'produto', component: ProdutodetailsComponent, canActivate: [loginGuard]},
-            {path: 'grupoprodutos', component: GrupoprodutosdetailsComponent, canActivate: [loginGuard]}
+            {path: 'grupoprodutos', component: GrupoprodutosdetailsComponent, canActivate: [loginGuard]},
+            {path: 'grupoprodutos/novo', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]}
 
         ]
     }//,
