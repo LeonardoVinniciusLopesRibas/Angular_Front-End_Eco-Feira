@@ -9,7 +9,7 @@
     width: 250px;
     padding: 20px;
     transition: width 0.3s;
-    box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 4.8px 0px rgba(0, 0, 0, 0.5);
     overflow-y: auto; 
     min-height: 100vh;
     height: auto; 
@@ -30,7 +30,7 @@
         background: none;
         border: none;
         cursor: pointer;
-        font-size: 6PX;
+        font-size: 6px;
         text-align: left;
         color: inherit;
     }
@@ -108,7 +108,6 @@
         width: 100px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
     }
     .nav-button {
@@ -130,7 +129,6 @@
         width: 130px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
     }
 
@@ -156,7 +154,6 @@
         width: 150px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
     }
 
@@ -180,7 +177,6 @@
         width: 160px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
     }
 
@@ -203,12 +199,15 @@
     .sidebar {
         background-color: #fff;
         border-radius: 0 10px 10px 0;
-        width: 200px;
+        width: 230px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
+    }
+    
+    .fonte{
+        font-size: 15px;
     }
 
     .nav-button {
@@ -231,7 +230,6 @@
         width: 230px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
     }
@@ -256,7 +254,6 @@
         width: 250px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
     }
@@ -283,7 +280,6 @@
         width: 280px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
     }
@@ -310,7 +306,6 @@
         width: 320px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
     }
@@ -338,7 +333,6 @@
         width: 450px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
     }
@@ -373,7 +367,6 @@
         width: 600px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
     }
@@ -406,7 +399,6 @@
         width: 795px;
         padding: 20px;
         transition: width 0.3s;
-        box-shadow: 10px 0 5px rgba(0, 0, 0, 0.3);
         height: 100vh; 
         position: fixed;
     }

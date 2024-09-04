@@ -45,7 +45,6 @@ export class LoginService {
     let token = this.getToken();
     if (token) {
       const decodedToken = jwtDecode<JwtPayload>(token);
-      console.log('Token decodificado:', decodedToken);
       return decodedToken;
     }
     return "";
@@ -54,7 +53,6 @@ export class LoginService {
 
   hasPermission(role: string) {
     const user = this.jwtDecode() as any;
-    console.log('Usuário decodificado:', user);
     
     if (user.perfil === role) {
       return true;

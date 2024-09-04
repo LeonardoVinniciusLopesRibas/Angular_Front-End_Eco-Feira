@@ -45,6 +45,10 @@ export class GrupoprodutosdetailsComponent {
     });
   }
 
+  dropSetting(){
+    
+  }
+
   onItemsPerPageChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.itemsPerPage = +selectElement.value;

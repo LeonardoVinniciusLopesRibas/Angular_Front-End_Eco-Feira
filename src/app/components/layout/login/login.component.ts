@@ -96,7 +96,7 @@ export class LoginComponent {
           });
           Toast.fire({
             icon: "success",
-            title: this.loginResponse.usuario.usuario + " acessou com sucesso - Empresa: "
+            title: this.loginResponse.usuario.usuario + " acessou com sucesso"
           });
         }
       },

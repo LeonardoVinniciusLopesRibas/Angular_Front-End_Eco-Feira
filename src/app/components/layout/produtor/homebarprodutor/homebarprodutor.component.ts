@@ -67,7 +67,6 @@ export class HomebarprodutorComponent {
   toggleImage() {
     const profileDropdown = document.getElementById('profile-dropdown');
     const notificationDropdown = document.getElementById('notification-dropdown');
-    const number = document.getElementById('number');
 
     if (notificationDropdown && notificationDropdown.classList.contains('visible')) {
       notificationDropdown.classList.remove('visible');
