@@ -1,5 +1,11 @@
-<div class="container container-fluid">
-    <div class="input-group">
-        <input type="text" class="all-inputs input-all" placeholder="Informe a descrição do grupo" />
+<div class="container-grupoprodutos-edit-new">
+    <div class="input-group-cadastro">
+        <label class="fw-bold label-title">CADASTRO DE GRUPO DE PRODUTOS</label>
+        <input type="text" class="all-inputs" [(ngModel)]="descricao" placeholder="Informe a descrição do grupo" />
+
+        <div class="div-button">
+            <button class="btn btn-success button-sucesso" (click)="salvar(descricao)">Salvar dados</button>
+        </div>
+
     </div>
 </div>

@@ -1,18 +1,72 @@
-.container {
-    border-radius: 15px;
-    box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.3) !important;
-    padding: 20px;
+@media(max-width: 263.60px) {}
+
+@media(min-width: 263.60px) and (max-width: 329.50px) {}
+
+@media(min-width: 329.50px) and (max-width: 439.33px) {}
+
+@media(min-width: 439.33px) and (max-width: 527.20px) {}
+
+@media(min-width: 527.20px) and (max-width: 659px) {}
+
+@media(min-width: 659px) and (max-width: 753.14px) {}
+
+@media(min-width: 753.14px) and (max-width: 878.67px) {}
+
+@media(min-width: 878.67px) and (max-width: 1054.40px) {}
+
+@media(min-width: 1054.40px) and (max-width: 1198.18px) {}
+
+@media(min-width: 1198.18px) and (max-width: 1318px) {}
+
+@media(min-width: 1318px) and (max-width: 1464.44px) {
+
+    .container-grupoprodutos-edit-new {
+        border-radius: 15px;
+        box-shadow: 0px 0px 4.8px 0px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+    }
+
+    .input-group-cadastro {
+        display: grid;
+        place-items: center;
+    }
+    
+    .label-title{
+        padding: 20px;
+    }
+
+
+    .all-inputs {
+        width: 80vh;
+        margin: 20px;
+        border: none !important;
+        border-bottom: 1px solid #000 !important;
+        background-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
+
+    }
+
+    .div-button{
+        padding-left: 80%;
+    }
+
+    .button-sucesso{
+        margin: 20px;
+    }
+
 }
 
-.input-all {
-    width: 80vh;
-}
+@media(min-width: 1464.44px) and (max-width: 1647.50px) {}
 
-.all-inputs {
-    border: none !important;
-    border-bottom: 1px solid #000 !important;
-    background-color: transparent !important;
-    outline: none !important;
-    box-shadow: none !important;
+@media(min-width: 1647.50px) and (max-width: 1757.33px) {}
 
-}
+@media(min-width: 1757.33px) and (max-width: 1977px) {}
+
+@media(min-width: 1977px) and (max-width: 2636px) {}
+
+@media(min-width: 2636px) and (max-width: 3954px) {}
+
+@media(min-width: 3954px) and (max-width: 5272px) {}
+
+@media(min-width: 5272px) {}

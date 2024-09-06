@@ -17,7 +17,8 @@ export const routes: Routes = [
             {path: 'centraldados', component: VisaogeralcardsprodutorComponent, canActivate: [loginGuard]},
             {path: 'produto', component: ProdutodetailsComponent, canActivate: [loginGuard]},
             {path: 'grupoprodutos', component: GrupoprodutosdetailsComponent, canActivate: [loginGuard]},
-            {path: 'grupoprodutos/novo', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]}
+            {path: 'grupoprodutos/novo', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
+            {path: 'grupoprodutos/edit', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]}
 
         ]
     }//,
