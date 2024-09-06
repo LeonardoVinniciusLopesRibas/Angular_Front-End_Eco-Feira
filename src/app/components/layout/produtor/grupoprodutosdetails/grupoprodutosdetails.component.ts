@@ -6,11 +6,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import Swal from 'sweetalert2';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-grupoprodutosdetails',
   standalone: true,
-  imports: [RouterLink, NgxPaginationModule, CommonModule, MdbRippleModule],
+  imports: [RouterLink, NgxPaginationModule, CommonModule, MdbRippleModule, FormsModule],
   templateUrl: './grupoprodutosdetails.component.html',
   styleUrl: './grupoprodutosdetails.component.scss'
 })
@@ -24,8 +25,14 @@ export class GrupoprodutosdetailsComponent {
   pageSizeOptions: number[] = [10, 20, 50, 200];
   categoriaResponse: Categoriaresponse = new Categoriaresponse();
   query: string = "";
+  isDropdownOpen: boolean[] = [];
 
   constructor() {
+    this.listarCategorias();
+  }
+
+  recebeQuery(query: string){
+    this.query = query;
     this.listarCategorias();
   }
 
@@ -34,19 +41,12 @@ export class GrupoprodutosdetailsComponent {
       next: lista => {
         this.listCategorias = lista;
       },
-      error: erro => {//quando retornar erro
-        Swal.fire({
-          title: 'Erro!',
-          text: 'Ocorreu um erro! O erro é: ' + (erro.response?.data?.message || erro.message || 'Erro desconhecido'),
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });
+      error: erro => {
+        if (erro.status === 404) {
+          this.listCategorias = [];
+        }
       },
     });
-  }
-
-  dropSetting(){
-    
   }
 
   onItemsPerPageChange(event: Event) {
@@ -54,5 +54,54 @@ export class GrupoprodutosdetailsComponent {
     this.itemsPerPage = +selectElement.value;
     this.page = 1;
   }
+
+  toggleDropdown(index: number) {
+    if (this.isDropdownOpen.length !== this.listCategorias.length) {
+      this.isDropdownOpen = new Array(this.listCategorias.length).fill(false);
+    }
+
+    this.isDropdownOpen = this.isDropdownOpen.map((open, i) => i === index ? !open : false);
+  }
+
+  editItem(id: number){
+    alert(id);
+  }
+
+  deleteItem(id: number) {
+    Swal.fire({
+      title: "Você tem certeza?",
+      text: "Você deseja mesmo deletar?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim!",
+      cancelButtonText: "Não",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.categoriaService.delete(id).subscribe({
+          next: (res) => {
+            Swal.fire('Deletado!', 'O item foi deletado com sucesso.', 'success');
+            this.listarCategorias();
+          },
+          error: (erro) => {
+            const errorMessage = erro.error || erro.message || 'Erro desconhecido';
+  
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: errorMessage,
+              showConfirmButton: true,
+              confirmButtonText: "Fechar",  
+              timer: 3000
+            });
+          },
+        });
+      }
+    });
+  }
+  
+  
+  
 
 }

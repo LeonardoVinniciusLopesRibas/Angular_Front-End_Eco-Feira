@@ -7,7 +7,7 @@
         </div>
         <div class="div-input-search">
             <div class="internal-container-input-search">
-                <input class="input-search" placeholder="Pesquisar" />
+                <input class="input-search" [(ngModel)]="query" placeholder="Pesquisar" (keydown.enter)="recebeQuery(query)"/>
                 <div class="icon-lupa"></div>
             </div>
         </div>
@@ -46,21 +46,22 @@
                 </thead>
                 <tbody>
                     <tr class="linha"
-                        *ngFor="let categoriaResponse of listCategorias | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
-                        <td class="rounded-left">{{categoriaResponse.idGrupoProduto}}</td>
-                        <td class="click">{{categoriaResponse.descricaoGrupoProduto}}</td>
-                        <td class="rounded-right">{{categoriaResponse.nomeUsuario}}</td>
+                      *ngFor="let categoriaResponse of listCategorias | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+                      <td class="rounded-left">{{categoriaResponse.idGrupoProduto}}</td>
+                      <td class="click button-drop-table" (click)="toggleDropdown(i)">
+                        <span>{{categoriaResponse.descricaoGrupoProduto}}</span>
+                        <div class="dropdown" *ngIf="isDropdownOpen[i]">
+                            <label>Definições</label>
+                          <button class="btn-edit btn btn-warning btn-rounded" (click)="editItem(categoriaResponse.idGrupoProduto)">Editar o Item</button>
+                          <button class="btn-delete btn btn-danger btn-rounded" (click)="deleteItem(categoriaResponse.idGrupoProduto)">Deletar o Item</button>
+                        </div>
+                      </td>
+                      <td class="rounded-right">{{categoriaResponse.nomeUsuario}}</td>
                     </tr>
-                </tbody>
+                  </tbody>
+                                    
             </table>
-            <ul id="profile-dropdown" mdbDropdownMenu class="dropdown-menu hidden image-container" aria-labelledby="navbarDropdownMenuLink">
-                <li>
-                  <a class="dropdown-item">Editar</a>
-                </li>
-                <li>
-                  <a class="dropdown-item">Deletar</a>
-                </li>
-              </ul>
+
         </div>
     </div>
 </div>

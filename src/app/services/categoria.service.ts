@@ -9,6 +9,7 @@ import { LoginService } from '../auth/login.service';
   providedIn: 'root'
 })
 export class CategoriaService {
+  
 
   loginService = inject(LoginService);
   http = inject(HttpClient);
@@ -23,4 +24,12 @@ export class CategoriaService {
 
     return this.http.get<Categoriaresponse[]>(`${this.API}/get?query=${query}`, { headers });
   }
+  delete(id: number): Observable<any> {
+    const token = this.loginService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.http.delete(`${this.API}/delete/${id}`, { headers, observe: 'response', responseType: 'text' });
+  }
+  
+  
 }
