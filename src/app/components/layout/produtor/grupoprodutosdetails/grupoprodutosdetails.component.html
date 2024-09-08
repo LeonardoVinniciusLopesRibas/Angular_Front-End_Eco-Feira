@@ -52,7 +52,7 @@
                         <span>{{categoriaResponse.descricaoGrupoProduto}}</span>
                         <div class="dropdown" *ngIf="isDropdownOpen[i]">
                             <label>Definições</label>
-                          <button class="btn-edit btn btn-warning btn-rounded" (click)="editItem(categoriaResponse.idGrupoProduto)">Editar o Item</button>
+                          <button class="btn-edit btn btn-warning btn-rounded" routerLink="/admin/produtor/grupoprodutos/edit/{{categoriaResponse.idGrupoProduto}}" >Editar o Item</button>
                           <button class="btn-delete btn btn-danger btn-rounded" (click)="deleteItem(categoriaResponse.idGrupoProduto)">Deletar o Item</button>
                         </div>
                       </td>

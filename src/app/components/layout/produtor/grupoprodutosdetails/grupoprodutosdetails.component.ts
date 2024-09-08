@@ -63,9 +63,6 @@ export class GrupoprodutosdetailsComponent {
     this.isDropdownOpen = this.isDropdownOpen.map((open, i) => i === index ? !open : false);
   }
 
-  editItem(id: number){
-    alert(id);
-  }
 
   deleteItem(id: number) {
     Swal.fire({

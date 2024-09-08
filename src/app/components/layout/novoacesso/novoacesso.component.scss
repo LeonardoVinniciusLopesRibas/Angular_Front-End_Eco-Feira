@@ -1,0 +1,82 @@
+.container-novoacesso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 100% da altura da viewport */
+    background-color: #f0f2f5; /* Cor de fundo suave */
+}
+
+.content {
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff; /* Cor de fundo do card */
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333333; /* Cor do texto do título */
+    text-align: center; /* Centraliza o texto do título */
+    width: 100%; /* Garante que o título ocupe toda a largura do container */
+}
+
+.input {
+    border: none !important;
+    border-bottom: 1px solid #000 !important;
+    background-color: transparent !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 10px;
+    width: 100%; /* Garante que o input use toda a largura disponível */
+}
+
+.input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 10px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%; /* Garante que o grupo de botões use toda a largura disponível */
+    justify-content: space-between; /* Distribui o espaço entre os botões */
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    flex: 1; /* Garante que os botões tenham a mesma largura */
+    text-align: center; /* Alinha o texto dos botões no centro */
+}
+
+.btn-submit {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
