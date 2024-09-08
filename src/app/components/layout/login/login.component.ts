@@ -104,7 +104,7 @@ export class LoginComponent {
       error: (error) => {
         Swal.fire({
           icon: "error",
-          title: "Erro de validação"
+          title: "Usuário ou senha incorreto!"
         });
       }
     });

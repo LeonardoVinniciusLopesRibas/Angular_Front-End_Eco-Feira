@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { CategoriaService } from '../../../../services/categoria.service';
+import { CategoriaService } from '../../../../services/categoria/categoria.service';
 import { Categoriarequest } from '../../../../model/categoria/dto/categoriarequest';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -81,11 +81,7 @@ export class GrupoprodutoseditnewComponent {
         },
         error: erro => {
           console.error(erro);
-          Swal.fire({
-            title: 'Ocorreu um erro',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
+          
         }
       });
     }

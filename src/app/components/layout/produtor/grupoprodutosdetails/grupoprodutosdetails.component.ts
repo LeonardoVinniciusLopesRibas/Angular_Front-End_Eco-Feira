@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Categoriaresponse } from '../../../../model/categoria/dto/categoriaresponse';
-import { CategoriaService } from '../../../../services/categoria.service';
+import { CategoriaService } from '../../../../services/categoria/categoria.service';
 import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
@@ -44,6 +44,14 @@ export class GrupoprodutosdetailsComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listCategorias = [];
+          Swal.fire({
+            position: "top-end",
+            icon: 'success',
+            title: 'Não foi encontrado categorias',
+            showConfirmButton: true,
+            confirmButtonText: "Fechar",  
+            timer: 3000
+          });
         }
       },
     });

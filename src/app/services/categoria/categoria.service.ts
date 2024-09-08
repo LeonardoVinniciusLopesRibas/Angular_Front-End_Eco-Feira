@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { API_BASE_URL } from '../api/api';
-import { Categoriaresponse } from '../model/categoria/dto/categoriaresponse';
+import { API_BASE_URL } from '../../api/api';
+import { Categoriaresponse } from '../../model/categoria/dto/categoriaresponse';
 import { Observable } from 'rxjs';
-import { LoginService } from '../auth/login.service';
-import { Categoriarequest } from '../model/categoria/dto/categoriarequest';
-import { UsuarioResponseDto } from '../auth/usuarioResponseDto';
-import { Categoriaresponseunique } from '../model/categoria/dto/categoriaresponseunique';
+import { LoginService } from '../../auth/login.service';
+import { Categoriarequest } from '../../model/categoria/dto/categoriarequest';
+import { UsuarioResponseDto } from '../../auth/usuarioResponseDto';
+import { Categoriaresponseunique } from '../../model/categoria/dto/categoriaresponseunique';
 
 @Injectable({
   providedIn: 'root'
