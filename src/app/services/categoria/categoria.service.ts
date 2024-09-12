@@ -14,21 +14,19 @@ import { Categoriaresponseunique } from '../../model/categoria/dto/categoriaresp
 export class CategoriaService {
   
   
-  
-
   loginService = inject(LoginService);
   http = inject(HttpClient);
   API = `${API_BASE_URL}api/grupoprodutos`;
   usuarioLogado: UsuarioResponseDto | null = null;
   
 
-  constructor() { }
+  
 
-  get(query: string): Observable<Categoriaresponse[]> {
+  get(query: string, cnpj: string): Observable<Categoriaresponse[]> {
     const token = this.loginService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get<Categoriaresponse[]>(`${this.API}/get?query=${query}`, { headers });
+    return this.http.get<Categoriaresponse[]>(`${this.API}/get?query=${query}&cnpj=${cnpj}`, { headers });
   }
   delete(id: number): Observable<any> {
     const token = this.loginService.getToken();

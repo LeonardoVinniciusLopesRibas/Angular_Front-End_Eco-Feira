@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import { Produtoprodutorresponse } from '../../../../model/produtoprodutor/dto/produtoprodutorresponse';
+import { ProdutoprodutorService } from '../../../../services/produtoprodutor/produtoprodutor.service';
 
 @Component({
   selector: 'app-produtodetails',
@@ -17,33 +19,40 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProdutodetailsComponent {
 
-  listCategorias: Categoriaresponse[] = [];
+  listProdutos: Produtoprodutorresponse[] = [];
   page: number = 1;
-  categoriaService = inject(CategoriaService);
+  produtoProdutorService = inject(ProdutoprodutorService);
   itemsPerPage: number = 10;
   testCategorias: any[] = [];
   pageSizeOptions: number[] = [10, 20, 50, 200];
-  categoriaResponse: Categoriaresponse = new Categoriaresponse();
+  produtoResponse: Produtoprodutorresponse = new Produtoprodutorresponse();
   query: string = "";
+  cnpj!: string;
   isDropdownOpen: boolean[] = [];
 
   constructor() {
-    this.listarCategorias();
+    const usuarioStorage = localStorage.getItem('usuario');
+    if (usuarioStorage) {
+      const usuarioData = JSON.parse(usuarioStorage);
+      this.cnpj = usuarioData.empresaAssociation.cnpj;
+
+    }
+    this.listarProduto();
   }
 
   recebeQuery(query: string){
     this.query = query;
-    this.listarCategorias();
+    this.listarProduto();
   }
 
-  listarCategorias(){
-    this.categoriaService.get(this.query).subscribe({
+  listarProduto(){
+    this.produtoProdutorService.get(this.query, this.cnpj).subscribe({
       next: lista => {
-        this.listCategorias = lista;
+        this.listProdutos = lista;
       },
       error: erro => {
         if (erro.status === 404) {
-          this.listCategorias = [];
+          this.listProdutos = [];
         }
       },
     });
@@ -56,15 +65,15 @@ export class ProdutodetailsComponent {
   }
 
   toggleDropdown(index: number) {
-    if (this.isDropdownOpen.length !== this.listCategorias.length) {
-      this.isDropdownOpen = new Array(this.listCategorias.length).fill(false);
+    if (this.isDropdownOpen.length !== this.listProdutos.length) {
+      this.isDropdownOpen = new Array(this.listProdutos.length).fill(false);
     }
 
     this.isDropdownOpen = this.isDropdownOpen.map((open, i) => i === index ? !open : false);
   }
 
 
-  deleteItem(id: number) {
+  /*deleteItem(id: number) {
     Swal.fire({
       title: "Você tem certeza?",
       text: "Você deseja mesmo deletar?",
@@ -76,10 +85,10 @@ export class ProdutodetailsComponent {
       cancelButtonText: "Não",
     }).then((result) => {
       if (result.isConfirmed) {
-        this.categoriaService.delete(id).subscribe({
+        this.produtoProdutorService.status().subscribe({
           next: (res) => {
             Swal.fire('Deletado!', 'O item foi deletado com sucesso.', 'success');
-            this.listarCategorias();
+            this.listarProduto();
           },
           error: (erro) => {
             const errorMessage = erro.error || erro.message || 'Erro desconhecido';
@@ -96,7 +105,7 @@ export class ProdutodetailsComponent {
         });
       }
     });
-  }
+  }*/
   
   
   

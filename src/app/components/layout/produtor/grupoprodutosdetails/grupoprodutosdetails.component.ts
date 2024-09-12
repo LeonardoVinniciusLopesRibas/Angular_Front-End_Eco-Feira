@@ -26,30 +26,38 @@ export class GrupoprodutosdetailsComponent {
   categoriaResponse: Categoriaresponse = new Categoriaresponse();
   query: string = "";
   isDropdownOpen: boolean[] = [];
+  cnpj!: string;
 
   constructor() {
+    const usuarioStorage = localStorage.getItem('usuario');
+    if (usuarioStorage) {
+      const usuarioData = JSON.parse(usuarioStorage);
+      this.cnpj = usuarioData.empresaAssociation.cnpj;
+
+    }
     this.listarCategorias();
   }
 
-  recebeQuery(query: string){
+  recebeQuery(query: string) {
     this.query = query;
     this.listarCategorias();
   }
 
-  listarCategorias(){
-    this.categoriaService.get(this.query).subscribe({
+  listarCategorias() {
+    this.categoriaService.get(this.query, this.cnpj).subscribe({
       next: lista => {
         this.listCategorias = lista;
       },
       error: erro => {
         if (erro.status === 404) {
           this.listCategorias = [];
+          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
           Swal.fire({
             position: "top-end",
-            icon: 'success',
-            title: 'Não foi encontrado categorias',
+            icon: 'error',
+            title: errorMessage,
             showConfirmButton: true,
-            confirmButtonText: "Fechar",  
+            confirmButtonText: "Fechar",
             timer: 3000
           });
         }
@@ -91,13 +99,13 @@ export class GrupoprodutosdetailsComponent {
           },
           error: (erro) => {
             const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-  
+
             Swal.fire({
               position: "top-end",
               icon: "success",
               title: errorMessage,
               showConfirmButton: true,
-              confirmButtonText: "Fechar",  
+              confirmButtonText: "Fechar",
               timer: 3000
             });
           },
@@ -105,8 +113,8 @@ export class GrupoprodutosdetailsComponent {
       }
     });
   }
-  
-  
-  
+
+
+
 
 }

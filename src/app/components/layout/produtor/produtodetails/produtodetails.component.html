@@ -41,22 +41,26 @@
                     <tr class="titulo-table">
                         <th class="rounded-left">Id</th>
                         <th class="">Descrição</th>
-                        <th class="rounded-right">Usuário</th>
+                        <th class="">Grupo</th>
+                        <th class="">Custo</th>
+                        <th class="rounded-right">Venda</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="linha"
-                      *ngFor="let categoriaResponse of listCategorias | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-                      <td class="rounded-left">{{categoriaResponse.idGrupoProduto}}</td>
+                      *ngFor="let produtoResponse of listProdutos | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+                      <td class="rounded-left">{{produtoResponse.idProduto}}</td>
                       <td class="click button-drop-table" (click)="toggleDropdown(i)">
-                        <span>{{categoriaResponse.descricaoGrupoProduto}}</span>
+                        <span>{{produtoResponse.nome}}</span>
                         <div class="dropdown" *ngIf="isDropdownOpen[i]">
                             <label>Definições</label>
-                          <button class="btn-edit btn btn-warning btn-rounded" routerLink="/admin/produtor/grupoprodutos/edit/{{categoriaResponse.idGrupoProduto}}" >Editar o Item</button>
-                          <button class="btn-delete btn btn-danger btn-rounded" (click)="deleteItem(categoriaResponse.idGrupoProduto)">Deletar o Item</button>
+                          <button class="btn-edit btn btn-warning btn-rounded" routerLink="/admin/produtor/grupoprodutos/edit/{{produtoResponse.idProduto}}" >Editar o Item</button>
+                          <!--<button class="btn-delete btn btn-danger btn-rounded" (click)="deleteItem(produtoResponse.idProduto)">Deletar o Item</button>-->
                         </div>
                       </td>
-                      <td class="rounded-right">{{categoriaResponse.nomeUsuario}}</td>
+                      <td class="">{{produtoResponse.grupoProduto}}</td>
+                      <td class="">{{produtoResponse.valorCusto}}</td>
+                      <td class="rounded-right">{{produtoResponse.valorVenda}}</td>
                     </tr>
                   </tbody>
                                     

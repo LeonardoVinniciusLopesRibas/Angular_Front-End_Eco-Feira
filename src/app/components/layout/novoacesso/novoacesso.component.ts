@@ -49,9 +49,10 @@ export class NovoacessoComponent {
     }else {
       this.novoacessoService.post(this.novoAcesso).subscribe({
         next: res => {
+          const retornos = res.next;
           Swal.fire({
             title: 'Enviado com sucesso!',
-            text: 'Solicite aceite a seu administrador!',
+            text: retornos,
             icon: 'success',
             confirmButtonText: 'Ok',
           });
