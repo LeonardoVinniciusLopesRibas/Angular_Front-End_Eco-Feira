@@ -29,6 +29,7 @@ export class ProdutodetailsComponent {
   query: string = "";
   cnpj!: string;
   isDropdownOpen: boolean[] = [];
+  mostrarDesativados: boolean = false;
 
   constructor() {
     const usuarioStorage = localStorage.getItem('usuario');
@@ -40,12 +41,16 @@ export class ProdutodetailsComponent {
     this.listarProduto();
   }
 
-  recebeQuery(query: string){
+  recebeQuery(query: string) {
     this.query = query;
-    this.listarProduto();
+    if (this.mostrarDesativados) {
+      this.getDesativados(); 
+    } else {
+      this.listarProduto();
+    }
   }
 
-  listarProduto(){
+  listarProduto() {
     this.produtoProdutorService.get(this.query, this.cnpj).subscribe({
       next: lista => {
         this.listProdutos = lista;
@@ -56,6 +61,29 @@ export class ProdutodetailsComponent {
         }
       },
     });
+  }
+
+  alternarDesativados() {
+    this.page = 1;
+    if (this.mostrarDesativados) {
+      this.getDesativados(); 
+    } else {
+      this.listarProduto();
+    }
+  }
+
+  getDesativados() {
+    this.produtoProdutorService.getDesativados(this.query, this.cnpj).subscribe({
+      next: lista => {
+        this.listProdutos = lista;
+      },
+      error: erro => {
+        if (erro.status === 404) {
+          this.listProdutos = [];
+        }
+      },
+    });
+    
   }
 
   onItemsPerPageChange(event: Event) {
@@ -71,6 +99,85 @@ export class ProdutodetailsComponent {
 
     this.isDropdownOpen = this.isDropdownOpen.map((open, i) => i === index ? !open : false);
   }
+
+  desativarItem(idProduto: number) {
+    Swal.fire({
+      title: "Você tem certeza?",
+      text: "Você deseja mesmo deletar?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim!",
+      cancelButtonText: "Não",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.produtoProdutorService.desativar(idProduto).subscribe({
+          next: (res) => {
+            const mensagem = res.message || "Produto desativado com sucesso!";
+            Swal.fire({
+              title: "Sucesso",
+              text: mensagem,
+              icon: "success",
+              confirmButtonText: "OK",
+            });
+            this.listarProduto();
+          },
+          error: (erro) => {
+            const errorMessage = erro.error?.message || erro.message || 'Erro desconhecido';
+            Swal.fire({
+              title: "Erro",
+              text: errorMessage,
+              icon: "error",
+              confirmButtonText: "OK",
+            });
+            console.error(erro);
+          },
+        });
+      }
+    });
+  }
+
+  reativarItem(idProduto: number) {
+    Swal.fire({
+      title: "Você tem certeza?",
+      text: "Você deseja mesmo deletar?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim!",
+      cancelButtonText: "Não",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.produtoProdutorService.reativar(idProduto).subscribe({
+          next: (res) => {
+            const mensagem = res.message || "Produto reativado com sucesso!";
+            Swal.fire({
+              title: "Sucesso",
+              text: mensagem,
+              icon: "success",
+              confirmButtonText: "OK",
+            });
+            this.getDesativados();
+          },
+          error: (erro) => {
+            const errorMessage = erro.error?.message || erro.message || 'Erro desconhecido';
+            Swal.fire({
+              title: "Erro",
+              text: errorMessage,
+              icon: "error",
+              confirmButtonText: "OK",
+            });
+            console.error(erro);
+          },
+        });
+      }
+    });
+  }
+
+
+}
 
 
   /*deleteItem(id: number) {
@@ -107,7 +214,3 @@ export class ProdutodetailsComponent {
     });
   }*/
   
-  
-  
-
-}

@@ -7,8 +7,8 @@ import { ProdutodetailsComponent } from './components/layout/produtor/produtodet
 import { GrupoprodutosdetailsComponent } from './components/layout/produtor/grupoprodutosdetails/grupoprodutosdetails.component';
 import { GrupoprodutoseditnewComponent } from './components/layout/produtor/grupoprodutoseditnew/grupoprodutoseditnew.component';
 import { NovoacessoComponent } from './components/layout/novoacesso/novoacesso.component';
-import { Usuario } from './auth/usuario';
 import { UsuariodetailsComponent } from './components/layout/produtor/usuariodetails/usuariodetails.component';
+import { ProdutoeditnewComponent } from './components/layout/produtor/produtoeditnew/produtoeditnew.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -20,6 +20,8 @@ export const routes: Routes = [
         children: [
             {path: 'centraldados', component: VisaogeralcardsprodutorComponent, canActivate: [loginGuard]},
             {path: 'produto', component: ProdutodetailsComponent, canActivate: [loginGuard]},
+            {path: 'produto/novo', component: ProdutoeditnewComponent, canActivate: [loginGuard]},
+            {path: 'produto/edit/:id', component: ProdutoeditnewComponent, canActivate: [loginGuard]},
             {path: 'grupoprodutos', component: GrupoprodutosdetailsComponent, canActivate: [loginGuard]},
             {path: 'grupoprodutos/novo', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
             {path: 'grupoprodutos/edit/:id', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},

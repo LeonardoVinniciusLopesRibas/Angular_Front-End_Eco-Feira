@@ -40,12 +40,6 @@ export class GrupoprodutoseditnewComponent {
     }
   }
 
-
-
-  edit(id: number) {
-
-  }
-
   findById(id: number) {
 
     this.categoriaService.findbyid(id).subscribe({

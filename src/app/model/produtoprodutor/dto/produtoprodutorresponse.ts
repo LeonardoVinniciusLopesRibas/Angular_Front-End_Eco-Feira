@@ -3,6 +3,6 @@ export class Produtoprodutorresponse {
     nome!: string;
     valorCusto!: number;
     valorVenda!: number;
-    grupoProduto!: string;
+    grupoProdutos!: string;
     apareceEmDemandas!: boolean;
 }

@@ -1,0 +1,51 @@
+<div class="container-grupoprodutos-edit-new">
+    <div class="input-group-cadastro">
+        @if (produtoProdutorResponseUnique.idProduto > 0) {
+        <label class="fw-bold label-title">EDIÇÃO DE PRODUTOS</label>
+
+        }@else {
+        <label class="fw-bold label-title">CADASTRO DE PRODUTOS</label>
+        }
+        <div>
+            <label>Descrição do produto</label>
+            <input type="text" class="all-inputs" [(ngModel)]="produtoProdutorRequest.nome"
+                placeholder="Informe a descrição do produto" />
+        </div>
+        <div>
+            <label>Valor de custo</label>
+            <input type="number" class="all-inputs-menor" [(ngModel)]="produtoProdutorRequest.valorCusto"
+                placeholder="R$" required="Informe o valor"/>
+                <label>Valor de venda</label>
+            <input type="number" class="all-inputs-menor" [(ngModel)]="produtoProdutorRequest.valorVenda"
+                placeholder="R$" />
+        </div>
+        <div class="d-flex">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="produtoProdutorRequest.apareceEmDemandas" />
+            <label>Produto aparece em Demandas?</label>
+        </div>
+        <div>
+            <label>Selecione a categoria</label>
+            <select class="select-pagination" [(ngModel)]="produtoProdutorRequest.grupoProdutos">
+                <input [(ngModel)]="query" placeholder="Pesquisar">
+                <option *ngFor="let categoria of listCategorias" [ngValue]="categoria.idGrupoProduto">
+                    {{ categoria.idGrupoProduto }} - {{ categoria.descricaoGrupoProduto }}
+                </option>
+            </select>
+        </div>
+
+
+        <div class="div-button d-flex">
+            <button class="btn btn-info button-sucesso" [routerLink]="['/admin/produtor/produto']">Voltar</button>
+            @if (produtoProdutorResponseUnique.idProduto > 0) {
+            <button class="btn btn-success button-sucesso" (click)="postput()">Editar dados</button>
+            }
+            @else {
+            <button class="btn btn-success button-sucesso" (click)="postput()">Salvar dados</button>
+            }
+
+
+
+        </div>
+
+    </div>
+</div>

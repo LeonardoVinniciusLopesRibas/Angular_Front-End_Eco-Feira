@@ -1,19 +1,20 @@
 <div class="container-grupo-produtos">
     <div class="container-title">
         <div class="div-button-back">
- 
+
             <button class="btn btn-success fw-bold" [routerLink]="['/admin/produtor/centraldados']">Voltar</button>
 
         </div>
         <div class="div-input-search">
             <div class="internal-container-input-search">
-                <input class="input-search" [(ngModel)]="query" placeholder="Pesquisar" (keydown.enter)="recebeQuery(query)"/>
+                <input class="input-search" [(ngModel)]="query" placeholder="Pesquisar"
+                    (keydown.enter)="recebeQuery(query)" />
                 <div class="icon-lupa"></div>
             </div>
         </div>
         <div class="div-button-new">
 
-            <button class="btn btn-warning fw-bold" [routerLink]="['/admin/produtor/grupoprodutos/novo']">Novo</button>
+            <button class="btn btn-warning fw-bold" [routerLink]="['/admin/produtor/produto/novo']">Novo</button>
 
         </div>
     </div>
@@ -32,40 +33,58 @@
                 </select>
             </div>
         </div>
-    </div>
-
-    <div class="div-table">
-        <div class="div-internal-table">
-            <table border="1" class="table-grupoprodutos">
-                <thead>
-                    <tr class="titulo-table">
-                        <th class="rounded-left">Id</th>
-                        <th class="">Descrição</th>
-                        <th class="">Grupo</th>
-                        <th class="">Custo</th>
-                        <th class="rounded-right">Venda</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="linha"
-                      *ngFor="let produtoResponse of listProdutos | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-                      <td class="rounded-left">{{produtoResponse.idProduto}}</td>
-                      <td class="click button-drop-table" (click)="toggleDropdown(i)">
-                        <span>{{produtoResponse.nome}}</span>
-                        <div class="dropdown" *ngIf="isDropdownOpen[i]">
-                            <label>Definições</label>
-                          <button class="btn-edit btn btn-warning btn-rounded" routerLink="/admin/produtor/grupoprodutos/edit/{{produtoResponse.idProduto}}" >Editar o Item</button>
-                          <!--<button class="btn-delete btn btn-danger btn-rounded" (click)="deleteItem(produtoResponse.idProduto)">Deletar o Item</button>-->
-                        </div>
-                      </td>
-                      <td class="">{{produtoResponse.grupoProduto}}</td>
-                      <td class="">{{produtoResponse.valorCusto}}</td>
-                      <td class="rounded-right">{{produtoResponse.valorVenda}}</td>
-                    </tr>
-                  </tbody>
-                                    
-            </table>
-
+        <div class="div-switch">
+            <label class="switch">
+                <input type="checkbox" [(ngModel)]="mostrarDesativados" (change)="alternarDesativados()">
+                <span class="slider round"></span>
+            </label>
         </div>
     </div>
-</div>
+
+        <div class="div-table">
+            <div class="div-internal-table">
+                <table border="1" class="table-grupoprodutos">
+                    <thead>
+                        <tr class="titulo-table">
+                            <th class="rounded-left">Id</th>
+                            <th class="">Descrição</th>
+                            <th class="">Grupo</th>
+                            <th class="">Custo</th>
+                            <th class="rounded-right">Venda</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="linha"
+                            *ngFor="let produtoResponse of listProdutos | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+                            <td class="rounded-left">{{produtoResponse.idProduto}}</td>
+                            <td class="click button-drop-table" (click)="toggleDropdown(i)">
+                                <span>{{produtoResponse.nome}}</span>
+                                <div class="dropdown" *ngIf="isDropdownOpen[i]">
+                                    <label>Definições</label>
+                                    <button *ngIf="!mostrarDesativados" class="btn-edit btn btn-warning btn-rounded"
+                                        routerLink="/admin/produtor/produto/edit/{{produtoResponse.idProduto}}">Editar
+                                        o Item</button>
+                                        <button *ngIf="!mostrarDesativados" class="btn-delete btn btn-danger btn-rounded"
+                                        (click)="desativarItem(produtoResponse.idProduto)">
+                                        Desativar o Item
+                                    </button>
+                            
+                                    
+                                    <br *ngIf="mostrarDesativados">
+                                    <button *ngIf="mostrarDesativados" class="btn-reactivar btn btn-success btn-rounded"
+                                        (click)="reativarItem(produtoResponse.idProduto)">
+                                        Reativar o Item
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="">{{produtoResponse.grupoProdutos}}</td>
+                            <td class="">{{produtoResponse.valorCusto}}</td>
+                            <td class="rounded-right">{{produtoResponse.valorVenda}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
