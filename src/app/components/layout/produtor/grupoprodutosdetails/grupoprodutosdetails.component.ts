@@ -51,11 +51,10 @@ export class GrupoprodutosdetailsComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listCategorias = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
           Swal.fire({
             position: "top-end",
             icon: 'error',
-            title: errorMessage,
+            title: 'A lista está vazia!',
             showConfirmButton: true,
             confirmButtonText: "Fechar",
             timer: 3000

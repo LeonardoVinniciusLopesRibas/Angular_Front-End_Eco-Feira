@@ -70,12 +70,11 @@
 
     .select-pagination {
         width: 50%;
-        padding: 10px;
-        margin: 30px;
         border-radius: 4px; 
         border: 1px solid #ccc;
-        background-color: #f8f9fa; 
+        background-color: hsl(210, 17%, 98%); 
         font-size: 16px; 
+        height: 50px;
       }
       
       .select-pagination:focus {
@@ -83,6 +82,15 @@
         outline: none; 
       }
 
+      .div-select-categoria{
+        width: 500px; 
+        margin-top: 50px;
+      }
+
+      .label-categoria{
+        margin-top: 10px;
+        margin-right: 10px;
+      }
       
       
       

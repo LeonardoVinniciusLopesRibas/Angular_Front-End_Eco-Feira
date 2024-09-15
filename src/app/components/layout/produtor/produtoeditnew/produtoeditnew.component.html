@@ -23,10 +23,9 @@
             <input type="checkbox" class="form-check-input" [(ngModel)]="produtoProdutorRequest.apareceEmDemandas" />
             <label>Produto aparece em Demandas?</label>
         </div>
-        <div>
-            <label>Selecione a categoria</label>
+        <div class="d-flex div-select-categoria">
+            <label class="label-categoria">Selecione a categoria</label>
             <select class="select-pagination" [(ngModel)]="produtoProdutorRequest.grupoProdutos">
-                <input [(ngModel)]="query" placeholder="Pesquisar">
                 <option *ngFor="let categoria of listCategorias" [ngValue]="categoria.idGrupoProduto">
                     {{ categoria.idGrupoProduto }} - {{ categoria.descricaoGrupoProduto }}
                 </option>

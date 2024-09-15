@@ -14,5 +14,6 @@ export class Empresaassociation {
     ativo!: boolean;
     dataHoraCriacao!: string;
     dataHoraAlteracao!: string;
+    
 
 }

@@ -13,5 +13,6 @@ export class Endereco {
     ativo!: boolean;
     dataHoraCriacao!: string;
     dataHoraAlteracao!: string;
+    cep!: string;
 
 }

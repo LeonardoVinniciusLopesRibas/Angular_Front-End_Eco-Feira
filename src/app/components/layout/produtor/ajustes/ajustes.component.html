@@ -1,1 +1,63 @@
-<p>ajustes works!</p>
+<div class="container-empresa">
+    <div class="text-center">
+        <label>Ajustes</label>
+    </div>
+    <div class="container-fluid margin">
+        <input type="text" class="inteiro" placeholder="Nome fantasia" [(ngModel)]="this.empresa.nomeFantasia" />
+    </div>
+    <div class="container-fluid d-flex">
+        <input type="text" class="meio-a-meio" placeholder="Razão social" [(ngModel)]="this.empresa.razaoSocial"/>
+        <input type="text" class="meio-a-meio" placeholder="Cnpj" [(ngModel)]="this.empresa.cnpj" mask="00.000.000/0000-00" disabled />
+    </div>
+    <div class="container-fluid margin">
+        <input type="text" class="inteiro" placeholder="Número de telefone" [(ngModel)]="this.empresa.numeroTelefone" mask="(00) 0 0000-0000" />
+    </div>
+    <div class="container-fluid margin">
+        <input type="text" class="inteiro" placeholder="E-mail" [(ngModel)]="this.empresa.email"/>
+    </div>
+    <div class="container-fluid margin">
+        <input type="text" class="inteiro" placeholder="Atividade principal" [(ngModel)]="this.empresa.atividadePrincipal" />
+    </div>
+    <div class="container-fluid margin">
+        <textarea type="text" class="inteiro" placeholder="Descrição" [(ngModel)]="this.empresa.descricao"></textarea>
+    </div>
+    <div class="container-fluid d-flex">
+        <input type="text" class="meio-a-meio" placeholder="Cep" [(ngModel)]="this.empresa.endereco.cep" mask="00.000-000"/>
+        <input type="text" class="meio-a-meio" placeholder="Logradouro" [(ngModel)]="this.empresa.endereco.logradouro"/>
+        <input type="text" class="meio-a-meio" placeholder="Número" [(ngModel)]="this.empresa.endereco.numero" mask="000000"/>
+        <input type="text" class="meio-a-meio" placeholder="Bairro" [(ngModel)]="this.empresa.endereco.bairro"/>
+    </div>
+    <div class="container-fluid d-flex">
+        <select class="select-pagination" [(ngModel)]="this.empresa.endereco.cidade.estado.pais.idPais" (change)="listarEstados(); listarCidades();">
+            <option *ngFor="let pais of listPais" [ngValue]="pais.idPais">
+                {{ pais.idPais }} - {{ pais.nome }} - {{ pais.sigla }}
+            </option>
+        </select>
+        <select class="select-pagination" [(ngModel)]="this.empresa.endereco.cidade.estado.idEstado" (change)="listarCidades();">
+            <option *ngFor="let estado of listEstado" [ngValue]="estado.idEstado">
+                {{ estado.idEstado }} - {{ estado.nome }} - {{ estado.sigla }}
+            </option>
+        </select>
+        <select class="select-pagination" [(ngModel)]="this.empresa.endereco.cidade.idCidade">
+            <option *ngFor="let cidade of listCidade" [ngValue]="cidade.idCidade">
+                {{ cidade.idCidade }} - {{ cidade.nome }}
+            </option>
+        </select>
+    </div>
+
+    <div class="div-button d-flex">
+        <button class="btn btn-info button-sucesso" [routerLink]="['/admin/produtor/centraldados']">Voltar</button>
+        <button class="btn btn-success button-sucesso" (click)="atualizarInformacoes()">Editar dados</button>
+    </div>
+    
+</div>
+
+
+<!--[(ngModel)]="categoriaRequest.descricaoGrupo"-->
+
+<!--
+
+<option *ngFor="let categoria of listCategorias" [ngValue]="categoria.idGrupoProduto">
+                {{ categoria.idGrupoProduto }} - {{ categoria.descricaoGrupoProduto }}
+            </option>
+-->

@@ -9,6 +9,7 @@ import { GrupoprodutoseditnewComponent } from './components/layout/produtor/grup
 import { NovoacessoComponent } from './components/layout/novoacesso/novoacesso.component';
 import { UsuariodetailsComponent } from './components/layout/produtor/usuariodetails/usuariodetails.component';
 import { ProdutoeditnewComponent } from './components/layout/produtor/produtoeditnew/produtoeditnew.component';
+import { AjustesComponent } from './components/layout/produtor/ajustes/ajustes.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -25,7 +26,8 @@ export const routes: Routes = [
             {path: 'grupoprodutos', component: GrupoprodutosdetailsComponent, canActivate: [loginGuard]},
             {path: 'grupoprodutos/novo', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
             {path: 'grupoprodutos/edit/:id', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
-            {path: 'usuarios', component: UsuariodetailsComponent, canActivate: [loginGuard]}
+            {path: 'usuarios', component: UsuariodetailsComponent, canActivate: [loginGuard]},
+            {path: 'ajustes', component: AjustesComponent, canActivate: [loginGuard]}
 
         ]
     }//,

@@ -26,7 +26,7 @@ export class LoginComponent {
   loginResponse: LoginResponseDto | undefined;
   subscription: Subscription | undefined; 
   sideBar: SidebarprodutorComponent = new SidebarprodutorComponent();
-  cadastro: { usuario: string, senha: string, cnpj: string } = { usuario: '', senha: '', cnpj: '' };
+  //cadastro: { usuario: string, senha: string, cnpj: string } = { usuario: '', senha: '', cnpj: '' };
 
   logar() {
     if (this.login.usuario.trim().length === 0) {

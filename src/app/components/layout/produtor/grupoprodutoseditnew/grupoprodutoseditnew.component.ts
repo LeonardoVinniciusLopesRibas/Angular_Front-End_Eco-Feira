@@ -7,11 +7,12 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Categoriaresponseunique } from '../../../../model/categoria/dto/categoriaresponseunique';
 import { Categoria } from '../../../../model/categoria/categoria';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 @Component({
   selector: 'app-grupoprodutoseditnew',
   standalone: true,
-  imports: [MdbRippleModule, FormsModule, RouterLink],
+  imports: [MdbRippleModule, FormsModule, RouterLink, MdbFormsModule],
   templateUrl: './grupoprodutoseditnew.component.html',
   styleUrl: './grupoprodutoseditnew.component.scss'
 })
@@ -25,6 +26,7 @@ export class GrupoprodutoseditnewComponent {
   categoriaRequest: Categoriarequest = new Categoriarequest();
   categoriaResponseUnique: Categoriaresponseunique = new Categoriaresponseunique();
   categoria: Categoria = new Categoria();
+
 
   constructor() {
     let id = this.activatedRoute.snapshot.params['id'];
@@ -59,8 +61,24 @@ export class GrupoprodutoseditnewComponent {
   }
 
   postput() {
-
-    if (this.categoriaResponseUnique.idGrupoProduto > 0) {
+    if((this.categoriaRequest.descricaoGrupo || '').trim().length === 0){
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Descrição não foi informada"
+      });
+      return;
+    }else if (this.categoriaResponseUnique.idGrupoProduto > 0) {
       this.categoriaRequest.usuarioId = this.usuario;
       this.categoriaRequest.empresaId = this.empresaId;
 

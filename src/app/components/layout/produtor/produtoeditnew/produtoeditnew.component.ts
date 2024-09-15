@@ -36,6 +36,7 @@ export class ProdutoeditnewComponent {
   produtoProdutor: Produtoprodutor = new Produtoprodutor();
   listCategorias: Categoriaresponse[] = [];
 
+  id!: number;
   constructor() {
     let id = this.activatedRoute.snapshot.params['id'];
     if (id > 0) {
@@ -96,9 +97,81 @@ export class ProdutoeditnewComponent {
   }
 
   postput() {
+    if((this.produtoProdutorRequest.nome || '').trim().length === 0){
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Nome não foi informado"
+      });
+      return;
+    } else if (isNaN(this.produtoProdutorRequest.valorCusto) || this.produtoProdutorRequest.valorCusto < 0) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Valor de custo deve ser um número positivo"
+      });
+      return;
+    }else if (isNaN(this.produtoProdutorRequest.valorVenda) || this.produtoProdutorRequest.valorVenda < 0) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Valor de venda deve ser um número positivo"
+      });
+      return;
+    }else if (isNaN(this.produtoProdutorRequest.grupoProdutos) || this.produtoProdutorRequest.grupoProdutos < 0) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Informe o grupo de produtos!"
+      });
+      return;
+    }
+    
+    
     if (this.produtoProdutorResponseUnique.idProduto > 0) {
+       this.id = this.produtoProdutorResponseUnique.idProduto;
       this.produtoProdutorRequest.idEmpresa = this.empresaId;
-      this.produtoProdutorService.put(this.produtoProdutorRequest, this.produtoProdutorRequest.idEmpresa).subscribe({
+      this.produtoProdutorService.put(this.produtoProdutorRequest, this.produtoProdutorResponseUnique.idProduto).subscribe({
         next: mensagem => {
           Swal.fire({
             title: 'Produto atualizada com sucesso!',
