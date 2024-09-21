@@ -1,0 +1,31 @@
+<div class="container-grupoprodutos-edit-new">
+    <div class="input-group-cadastro">
+        @if (produtoResponseUnique.id > 0) {
+        <label class="fw-bold label-title">EDIÇÃO DE PRODUTOS</label>
+
+        }@else {
+        <label class="fw-bold label-title">CADASTRO DE PRODUTOS</label>
+        }
+        <div>
+            <label>Descrição do produto</label>
+            <input type="text" class="all-inputs" [(ngModel)]="produtoResponseUnique.nome"
+                placeholder="Informe a descrição do produto" />
+        </div>
+        <div>
+            <label>Valor de custo</label>
+            <input type="number" class="all-inputs-menor" [(ngModel)]="produtoResponseUnique.valorCompra"
+                placeholder="R$" required="Informe o valor" />
+        </div>
+
+
+        <div class="div-button d-flex">
+            <button class="btn btn-info button-sucesso" [routerLink]="['/admin/prefeitura/produto']">Voltar</button>
+            @if (produtoResponseUnique.id > 0) {
+            <button class="btn btn-success button-sucesso" (click)="postput()">Editar dados</button>
+            }
+            @else {
+            <button class="btn btn-success button-sucesso" (click)="postput()">Salvar dados</button>
+            }
+        </div>
+    </div>
+</div>

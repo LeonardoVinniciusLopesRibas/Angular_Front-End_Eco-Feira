@@ -23,4 +23,12 @@ export class UsuarioService {
     return this.http.post(`${this.API}/post/${id}`, idEmpresa, { headers, observe: 'response', responseType: 'text' });
   }
 
+  postPrefeitura(id: number, idPrefeitura: number): Observable<any>{
+    const token = this.loginService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    
+    return this.http.post(`${this.API}/postPrefeitura/${id}`, idPrefeitura, { headers, observe: 'response', responseType: 'text' });
+  }
+
 }

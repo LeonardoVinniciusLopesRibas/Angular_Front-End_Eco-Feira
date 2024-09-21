@@ -14,7 +14,7 @@
         </div>
         <div class="div-button-new">
 
-            <button class="btn btn-warning fw-bold" [routerLink]="['/admin/produtor/produto/novo']">Novo</button>
+            <button class="btn btn-warning fw-bold" [routerLink]="['/admin/prefeitura/produto/novo']">Novo</button>
 
         </div>
     </div>
@@ -49,38 +49,34 @@
                         <tr class="titulo-table">
                             <th class="rounded-left">Id</th>
                             <th class="">Descrição</th>
-                            <th class="">Grupo</th>
-                            <th class="">Custo</th>
-                            <th class="rounded-right">Venda</th>
+                            <th class="rounded-right">Custo</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="linha"
                             *ngFor="let produtoResponse of listProdutos | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-                            <td class="rounded-left">{{produtoResponse.idProduto}}</td>
+                            <td class="rounded-left">{{produtoResponse.id}}</td>
                             <td class="click button-drop-table" (click)="toggleDropdown(i)">
                                 <span>{{produtoResponse.nome}}</span>
                                 <div class="dropdown" *ngIf="isDropdownOpen[i]">
                                     <label>Definições</label>
                                     <button *ngIf="!mostrarDesativados" class="btn-edit btn btn-warning btn-rounded"
-                                        routerLink="/admin/produtor/produto/edit/{{produtoResponse.idProduto}}">Editar
+                                        routerLink="/admin/prefeitura/produto/edit/{{produtoResponse.id}}">Editar
                                         o Item</button>
                                         <button *ngIf="!mostrarDesativados" class="btn-delete btn btn-danger btn-rounded"
-                                        (click)="desativarItem(produtoResponse.idProduto)">
+                                        (click)="desativarItem(produtoResponse.id)">
                                         Desativar o Item
                                     </button>
                             
                                     
                                     <br *ngIf="mostrarDesativados">
                                     <button *ngIf="mostrarDesativados" class="btn-reactivar btn btn-success btn-rounded"
-                                        (click)="reativarItem(produtoResponse.idProduto)">
+                                        (click)="reativarItem(produtoResponse.id)">
                                         Reativar o Item
                                     </button>
                                 </div>
                             </td>
-                            <td class="">{{produtoResponse.grupoProdutos}}</td>
-                            <td class="">R$ {{produtoResponse.valorCusto}}</td>
-                            <td class="rounded-right">R$ {{produtoResponse.valorVenda}}</td>
+                            <td class="rounded-right">R$ {{produtoResponse.valorCompra}}</td>
                         </tr>
                     </tbody>
 

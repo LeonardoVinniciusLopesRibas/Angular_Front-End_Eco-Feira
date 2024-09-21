@@ -1,0 +1,30 @@
+.layout-container,
+.homebarprodutor,
+.content-area,
+.sidebarprodutor {
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+@media(min-width: 1318px) and (max-width: 1464.44px) {
+
+    .layout-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .sidebarprefeitura {
+        width: 200px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .content-area {
+        margin: 4px auto 10px calc(250px);
+        width: 980px;
+        height: 530px;
+    }
+
+}
