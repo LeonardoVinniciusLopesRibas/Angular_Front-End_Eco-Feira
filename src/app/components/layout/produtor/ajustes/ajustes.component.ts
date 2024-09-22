@@ -206,7 +206,7 @@ export class AjustesComponent {
 
         this.empresaService.put(this.empresaRequest, this.empresaId).subscribe({
           next: retorno =>{
-            alert('atualizadooo')
+            //alert('atualizadooo')
           },
           error: erro => {
             console.error(erro);

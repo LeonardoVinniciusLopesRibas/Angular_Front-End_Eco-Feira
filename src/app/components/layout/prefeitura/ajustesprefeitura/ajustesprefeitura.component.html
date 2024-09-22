@@ -1,1 +1,91 @@
-<p>ajustesprefeitura works!</p>
+<div class="container-empresa">
+    <div class="text-center">
+        <label>Ajustes</label>
+    </div>
+    <div class="container-fluid margin">
+        <input type="text" class="inteiro" placeholder="Nome fantasia" [(ngModel)]="this.prefeitura.nomeFantasia" />
+    </div>
+    <div class="container-fluid d-flex">
+        <input type="text" class="meio-a-meio" placeholder="Razão social" [(ngModel)]="this.prefeitura.razaoSocial"/>
+        <input type="text" class="meio-a-meio" placeholder="Cnpj" [(ngModel)]="this.prefeitura.cnpj" mask="00.000.000/0000-00" disabled />
+    </div>
+    <div class="container-fluid d-flex">
+        <input type="text" class="meio-a-meio" placeholder="Cep" [(ngModel)]="this.prefeitura.endereco.cep" mask="00.000-000"/>
+        <input type="text" class="meio-a-meio" placeholder="Logradouro" [(ngModel)]="this.prefeitura.endereco.logradouro"/>
+        <input type="text" class="meio-a-meio" placeholder="Número" [(ngModel)]="this.prefeitura.endereco.numero" mask="000000"/>
+        <input type="text" class="meio-a-meio" placeholder="Bairro" [(ngModel)]="this.prefeitura.endereco.bairro"/>
+    </div>
+    <div class="container-fluid d-flex">
+        <select class="select-pagination" [(ngModel)]="this.prefeitura.endereco.cidade.estado.pais.idPais" (change)="listarEstados(); listarCidades();">
+            <option *ngFor="let pais of listPais" [ngValue]="pais.idPais">
+                {{ pais.idPais }} - {{ pais.nome }} - {{ pais.sigla }}
+            </option>
+        </select>
+        <select class="select-pagination" [(ngModel)]="this.prefeitura.endereco.cidade.estado.idEstado" (change)="listarCidades();">
+            <option *ngFor="let estado of listEstado" [ngValue]="estado.idEstado">
+                {{ estado.idEstado }} - {{ estado.nome }} - {{ estado.sigla }}
+            </option>
+        </select>
+        <select class="select-pagination" [(ngModel)]="this.prefeitura.endereco.cidade.idCidade">
+            <option *ngFor="let cidade of listCidade" [ngValue]="cidade.idCidade">
+                {{ cidade.idCidade }} - {{ cidade.nome }}
+            </option>
+        </select>
+    </div>
+
+    <div class="container-fluid">
+        <h3>Contatos</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descrição</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contato of contatos">
+                    <td>{{ contato.idPrefeitura }}</td>
+                    <td>{{ contato.descricaoContato }}</td>
+                    <td>{{ contato.numeroTelefone }}</td>
+                    <td>{{ contato.email }}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deletarContato(contato.idPrefeitura)">Deletar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="abrirModal()">Adicionar Contato</button>
+    </div>
+
+    <div *ngIf="mostrarModal" class="modal fade show" tabindex="-1" role="dialog" style="display:block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Contato</h5>
+                    <button type="button" class="close" (click)="fecharModal()">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="Descrição" [(ngModel)]="novoContato.descricaoContato" class="form-control mb-2" />
+                    <input type="text" placeholder="Telefone" [(ngModel)]="novoContato.numeroTelefone" class="form-control mb-2" mask="(00) 0 0000-0000" />
+                    <input type="text" placeholder="Email" [(ngModel)]="novoContato.email" class="form-control mb-2" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="fecharModal()">Fechar</button>
+                    <button type="button" class="btn btn-primary" (click)="adicionarContato()">Salvar Contato</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-button d-flex">
+        <button class="btn btn-info button-sucesso" [routerLink]="['/admin/produtor/centraldados']">Voltar</button>
+        <button class="btn btn-success button-sucesso" (click)="atualizarInformacoes()">Editar dados</button>
+    </div>
+    
+</div>
+
