@@ -19,11 +19,6 @@
           </span>
           <input type="password" id="senha" class="form-control no-border-just-bottom" placeholder="Senha" [(ngModel)]="login.senha" (keyup.enter)="logar()"/>
         </div>
-        <div class="input-group mb-3" style="justify-content: center;">
-          <div class="form-check custom-style ">
-              <a class="form-check-label"  for="lembrarSenha" href="/esqueceusenha">esqueceu sua senha?</a>
-          </div>
-        </div>
         <div class="input-group mb-3 justify-content-center align-items-center">
           <div class="form-check">
             <button type="button" class="btn button-logar p-3 me-2" mdbRipple (click)="logar()">Acessar</button>
