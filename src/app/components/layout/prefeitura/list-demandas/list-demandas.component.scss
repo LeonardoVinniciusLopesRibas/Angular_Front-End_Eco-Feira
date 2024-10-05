@@ -1,0 +1,19 @@
+.div-input-search {
+    width: 50%;
+    height: 60px;
+    left: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    place-items: center;
+  }
+
+  .input-search {
+    border: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #000 !important;
+    background-color: transparent !important;
+    outline: none !important;
+    transition: transform 0.2s ease;
+  }
+  

@@ -1,0 +1,36 @@
+<div class="container-button">
+    <button class="button btn btn-warning">Nova Demanda</button>
+
+    <div class="align">
+        <input type="text" class="all-inputs margem" placeholder="Informe a descrição da demanda" />
+    </div>
+    <div class="d-flex align">
+        <div>
+            <input type="text" class="all-inputs" style="width: 25vh;" placeholder="Logradouro" />
+        </div>
+        <div>
+            <input type="text" class="all-inputs-mini" placeholder="Número" />
+        </div>
+        <div>
+            <input type="text" class="all-inputs-mini" placeholder="Bairro" />
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="align select" style="margin-top: 25px;">
+            <ng-select [items]="produtoPrefeituraResponseList" bindLabel="nome" bindValue="id"
+                [(ngModel)]="selectedProduto" [searchable]="true" [placeholder]="placeholder"
+                (change)="onProdutoSelect()" class="linha">
+            </ng-select>
+        </div>
+        <div class="margin">
+            <button class="btn btn-success">Adicionar produto</button>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<!--[(ngModel)]="produtoResponseUnique.nome"-->
