@@ -1,12 +1,101 @@
-<div class="d-flex container-demanda ">
-    <div>
-        <app-list-demandas>
-            
-        </app-list-demandas>
-    </div>
-    <div>
-        <app-new-edit-demanda>
+<div class="container-demandas">
 
-        </app-new-edit-demanda>
+  <div class="container-pagination">
+    <div class="div-pagination">
+      <div class="div-pagination-internal">
+        <pagination-controls (pageChange)="page = $event" class="pagination text-dark"></pagination-controls>
+      </div>
     </div>
+    <div class="div-dropdown">
+      <div class="div-pagination-setting">
+        <label class="label-itens">Itens por página:</label>
+        <select class="select-pagination" (change)="onItemsPerPageChange($event)" [value]="itemsPerPage">
+          <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="container-select-filter">
+    <div class="btn-group">
+      <input
+        mdbRadio
+        type="radio"
+        class="btn-check"
+        name="options"
+        id="option1"
+        autocomplete="off"
+        [checked]="true"
+        (change)="filterByStatus('TODOS')"
+      />
+      <label class="btn btn-secondary" for="option1">Todos</label>
+
+      <input
+        mdbRadio
+        type="radio"
+        class="btn-check"
+        name="options"
+        id="option2"
+        autocomplete="off"
+        (change)="filterByStatus('ABERTA')"
+      />
+      <label class="btn btn-secondary" for="option2">Aberta</label>
+
+      <input
+        mdbRadio
+        type="radio"
+        class="btn-check"
+        name="options"
+        id="option3"
+        autocomplete="off"
+        (change)="filterByStatus('CONCLUIDA')"
+      />
+      <label class="btn btn-secondary" for="option3">Concluída</label>
+
+      <input
+        mdbRadio
+        type="radio"
+        class="btn-check"
+        name="options"
+        id="option4"
+        autocomplete="off"
+        (change)="filterByStatus('CANCELADA')"
+      />
+      <label class="btn btn-secondary" for="option4">Cancelada</label>
+    </div>
+  </div>
+
+
+  <div class="div-table">
+    <div class="div-internal-table">
+      <table class="table-grupoprodutos">
+        <thead class="table-header">
+        <tr class="titulo-table">
+          <th class="rounded-left">Id</th>
+          <th>Descrição</th>
+          <th>Prazo Máximo</th>
+          <th>Valor</th>
+          <th class="rounded-right">Status</th>
+
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <tr
+          class="linha"
+          *ngFor="let demandaResponse of filteredDemandas | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index"
+        >
+          <td class="rounded-left">{{ demandaResponse.idDemanda }}</td>
+          <td>{{ demandaResponse.descricao }}</td>
+          <td>{{ demandaResponse.prazoMaximo | date:'dd/MM/yyyy' }}</td>
+          <td>R{{ demandaResponse.valorTotalPrefeitura | currency }}</td>
+          <td class="rounded-right">
+            <span [ngClass]="getStatusClass(demandaResponse.statusDemanda)"></span>
+            {{ demandaResponse.statusDemanda }}
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
 </div>

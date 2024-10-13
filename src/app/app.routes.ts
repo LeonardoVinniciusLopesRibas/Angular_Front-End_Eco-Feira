@@ -16,11 +16,13 @@ import { ProdutoprefeituradetailsComponent } from './components/layout/prefeitur
 import { ProdutoprefeituraeditnewComponent } from './components/layout/prefeitura/produtoprefeituraeditnew/produtoprefeituraeditnew.component';
 import { UsuarioprefeituradetailsComponent } from './components/layout/prefeitura/usuarioprefeituradetails/usuarioprefeituradetails.component';
 import { AjustesprefeituraComponent } from './components/layout/prefeitura/ajustesprefeitura/ajustesprefeitura.component';
+import { GerenciardemandasComponent } from './components/layout/prefeitura/gerenciardemandas/gerenciardemandas.component';
+import {GerirdemandaComponent} from "./components/layout/prefeitura/gerirdemanda/gerirdemanda.component";
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
-    {path: 'login', component: LoginComponent}, 
-    {path: 'novoacesso', component: NovoacessoComponent}, 
+    {path: 'login', component: LoginComponent},
+    {path: 'novoacesso', component: NovoacessoComponent},
     {path: 'admin/produtor', redirectTo: 'admin/produtor/centraldados', pathMatch: 'full'},
     {path: 'admin/prefeitura', redirectTo: 'admin/prefeitura/demanda', pathMatch: 'full'},
     {
@@ -41,6 +43,8 @@ export const routes: Routes = [
         path: 'admin/prefeitura', component: PrincipalprefeituraComponent, canActivate: [loginGuard],
         children: [
             {path: 'demanda', component: DemandaprefeituraComponent, canActivate: [loginGuard]},
+            {path: 'demanda/new', component: GerenciardemandasComponent, canActivate: [loginGuard]},
+            {path: 'demanda/gerir', component: GerirdemandaComponent, canActivate: [loginGuard]},
             {path: 'produto', component: ProdutoprefeituradetailsComponent, canActivate: [loginGuard]},
             {path: 'produto/novo', component: ProdutoprefeituraeditnewComponent, canActivate: [loginGuard]},
             {path: 'produto/edit/:id', component: ProdutoprefeituraeditnewComponent, canActivate: [loginGuard]},
@@ -49,10 +53,10 @@ export const routes: Routes = [
 
         ]
     }
-    
-    
-    
-    
+
+
+
+
     //,
     //{
     //    path: 'admin/prefeitura', component: PrefeituraComponent, canActivate: [loginGuard]

@@ -1,16 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { Categoriaresponse } from '../../../../model/categoria/dto/categoriaresponse';
-import { CategoriaService } from '../../../../services/categoria/categoria.service';
-import { RouterLink } from '@angular/router';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { CommonModule } from '@angular/common';
-import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
+import {Component, inject} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {CommonModule} from '@angular/common';
+import {MdbRippleModule} from 'mdb-angular-ui-kit/ripple';
 import Swal from 'sweetalert2';
-import { FormsModule } from '@angular/forms';
-import { Produtoprodutorresponse } from '../../../../model/produtoprodutor/dto/produtoprodutorresponse';
-import { ProdutoprodutorService } from '../../../../services/produtoprodutor/produtoprodutor.service';
-import { Produtoprefeituraresponselist } from '../../../../model/produtoprefeitura/dto/produtoprefeituraresponselist';
-import { ProdutoprefeituraService } from '../../../../services/produtoprefeitura/produtoprefeitura.service';
+import {FormsModule} from '@angular/forms';
+import {Produtoprefeituraresponselist} from '../../../../model/produtoprefeitura/dto/produtoprefeituraresponselist';
+import {ProdutoprefeituraService} from '../../../../services/produtoprefeitura/produtoprefeitura.service';
 
 @Component({
   selector: 'app-produtoprefeituradetails',
@@ -46,7 +42,7 @@ export class ProdutoprefeituradetailsComponent {
   recebeQuery(query: string) {
     this.query = query;
     if (this.mostrarDesativados) {
-      this.getDesativados(); 
+      this.getDesativados();
     } else {
       this.listarProduto();
     }
@@ -68,7 +64,7 @@ export class ProdutoprefeituradetailsComponent {
   alternarDesativados() {
     this.page = 1;
     if (this.mostrarDesativados) {
-      this.getDesativados(); 
+      this.getDesativados();
     } else {
       this.listarProduto();
     }
@@ -85,7 +81,7 @@ export class ProdutoprefeituradetailsComponent {
         }
       },
     });
-    
+
   }
 
   onItemsPerPageChange(event: Event) {

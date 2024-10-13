@@ -15,6 +15,7 @@ import { UsuarioResponseDto } from '../../../../auth/usuarioResponseDto';
 export class SidebarprefeituraComponent {
   isCollapsed = false;
   showCadastroSubmenu = false;
+  showDemandaSubmenu = false;
   usuarioLogado: UsuarioResponseDto | null = null;
   
   router = inject(Router);
@@ -29,6 +30,10 @@ export class SidebarprefeituraComponent {
  
   toggleCadastro() {
     this.showCadastroSubmenu = !this.showCadastroSubmenu;
+  }
+
+  toggleDemanda() {
+    this.showDemandaSubmenu = !this.showDemandaSubmenu;
   }
 
   deslogar(): void {

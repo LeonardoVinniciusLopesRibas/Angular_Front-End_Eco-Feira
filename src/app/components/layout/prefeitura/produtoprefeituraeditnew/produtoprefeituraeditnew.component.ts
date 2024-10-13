@@ -1,17 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { CategoriaService } from '../../../../services/categoria/categoria.service';
-import { Categoriarequest } from '../../../../model/categoria/dto/categoriarequest';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Categoriaresponseunique } from '../../../../model/categoria/dto/categoriaresponseunique';
-import { Categoria } from '../../../../model/categoria/categoria';
-import { ProdutoprodutorService } from '../../../../services/produtoprodutor/produtoprodutor.service';
-import { Produtoprodutor } from '../../../../model/produtoprodutor/produtoprodutor';
-import { Produtoprodutorresponseunique } from '../../../../model/produtoprodutor/dto/produtoprodutorresponseunique';
-import { Produtoprodutorrequest } from '../../../../model/produtoprodutor/dto/produtoprodutorrequest';
-import { Categoriaresponse } from '../../../../model/categoria/dto/categoriaresponse';
 import { CommonModule } from '@angular/common';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { ProdutoprefeituraService } from '../../../../services/produtoprefeitura/produtoprefeitura.service';
@@ -109,8 +100,8 @@ export class ProdutoprefeituraeditnewComponent {
       });
       return;
     }
-    
-    
+
+
     if (this.produtoResponseUnique.id > 0) {
        this.id = this.produtoResponseUnique.id;
       //this.produtoprefeiturarequest.idEmpresa = this.prefeituraId;

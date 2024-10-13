@@ -1,44 +1,62 @@
 <div class="container-sidebar">
-    <div class="sidebar" [class.collapsed]="isCollapsed">
-        <button class="main-button d-flex align-items-center">
-            <img src="../../../../assets/icons/iconSideBar.png" alt="Icone de Usuário" class="icon-main m-3 icon">
-            <span class="d-none d-md-inline fonte">Eco-Feira</span>
-        </button>
-        <div>
+  <div class="sidebar" [class.collapsed]="isCollapsed">
+    <button class="main-button d-flex align-items-center">
+      <img src="../../../../assets/icons/iconSideBar.png" alt="Icone de Usuário" class="icon-main m-3 icon">
+      <span class="d-none d-md-inline fonte">Eco-Feira</span>
+    </button>
+    <div>
 
-            <div class="input-group mb-3 nav-item" (click)="toggleCadastro()">
-                <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-                <button class="nav-button">Cadastros</button>
-            </div>
+      <div class="input-group mb-3 nav-item" (click)="toggleCadastro()">
+        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
+        <button class="nav-button">Cadastros</button>
+      </div>
 
-            <div class="sub-menus" *ngIf="showCadastroSubmenu">
-                <div class="submenu">
-                    <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/produto']">
-                        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-                        <button class="nav-button " style="color: #fff;">Produto</button>
-                    </div>
-                    <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/usuarios']">
-                        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-                        <button class="nav-button" style="color: #fff;">Usuário</button>
-                    </div>
-                </div>
-            </div>
-            <div class="input-group mb-3 nav-item" [routerLink]="['/admin/prefeitura/demanda']">
-                <img src="../../../../assets/icons/sidebar/iconCoracaoBlack.png" alt="Icone de Coração" class="icon">
-                <button class="nav-button">Demanda</button>
-            </div>
-            <div class="input-group mb-3 nav-item">
-                <img src="../../../../assets/icons/sidebar/iconChatRelatorioBlack.png" alt="Icone de Relatório" class="icon">
-                <button class="nav-button">Relatórios</button>
-            </div>
-            <div class="input-group mb-3 nav-item" [routerLink]="['/admin/prefeitura/ajustes']">
-                <img src="../../../../assets/icons/sidebar/iconAjustesBlack.png" alt="Icone de Ajustes" class="icon">
-                <button class="nav-button">Ajustes</button>
-            </div>
-            <div class="input-group mb-3 nav-item" (click)="deslogar()">
-                <img src="../../../../assets/icons/sidebar/iconLogout.png" alt="Icone de Ajustes" class="icon">
-                <button class="nav-button">Sair</button>
-            </div>
+      <div class="sub-menus" *ngIf="showCadastroSubmenu">
+        <div class="submenu">
+          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/produto']">
+            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
+            <button class="nav-button " style="color: #fff;">Produto</button>
+          </div>
+          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/usuarios']">
+            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
+            <button class="nav-button" style="color: #fff;">Usuário</button>
+          </div>
         </div>
+      </div>
+
+      <div class="input-group mb-3 nav-item" (click)="toggleDemanda()">
+        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
+        <button class="nav-button">Demandas</button>
+      </div>
+
+      <div class="sub-menus" *ngIf="showDemandaSubmenu">
+        <div class="submenu">
+          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/demanda']">
+            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
+            <button class="nav-button" style="color: #fff;">Ver</button>
+          </div>
+          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/demanda/new']">
+            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
+            <button class="nav-button" style="color: #fff;">Nova</button>
+          </div>
+          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/demanda/gerir']">
+            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
+            <button class="nav-button" style="color: #fff;">Gerir</button>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3 nav-item">
+        <img src="../../../../assets/icons/sidebar/iconChatRelatorioBlack.png" alt="Icone de Relatório" class="icon">
+        <button class="nav-button">Relatórios</button>
+      </div>
+      <div class="input-group mb-3 nav-item" [routerLink]="['/admin/prefeitura/ajustes']">
+        <img src="../../../../assets/icons/sidebar/iconAjustesBlack.png" alt="Icone de Ajustes" class="icon">
+        <button class="nav-button">Ajustes</button>
+      </div>
+      <div class="input-group mb-3 nav-item" (click)="deslogar()">
+        <img src="../../../../assets/icons/sidebar/iconLogout.png" alt="Icone de Ajustes" class="icon">
+        <button class="nav-button">Sair</button>
+      </div>
     </div>
+  </div>
 </div>

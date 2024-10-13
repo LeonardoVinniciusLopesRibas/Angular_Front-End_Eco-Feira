@@ -1,0 +1,78 @@
+<div class="container-demandas">
+
+  <h4 class="title">Nova demanda</h4>
+
+  <div>
+    <label class="padron-width">Descrição da Demanda</label>
+    <input type="text" class="all-inputs" [(ngModel)]="gerenciarDemanda.descricao"
+           placeholder="Informe a descrição, produto predominante..."/>
+  </div>
+
+  <div>
+    <label class="padron-width">Prazo Máximo</label>
+    <input type="date" class="all-inputs" [(ngModel)]="gerenciarDemanda.prazoMaximo"
+           (ngModelChange)="onDateChange($event)" placeholder="Selecione o prazo"/>
+  </div>
+
+  <div class="d-flex">
+    <div class="padron-width-select">
+      <ng-select [items]="produtoDtoResponse"
+                 bindLabel="nome"
+                 bindValue="id"
+                 [(ngModel)]="selectNameId"
+                 [placeholder]="!selectNameId ? 'Selecione um produto' : ''"
+                 (change)="onProdutoChange($event)">
+      </ng-select>
+    </div>
+    <button class="btn btn-info" (click)="abrirModalQuantidade()">
+      Adicionar Produto
+    </button>
+  </div>
+
+  <!-- Tabela de Produtos -->
+  <div class="tabela-container">
+    <table class="table">
+      <thead class="table-header">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Valor Compra</th>
+        <th>Quantidade</th>
+        <th>Ação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let produto of produtosSelecionados">
+        <td>{{ produto.id }}</td>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.valorCompra | currency:'BRL' }}</td>
+        <td>{{ produto.quantidade }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="removerProduto(produto.id)">
+            Remover
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex">
+    <div class="valor-total">
+      <label>Total: {{ calcularValorTotal() | currency:'BRL' }}</label>
+    </div>
+    <button class="btn button-salvar" (click)="salvarDemanda()">
+      Salvar
+    </button>
+  </div>
+
+  <div class="modal" [ngClass]="{'show-modal': mostrarModal}">
+    <div class="modal-content">
+      <h4>Informe a quantidade</h4>
+      <input type="number" [(ngModel)]="quantidadeProduto" min="1" class="all-inputs-modal"/>
+      <button class="btn btn-primary button-confirm" (click)="adicionarProduto()">Confirmar</button>
+      <button class="btn btn-secondary" (click)="fecharModal()">Cancelar</button>
+    </div>
+  </div>
+
+</div>
