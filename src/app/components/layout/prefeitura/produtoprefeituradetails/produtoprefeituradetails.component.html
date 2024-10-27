@@ -59,7 +59,7 @@
           <td class="click button-drop-table" (click)="toggleDropdown(i)">
             <span>{{ produtoResponse.nome }}</span>
             <div class="dropdown" *ngIf="isDropdownOpen[i]">
-              <label>Definições</label>
+                <label>Definições</label>
               <button *ngIf="!mostrarDesativados" class="btn-edit btn btn-warning btn-rounded"
                       routerLink="/admin/prefeitura/produto/edit/{{produtoResponse.id}}">Editar
                 o Item

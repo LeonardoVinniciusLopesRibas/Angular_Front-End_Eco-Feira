@@ -1,3 +1,83 @@
 <div class="container-demandas">
+  <div class="d-flex flex-column">
+    <div *ngIf="demandaResponseUnique">
+      <div class="fw-bold">
+        Descrição: {{demandaResponseUnique.descricao}}
+      </div>
+      <div class="d-flex">
+        <div class="d-flex align-items-center">
+          <div class="caixinha">
+            Id: {{ demandaResponseUnique.id }}
+          </div>
+        </div>
+        <div class="flex-grow-1"></div>
+        <div class="drop">
+          <div class="button-container mt-auto d-flex justify-content-end">
+            <button class="btn btn-secondary" (click)="toggleDropdown(0, $event)">Ações</button>
+          </div>
+          <div *ngIf="isDropdownOpen[0]" class="dropdown">
+            <ul>
+              <li (click)="opcaoSelecionada('EstenderPrazo')">Editar</li>
+              <li (click)="opcaoSelecionada('Cancelar')">Cancelar Demanda</li>
+              <li (click)="opcaoSelecionada('Concluir')">Concluir Demanda</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="margin-bottom margin-top margin-right">
+          Data de criação: {{ demandaResponseUnique.dataCriacao | date:'dd/MM/yyyy hh:mm:ss' }}
+        </div>
+        <div class="margin-top margin-left">
+          Prazo máximo: {{ demandaResponseUnique.prazoMaximo | date:'dd/MM/yyyy' }}
+        </div>
+      </div>
+      <div [ngClass]="getStatusClass(demandaResponseUnique.statusDemanda)">
+        {{ demandaResponseUnique.statusDemanda }}
+      </div>
+    </div>
+    <div class="produtos-list">
+      <div class="produto" *ngFor="let demandaproduto of demandaprodutoassociadosunique; let i = index" [ngClass]="{'zebrado': i % 2 === 0}">
+        <div class="d-flex">
+          <div class="produto-id">ID: {{ demandaproduto.idDemandaProduto }}</div>
+          <div class="produto-nome">Produto: {{ demandaproduto.produtoPrefeitura }}</div>
+          <div class="flex-grow-1"></div>
+          <div class="button-container mt-auto justify-content-end">
+            <div class="produto-quantidade">Quantidade: {{ demandaproduto.quantidade }}</div>
+            <div class="produto-valor">Valor Unitário: R{{ demandaproduto.valorPrefeitura | currency }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="valor-total">
+        <label>Total: {{ demandaResponseUnique.valorTotalPrefeitura | currency:'BRL' }}</label>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- Modal para estender prazo -->
+<div *ngIf="mostrarModal" class="modal fade show" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Estender Prazo</h5>
+        <button type="button" class="close" (click)="fecharModal()">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" [(ngModel)]="descricao" class="form-control mb-2">
+        <label for="novaData">Nova Data:</label>
+        <input type="date" id="novaData" [(ngModel)]="novaData" class="form-control mb-2"
+               [ngModelOptions]="{ standalone: true }" [value]="demandaResponseUnique.prazoMaximo | date:'yyyy-MM-dd'"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="fecharModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="editarSalvar()">Salvar</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -43,7 +43,7 @@ export class GerirdemandaComponent {
 
 
   getStatusClass(status: string) {
-    switch (status) {
+      switch (status) {
       case 'ABERTA':
         return 'status-aberta';
       case 'CONCLUIDA':

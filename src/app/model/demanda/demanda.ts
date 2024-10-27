@@ -9,6 +9,7 @@ export class Demanda {
     dataCriacao!: string;
     valorTotalPrefeitura!: number;
     prazoMaximo!: string;
+    descricao!: string;
     statusDemanda!: StatusDemanda;
 
 }
