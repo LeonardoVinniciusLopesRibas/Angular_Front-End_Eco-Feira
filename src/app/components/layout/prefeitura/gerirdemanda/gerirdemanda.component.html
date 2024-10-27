@@ -1,4 +1,7 @@
 <div class="container-demandas">
+  <div class="title">
+    <p class="fw-bold">Gerir Demandas</p>
+  </div>
   <div class="container-internal" *ngFor="let demanda of demandas">
     <div class="demanda-item d-flex" [routerLink]="['/admin/prefeitura/gerenciareeditardemanda/'+demanda.idDemanda]">
       <div class="atribbute-id fw-bold">
@@ -16,7 +19,8 @@
         </div>
       </div>
       <span class="bolinha" [ngClass]="getStatusClass(demanda.statusDemanda)"></span>
-      <span class="info-icon" (mouseenter)="showTooltip[demanda.idDemanda] = true" (mouseleave)="showTooltip[demanda.idDemanda] = false">
+      <span class="info-icon" (mouseenter)="showTooltip[demanda.idDemanda] = true"
+            (mouseleave)="showTooltip[demanda.idDemanda] = false">
         <i class="fas fa-info-circle"></i>
         <div class="tooltip" *ngIf="showTooltip[demanda.idDemanda]">
           Verde: ABERTA<br>Azul: CONCLUÍDA<br>Vermelha: CANCELADA
