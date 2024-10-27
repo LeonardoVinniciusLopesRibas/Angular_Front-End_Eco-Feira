@@ -1,1 +1,28 @@
-<p>gerirdemanda works!</p>
+<div class="container-demandas">
+  <div class="container-internal" *ngFor="let demanda of demandas">
+    <div class="demanda-item d-flex" [routerLink]="['/admin/prefeitura/gerenciareeditardemanda/'+demanda.idDemanda]">
+      <div class="atribbute-id fw-bold">
+        <label>ID: {{ demanda.idDemanda }}</label>
+      </div>
+      <div class="atribbute-descricao">
+        <label>Descrição: {{ demanda.descricao }}</label>
+      </div>
+      <div class="atribbute-combo">
+        <div class="fw-bold data">
+          <label>Valor Total: {{ demanda.valorTotalPrefeitura | currency }}</label>
+        </div>
+        <div>
+          <label>Prazo Máximo: {{ demanda.prazoMaximo | date:'dd/MM/yyyy' }}</label>
+        </div>
+      </div>
+      <span class="bolinha" [ngClass]="getStatusClass(demanda.statusDemanda)"></span>
+      <span class="info-icon" (mouseenter)="showTooltip[demanda.idDemanda] = true" (mouseleave)="showTooltip[demanda.idDemanda] = false">
+        <i class="fas fa-info-circle"></i>
+        <div class="tooltip" *ngIf="showTooltip[demanda.idDemanda]">
+          Verde: ABERTA<br>Azul: CONCLUÍDA<br>Vermelha: CANCELADA
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+

@@ -10,6 +10,9 @@ import {Toast} from "primeng/toast";
 import Swal from "sweetalert2";
 import {DemandaService} from "../../../../services/demanda/demanda.service";
 import {RouterLink, ActivatedRoute, Router} from "@angular/router";
+import {
+  Demandaprodutosassociadosrequest
+} from "../../../../model/demandaprodutosassociados/dto/demandaprodutosassociadosrequest";
 
 @Component({
   selector: 'app-gerenciardemandas',
@@ -31,21 +34,23 @@ export class GerenciardemandasComponent {
   demandaService: DemandaService = inject(DemandaService);
   produtoService = inject(ProdutoprefeituraService);
   produtoDtoResponse: Produtoprefeituraresponselist[] = [];
-  produtoResponse: Produtoprefeituraresponseunique = new Produtoprefeituraresponseunique()
+  produtoResponse: Produtoprefeituraresponseunique = new Produtoprefeituraresponseunique();
+  demandaProdutosRequest: Demandaprodutosassociadosrequest = new Demandaprodutosassociadosrequest();
   cnpj!: string;
   selectNameId!: number;
   produtosSelecionados: any[] = [];
   quantidadeProduto: number = 1;
   mostrarModal: boolean = false;
   router = inject(Router);
-  empresaId!: number;
+  prefeituraId!: number;
+  demandaId!: number;
 
   constructor() {
     const usuarioStorage: string | null = localStorage.getItem('usuario');
     if (usuarioStorage) {
       const usuarioData = JSON.parse(usuarioStorage);
       this.cnpj = usuarioData.prefeituraAssociation.cnpj;
-      this.empresaId = usuarioData.prefeituraAssociation.idPrefeitura;
+      this.prefeituraId = usuarioData.prefeituraAssociation.idPrefeitura;
     }
     this.getProdutos();
   }
@@ -133,81 +138,84 @@ export class GerenciardemandasComponent {
       total + (produto.valorCompra * produto.quantidade), 0);
   }
 
-  salvarDemanda() {
+  async salvarDemanda() {
+    try {
+      this.gerenciarDemanda.valorTotalPrefeitura = this.calcularValorTotal();
 
-    this.gerenciarDemanda.valorTotalPrefeitura = this.calcularValorTotal();
-
-    if ((this.gerenciarDemanda.descricao || '').trim().length === 0) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        icon: "error",
-        title: "Descrição não foi informada"
-      });
-      return;
-    } else if (isNaN(this.gerenciarDemanda.valorTotalPrefeitura) || this.gerenciarDemanda.valorTotalPrefeitura <= 0) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        icon: "error",
-        title: "Informe ao menos um produto"
-      });
-      return;
-    } else if (!this.gerenciarDemanda.prazoMaximo) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        icon: "error",
-        title: "Prazo máximo não foi informado"
-      });
-      return;
-    }
-    this.gerenciarDemanda.idPrefeitura = this.empresaId;
-    this.demandaService.post(this.gerenciarDemanda).subscribe({
-      next: (response) => {
-        Swal.fire({
-          title: 'Demanda cadastrada com sucesso!',
-          icon: 'success',
-          confirmButtonText: 'Ok',
+      if ((this.gerenciarDemanda.descricao || '').trim().length === 0) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Descrição não foi informada',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
         });
-        this.router.navigate(['/admin/prefeitura/demanda']);
-        this.gerenciarDemanda.idPrefeitura = 0;
-        this.gerenciarDemanda.prazoMaximo = '';
-        this.gerenciarDemanda.valorTotalPrefeitura = -1;
-        this.gerenciarDemanda.descricao = '';
-      },
-      error: (error) => {
-        console.error("Erro ao salvar demanda:", error);
+        return;
+      } else if (isNaN(this.gerenciarDemanda.valorTotalPrefeitura) || this.gerenciarDemanda.valorTotalPrefeitura <= 0) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Informe ao menos um produto',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+        });
+        return;
+      } else if (!this.gerenciarDemanda.prazoMaximo) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Prazo máximo não foi informado',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+        });
+        return;
       }
-    });
 
+      this.gerenciarDemanda.idPrefeitura = this.prefeituraId;
 
+      const demandaId2 = await this.demandaService.post(this.gerenciarDemanda).toPromise();
+      console.log('Demanda ID recebido:', demandaId2);
+      this.demandaId = demandaId2 ?? 0;
+      const result = await Swal.fire({
+        title: 'Demanda cadastrada com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+      });
+
+      if (result.isConfirmed) {
+        this.router.navigate(['/admin/prefeitura/demanda']);
+      }
+
+      this.gerenciarDemanda = new DemandaDtoRequest();
+
+    } catch (error) {
+      console.error('Erro ao salvar demanda:', error);
+    }
+
+    console.log("Produtos selecionados: ", this.produtosSelecionados)
+    for (const produto of this.produtosSelecionados) {
+      this.demandaProdutosRequest.demanda = this.demandaId;
+      this.demandaProdutosRequest.produto = produto.id;
+      this.demandaProdutosRequest.quantidade = produto.quantidade;
+      this.demandaProdutosRequest.prefeitura = this.prefeituraId;
+      this.demandaProdutosRequest.valorPrefeitura = produto.valorCompra;
+
+      console.log(this.demandaProdutosRequest);
+
+      this.demandaService.postProdutosAssociados(this.demandaProdutosRequest).subscribe({
+        next: (result) => {
+          console.log('Produto associado com sucesso:', result);
+        },
+        error: err => {
+          console.log("Ocorreu um erro ao associar o produto:", err);
+        }
+      });
+    }
   }
 }

@@ -23,6 +23,7 @@ export class DemandaprefeituraComponent {
   itemsPerPage: number = 10;
   idPrefeitura!: number;
   pageSizeOptions: number[] = [10, 20, 50, 200];
+  showTooltip: { [key: number]: boolean } = {};
 
   constructor() {
     const usuarioStorage: string | null = localStorage.getItem('usuario');

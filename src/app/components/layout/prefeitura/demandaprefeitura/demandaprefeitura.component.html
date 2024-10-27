@@ -89,11 +89,16 @@
           <td>R{{ demandaResponse.valorTotalPrefeitura | currency }}</td>
           <td class="rounded-right">
             <span [ngClass]="getStatusClass(demandaResponse.statusDemanda)"></span>
-            {{ demandaResponse.statusDemanda }}
+            <span class="info-icon" (mouseenter)="showTooltip[demandaResponse.idDemanda] = true"
+                  (mouseleave)="showTooltip[demandaResponse.idDemanda] = false">
+            <i class="fas fa-info-circle"></i>
+              <div class="tooltip" *ngIf="showTooltip[demandaResponse.idDemanda]">
+                Verde: ABERTA<br>Azul: CONCLUÍDA<br>Vermelha: CANCELADA
+              </div>
+            </span>
           </td>
         </tr>
         </tbody>
-
       </table>
     </div>
   </div>

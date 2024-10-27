@@ -18,6 +18,10 @@ import { UsuarioprefeituradetailsComponent } from './components/layout/prefeitur
 import { AjustesprefeituraComponent } from './components/layout/prefeitura/ajustesprefeitura/ajustesprefeitura.component';
 import { GerenciardemandasComponent } from './components/layout/prefeitura/gerenciardemandas/gerenciardemandas.component';
 import {GerirdemandaComponent} from "./components/layout/prefeitura/gerirdemanda/gerirdemanda.component";
+import {
+  EditaregerenciardemandaComponent
+} from "./components/layout/prefeitura/editaregerenciardemanda/editaregerenciardemanda.component";
+import {DemandaprodutorComponent} from "./components/layout/produtor/demandaprodutor/demandaprodutor.component";
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -36,7 +40,8 @@ export const routes: Routes = [
             {path: 'grupoprodutos/novo', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
             {path: 'grupoprodutos/edit/:id', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
             {path: 'usuarios', component: UsuariodetailsComponent, canActivate: [loginGuard]},
-            {path: 'ajustes', component: AjustesComponent, canActivate: [loginGuard]}
+            {path: 'ajustes', component: AjustesComponent, canActivate: [loginGuard]},
+            {path: 'demandas', component: DemandaprodutorComponent, canActivate: [loginGuard]}
 
         ]
     },{
@@ -44,12 +49,13 @@ export const routes: Routes = [
         children: [
             {path: 'demanda', component: DemandaprefeituraComponent, canActivate: [loginGuard]},
             {path: 'demanda/new', component: GerenciardemandasComponent, canActivate: [loginGuard]},
-            {path: 'demanda/gerir', component: GerirdemandaComponent, canActivate: [loginGuard]},
+            {path: 'demanda/gerir', component: GerirdemandaComponent  , canActivate: [loginGuard]},
             {path: 'produto', component: ProdutoprefeituradetailsComponent, canActivate: [loginGuard]},
             {path: 'produto/novo', component: ProdutoprefeituraeditnewComponent, canActivate: [loginGuard]},
             {path: 'produto/edit/:id', component: ProdutoprefeituraeditnewComponent, canActivate: [loginGuard]},
             {path: 'usuarios', component: UsuarioprefeituradetailsComponent, canActivate: [loginGuard]},
-            {path: 'ajustes', component: AjustesprefeituraComponent, canActivate: [loginGuard]}
+            {path: 'ajustes', component: AjustesprefeituraComponent, canActivate: [loginGuard]},
+            {path: 'gerenciareeditardemanda/:id', component: EditaregerenciardemandaComponent, canActivate: [loginGuard]}
 
         ]
     }
