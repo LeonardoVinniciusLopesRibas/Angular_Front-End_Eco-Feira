@@ -169,7 +169,7 @@ export class EditaregerenciardemandaComponent {
             console.log('UHULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL');
           }
           ,error: err => {
-            console.log(err);
+            console.log('O erro é: ', err);
           }
         })
       }

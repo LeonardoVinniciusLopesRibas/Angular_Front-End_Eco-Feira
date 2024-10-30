@@ -80,7 +80,8 @@ export class DemandaService {
     const token = this.loginService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.put(`${this.API}/put/cancelado/${id}`, { headers });
+    return this.http.put(`${this.API}/put/cancelado/${id}`, null, { headers,observe: 'response',
+      responseType: 'text', });
   }
 
 }
