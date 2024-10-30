@@ -271,3 +271,51 @@ tr:nth-child(even) td {
   pointer-events: none;
 }
 
+/* Estado padrão */
+.btn-check-aberta {
+  background-color: green;
+  color: white;
+}
+
+.btn-check-cancelada {
+  background-color: red;
+  color: white;
+}
+
+.btn-check-concluida {
+  background-color: blue;
+  color: white;
+}
+
+.btn-check-aberta:hover {
+  background-color: #02a202;
+  color: white;
+}
+
+.btn-check-cancelada:hover {
+  background-color: #fa1a1a;
+  color: white;
+}
+
+.btn-check-concluida:hover {
+  background-color: #2222ff;
+  color: white;
+}
+
+input[type="radio"]:checked + .btn-check-aberta {
+  background-color: #008000;
+  border: 2px solid #004d00;
+  color: white;
+}
+
+input[type="radio"]:checked + .btn-check-cancelada {
+  background-color: #cc0000;
+  border: 2px solid #990000;
+  color: white;
+}
+
+input[type="radio"]:checked + .btn-check-concluida {
+  background-color: #0000cc;
+  border: 2px solid #000099;
+  color: white;
+}

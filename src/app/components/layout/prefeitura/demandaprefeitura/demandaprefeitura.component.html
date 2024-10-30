@@ -27,18 +27,20 @@
         [checked]="true"
         (change)="filterByStatus('TODOS')"
       />
-      <label class="btn btn-secondary" for="option1">Todos</label>
+      <label class="btn btn-secondary" for="option1">
+        <i class="fa-sharp-duotone fa-solid fa-check-double"></i> &nbsp;Todos</label>
 
       <input
         mdbRadio
         type="radio"
-        class="btn-check"
+        class="btn-check "
         name="options"
         id="option2"
         autocomplete="off"
         (change)="filterByStatus('ABERTA')"
       />
-      <label class="btn btn-secondary" for="option2">Aberta</label>
+      <label class="btn btn-secondary btn-check-aberta" for="option2">
+        <i class="fa-solid fa-folder-open"></i>&nbsp;Aberta</label>
 
       <input
         mdbRadio
@@ -49,18 +51,20 @@
         autocomplete="off"
         (change)="filterByStatus('CONCLUIDA')"
       />
-      <label class="btn btn-secondary" for="option3">Concluída</label>
+      <label class="btn btn-secondary btn-check-concluida" for="option3">
+        <i class="fa-solid fa-folder-closed"></i> &nbsp; Concluída</label>
 
       <input
         mdbRadio
         type="radio"
-        class="btn-check"
+        class="btn-check "
         name="options"
         id="option4"
         autocomplete="off"
         (change)="filterByStatus('CANCELADA')"
       />
-      <label class="btn btn-secondary" for="option4">Cancelada</label>
+      <label class="btn btn-secondary btn-check-cancelada" for="option4">
+        <i class="fa-solid fa-ban"></i>&nbsp;Cancelada</label>
     </div>
   </div>
 
@@ -86,7 +90,7 @@
           <td class="rounded-left">{{ demandaResponse.idDemanda }}</td>
           <td>{{ demandaResponse.descricao }}</td>
           <td>{{ demandaResponse.prazoMaximo | date:'dd/MM/yyyy' }}</td>
-          <td>R{{ demandaResponse.valorTotalPrefeitura | currency }}</td>
+          <td><i class="fa-solid fa-brazilian-real-sign"></i> &nbsp;{{ demandaResponse.valorTotalPrefeitura }}</td>
           <td class="rounded-right">
             <span [ngClass]="getStatusClass(demandaResponse.statusDemanda)"></span>
             <span class="info-icon" (mouseenter)="showTooltip[demandaResponse.idDemanda] = true"

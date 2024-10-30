@@ -2,27 +2,31 @@
 .homebarprodutor,
 .content-area,
 .sidebarprodutor {
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  background-color: #eeeeee;
 }
 
 
-    .layout-container {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
-    .sidebarprefeitura {
-        width: 200px;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-    }
+}
 
-    .content-area {
-        margin: 4px auto 10px calc(250px);
-        width: 980px;
-        height: 530px;
-    }
+.sidebarprefeitura {
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.content-area {
+  margin: 4px 10px 10px calc(250px);
+  width: 1090px;
+  background-color: white;
+  border-radius: 12px;
+  height: 530px;
+}
 

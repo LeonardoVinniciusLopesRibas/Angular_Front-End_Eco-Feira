@@ -25,6 +25,7 @@
       </ng-select>
     </div>
     <button class="btn btn-info" (click)="abrirModalQuantidade()">
+      <i class="fa-solid fa-plus"></i>&nbsp;
       Adicionar Produto
     </button>
   </div>
@@ -61,7 +62,7 @@
     <div class="valor-total">
       <label>Total: {{ calcularValorTotal() | currency:'BRL' }}</label>
     </div>
-    <button class="btn button-salvar" (click)="salvarDemanda()">
+    <button class="btn button-salvar" (click)="salvarDemanda()"><i class="fa-solid fa-floppy-disk"></i>&nbsp;
       Salvar
     </button>
   </div>
@@ -70,8 +71,10 @@
     <div class="modal-content">
       <h4>Informe a quantidade</h4>
       <input type="number" [(ngModel)]="quantidadeProduto" min="1" class="all-inputs-modal"/>
-      <button class="btn btn-primary button-confirm" (click)="adicionarProduto()">Confirmar</button>
-      <button class="btn btn-secondary" (click)="fecharModal()">Cancelar</button>
+      <button class="btn btn-primary button-confirm" (click)="adicionarProduto()">
+        <i class="fa-solid fa-check"></i>&nbsp;Confirmar</button>
+      <button class="btn btn-secondary" (click)="fecharModal()">
+        <i class="fa-solid fa-xmark"></i>&nbsp;Cancelar</button>
     </div>
   </div>
 

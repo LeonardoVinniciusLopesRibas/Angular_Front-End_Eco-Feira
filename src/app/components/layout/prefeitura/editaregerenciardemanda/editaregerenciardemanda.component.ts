@@ -164,7 +164,14 @@ export class EditaregerenciardemandaComponent {
       confirmButtonText: "Sim, cancelar!",
     }).then((result) => {
       if (result.isConfirmed) {
-        alert('aaa')
+        this.demandaService.putCancelada(this.id).subscribe({
+          next: value => {
+            console.log('UHULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL');
+          }
+          ,error: err => {
+            console.log(err);
+          }
+        })
       }
     });
   }
@@ -198,6 +205,7 @@ export class EditaregerenciardemandaComponent {
         return '';
     }
   }
+
 
 
 }

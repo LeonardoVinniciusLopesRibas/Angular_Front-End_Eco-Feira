@@ -19,12 +19,13 @@
 
 
         <div class="div-button d-flex">
-            <button class="btn btn-info button-sucesso" [routerLink]="['/admin/prefeitura/produto']">Voltar</button>
+            <button class="btn btn-info button-sucesso" [routerLink]="['/admin/prefeitura/produto']">
+              <i class="fa-solid fa-arrow-left"></i> Voltar</button>
             @if (produtoResponseUnique.id > 0) {
-            <button class="btn btn-success button-sucesso" (click)="postput()">Editar dados</button>
+            <button class="btn btn-success button-sucesso" (click)="postput()"><i class="fa-solid fa-floppy-disk"></i> Editar</button>
             }
             @else {
-            <button class="btn btn-success button-sucesso" (click)="postput()">Salvar dados</button>
+            <button class="btn btn-success button-sucesso" (click)="postput()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
             }
         </div>
     </div>

@@ -4,20 +4,20 @@ import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { LoginService } from '../../../../auth/login.service';
 import { UsuarioResponseDto } from '../../../../auth/usuarioResponseDto';
+import {MatIconModule} from "@angular/material/icon";
 
 @Component({
   selector: 'app-sidebarprefeitura',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MatIconModule],
   templateUrl: './sidebarprefeitura.component.html',
   styleUrl: './sidebarprefeitura.component.scss'
 })
 export class SidebarprefeituraComponent {
   isCollapsed = false;
-  showCadastroSubmenu = false;
-  showDemandaSubmenu = false;
+  activeSubmenu: string | null = null; // Armazena qual submenu está ativo
   usuarioLogado: UsuarioResponseDto | null = null;
-  
+
   router = inject(Router);
   loginService = inject(LoginService);
 
@@ -27,13 +27,9 @@ export class SidebarprefeituraComponent {
       this.usuarioLogado = JSON.parse(usuarioString);
     }
   }
- 
-  toggleCadastro() {
-    this.showCadastroSubmenu = !this.showCadastroSubmenu;
-  }
 
-  toggleDemanda() {
-    this.showDemandaSubmenu = !this.showDemandaSubmenu;
+  toggleSubmenu(menu: string) {
+    this.activeSubmenu = this.activeSubmenu === menu ? null : menu;
   }
 
   deslogar(): void {
@@ -53,8 +49,8 @@ export class SidebarprefeituraComponent {
         localStorage.removeItem('usuario');
         Swal.fire({
           title: "Deslogado!",
-          text: "O usuário "+this.usuarioLogado?.usuario+" foi deslogado com sucesso!",
-          icon: "success"
+          text: `O usuário ${this.usuarioLogado?.usuario} foi deslogado com sucesso!`,
+          icon: "success",
         });
       }
     });

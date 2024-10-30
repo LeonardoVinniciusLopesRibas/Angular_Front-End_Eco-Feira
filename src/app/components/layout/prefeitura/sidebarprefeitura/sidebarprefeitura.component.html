@@ -4,59 +4,58 @@
       <img src="../../../../assets/icons/iconSideBar.png" alt="Icone de Usuário" class="icon-main m-3 icon">
       <span class="d-none d-md-inline fonte">Eco-Feira</span>
     </button>
-    <div>
 
-      <div class="input-group mb-3 nav-item" (click)="toggleCadastro()">
-        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-        <button class="nav-button">Cadastros</button>
-      </div>
-
-      <div class="sub-menus" *ngIf="showCadastroSubmenu">
-        <div class="submenu">
-          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/produto']">
-            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-            <button class="nav-button " style="color: #fff;">Produto</button>
-          </div>
-          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/usuarios']">
-            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-            <button class="nav-button" style="color: #fff;">Usuário</button>
-          </div>
+    <div class="input-group mb-3 nav-item" (click)="toggleSubmenu('cadastro')">
+      <i class="fa-solid fa-folder-plus icon"></i>
+      <button class="nav-button">Cadastros</button>
+    </div>
+    <div class="sub-menus" *ngIf="activeSubmenu === 'cadastro'">
+      <div class="submenu">
+        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/produto']">
+          <i class="fa-solid fa-boxes-stacked icon"></i>
+          <button class="nav-button" style="color: #fff;">Produto</button>
+        </div>
+        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/usuarios']">
+          <i class="fa-solid fa-user icon"></i>
+          <button class="nav-button" style="color: #fff;">Usuário</button>
         </div>
       </div>
+    </div>
 
-      <div class="input-group mb-3 nav-item" (click)="toggleDemanda()">
-        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-        <button class="nav-button">Demandas</button>
-      </div>
-
-      <div class="sub-menus" *ngIf="showDemandaSubmenu">
-        <div class="submenu">
-          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/demanda']">
-            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-            <button class="nav-button" style="color: #fff;">Ver</button>
-          </div>
-          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/demanda/new']">
-            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-            <button class="nav-button" style="color: #fff;">Nova</button>
-          </div>
-          <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/prefeitura/demanda/gerir']">
-            <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-            <button class="nav-button" style="color: #fff;">Gerir</button>
-          </div>
+    <div class="input-group mb-3 nav-item" (click)="toggleSubmenu('demanda')">
+      <i class="fa-solid fa-apple-whole icon"></i>
+      <button class="nav-button">Demandas</button>
+    </div>
+    <div class="sub-menus" *ngIf="activeSubmenu === 'demanda'">
+      <div class="submenu">
+        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/demanda']">
+          <i class="fa-solid fa-eye icon"></i>
+          <button class="nav-button" style="color: #fff;">Ver</button>
+        </div>
+        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/demanda/new']">
+          <i class="fa-solid fa-plus icon"></i>
+          <button class="nav-button" style="color: #fff;">Nova</button>
+        </div>
+        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/demanda/gerir']">
+          <i class="fa-solid fa-user-tie icon"></i>
+          <button class="nav-button" style="color: #fff;">Gerir</button>
         </div>
       </div>
-      <div class="input-group mb-3 nav-item">
-        <img src="../../../../assets/icons/sidebar/iconChatRelatorioBlack.png" alt="Icone de Relatório" class="icon">
-        <button class="nav-button">Relatórios</button>
-      </div>
-      <div class="input-group mb-3 nav-item" [routerLink]="['/admin/prefeitura/ajustes']">
-        <img src="../../../../assets/icons/sidebar/iconAjustesBlack.png" alt="Icone de Ajustes" class="icon">
-        <button class="nav-button">Ajustes</button>
-      </div>
-      <div class="input-group mb-3 nav-item" (click)="deslogar()">
-        <img src="../../../../assets/icons/sidebar/iconLogout.png" alt="Icone de Ajustes" class="icon">
-        <button class="nav-button">Sair</button>
-      </div>
+    </div>
+
+    <div class="input-group mb-3 nav-item">
+      <i class="fa-solid fa-file-export icon"></i>
+      <button class="nav-button">Relatórios</button>
+    </div>
+
+    <div class="input-group mb-3 nav-item" [routerLink]="['/admin/prefeitura/ajustes']">
+      <i class="fa-solid fa-gear icon"></i>
+      <button class="nav-button">Ajustes</button>
+    </div>
+
+    <div class="input-group mb-3 nav-item" (click)="deslogar()">
+      <i class="fa-solid fa-right-from-bracket icon"></i>
+      <button class="nav-button">Sair</button>
     </div>
   </div>
 </div>
