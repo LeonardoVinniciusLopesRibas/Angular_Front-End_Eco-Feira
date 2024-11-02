@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import Swal from "sweetalert2";
 import {DemandaService} from "../../../../services/demanda/demanda.service";
 import {Demandarequestput} from "../../../../model/demanda/dto/demandarequestput";
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-editaregerenciardemanda',
@@ -108,12 +109,7 @@ export class EditaregerenciardemandaComponent {
     const novaDataSelecionada = new Date(this.novaData);
 
     if (novaDataSelecionada <= dataAtual) {
-      Swal.fire({
-        title: "Data inválida",
-        text: "A nova data não pode ser menor ou igual que a data atual.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
+      NotificationSwal.swalFire("A nova data precisa ser maior que a atual.", "info");
       return;
     }
 
@@ -127,26 +123,15 @@ export class EditaregerenciardemandaComponent {
 
     this.demandaService.put(this.demandarequestput, this.id).subscribe({
       next: () => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Atualizado com sucesso!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        NotificationSwal.swalFire("Demanda atualizada com sucesso.", "success");
 
         this.fecharModal();
         this.findById(this.id);
         this.findProducts(this.id);
       },
       error: (err) => {
-        console.error(err);
-        Swal.fire({
-          title: "Erro ao atualizar",
-          text: "Não foi possível atualizar a demanda.",
-          icon: "error",
-          confirmButtonText: "OK",
-        });
+        console.error("Ocorreu um erro ao atualizar a demanda", err);
+
       },
     });
   }
@@ -166,7 +151,7 @@ export class EditaregerenciardemandaComponent {
       if (result.isConfirmed) {
         this.demandaService.putCancelada(this.id).subscribe({
           next: value => {
-            console.log('UHULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL');
+            NotificationSwal.swalFire("Demanda cancelada com sucesso.", "success");
           }
           ,error: err => {
             console.log('O erro é: ', err);

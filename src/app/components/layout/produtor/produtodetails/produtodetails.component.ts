@@ -1,6 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { Categoriaresponse } from '../../../../model/categoria/dto/categoriaresponse';
-import { CategoriaService } from '../../../../services/categoria/categoria.service';
 import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
@@ -9,6 +7,7 @@ import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
 import { Produtoprodutorresponse } from '../../../../model/produtoprodutor/dto/produtoprodutorresponse';
 import { ProdutoprodutorService } from '../../../../services/produtoprodutor/produtoprodutor.service';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-produtodetails',
@@ -44,7 +43,7 @@ export class ProdutodetailsComponent {
   recebeQuery(query: string) {
     this.query = query;
     if (this.mostrarDesativados) {
-      this.getDesativados(); 
+      this.getDesativados();
     } else {
       this.listarProduto();
     }
@@ -66,7 +65,7 @@ export class ProdutodetailsComponent {
   alternarDesativados() {
     this.page = 1;
     if (this.mostrarDesativados) {
-      this.getDesativados(); 
+      this.getDesativados();
     } else {
       this.listarProduto();
     }
@@ -83,7 +82,7 @@ export class ProdutodetailsComponent {
         }
       },
     });
-    
+
   }
 
   onItemsPerPageChange(event: Event) {
@@ -114,23 +113,10 @@ export class ProdutodetailsComponent {
       if (result.isConfirmed) {
         this.produtoProdutorService.desativar(idProduto).subscribe({
           next: (res) => {
-            const mensagem = res.message || "Produto desativado com sucesso!";
-            Swal.fire({
-              title: "Sucesso",
-              text: mensagem,
-              icon: "success",
-              confirmButtonText: "OK",
-            });
+            NotificationSwal.swalFire("Produto desativado com sucesso.", "success");
             this.listarProduto();
           },
           error: (erro) => {
-            const errorMessage = erro.error?.message || erro.message || 'Erro desconhecido';
-            Swal.fire({
-              title: "Erro",
-              text: errorMessage,
-              icon: "error",
-              confirmButtonText: "OK",
-            });
             console.error(erro);
           },
         });
@@ -152,23 +138,11 @@ export class ProdutodetailsComponent {
       if (result.isConfirmed) {
         this.produtoProdutorService.reativar(idProduto).subscribe({
           next: (res) => {
-            const mensagem = res.message || "Produto reativado com sucesso!";
-            Swal.fire({
-              title: "Sucesso",
-              text: mensagem,
-              icon: "success",
-              confirmButtonText: "OK",
-            });
+            NotificationSwal.swalFire("Produto reativado com sucesso.", "success");
             this.getDesativados();
           },
           error: (erro) => {
-            const errorMessage = erro.error?.message || erro.message || 'Erro desconhecido';
-            Swal.fire({
-              title: "Erro",
-              text: errorMessage,
-              icon: "error",
-              confirmButtonText: "OK",
-            });
+
             console.error(erro);
           },
         });
@@ -179,38 +153,3 @@ export class ProdutodetailsComponent {
 
 }
 
-
-  /*deleteItem(id: number) {
-    Swal.fire({
-      title: "Você tem certeza?",
-      text: "Você deseja mesmo deletar?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim!",
-      cancelButtonText: "Não",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.produtoProdutorService.status().subscribe({
-          next: (res) => {
-            Swal.fire('Deletado!', 'O item foi deletado com sucesso.', 'success');
-            this.listarProduto();
-          },
-          error: (erro) => {
-            const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-  
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: errorMessage,
-              showConfirmButton: true,
-              confirmButtonText: "Fechar",  
-              timer: 3000
-            });
-          },
-        });
-      }
-    });
-  }*/
-  

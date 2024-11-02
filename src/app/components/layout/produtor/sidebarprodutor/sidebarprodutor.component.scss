@@ -1,424 +1,103 @@
 .container-sidebar {
-    width: 16%;
-    height: 100vh;
+  width: 16%;
+  height: 100vh;
 }
 
 .sidebar {
-    background-color: #fff;
-    border-radius: 0 10px 10px 0;
-    width: 250px;
-    padding: 20px;
-    transition: width 0.3s;
-    box-shadow: 0px 0px 4.8px 0px rgba(0, 0, 0, 0.5);
-    overflow-y: auto; 
-    min-height: 100vh;
-    height: auto; 
+  background-color: #fff;
+  border-radius: 0 10px 10px 0;
+  width: 250px;
+  padding: 20px;
+  transition: width 0.3s;
+  overflow-y: auto;
+  min-height: 100vh;
+  height: auto;
 }
 
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-        padding: 15px;
-        height: 100vh;
-    }
-    .sidebar .icon {
-        display: none;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 6px;
-        text-align: left;
-        color: inherit;
-    }
-}
-
-@media (max-width: 576px) {
-    .sidebar {
-        width: 70px;
-        padding: 10px;
-        height: 100vh;
-    }
-    
-}
 
 .nav-item {
-    display: block;
-    align-items: center;
-    padding: 10%;
-    cursor: pointer;
-    transition: background-color 0.3s, padding-left 0.3s;
-    border-radius: 15px;
-    box-shadow: 10px 0px 5px rgba(0, 0, 0, 0.3) !important;
+  display: block;
+  align-items: center;
+  padding: 10%;
+  cursor: pointer;
+  transition: background-color 0.3s, padding-left 0.3s;
+  border-radius: 15px;
+}
+
+.cor-branca-icon{
+  color: #fff;
 }
 
 .nav-item:hover {
-    background-color: #0c790a;
-    padding-left: 10px;
-    color: #fff;
+  background-color: #0da90a;
+  padding-left: 20px;
+  color: #fff;
 }
 
 .icon {
-    padding-right: 10px;
-    font-size: 16px;
+  padding-right: 10px;
+  font-size: 16px;
 }
 
 .nav-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: left;
-    color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  color: inherit;
 }
 
 .sub-menus {
-    background-color: #21CF1D;
-    border-radius: 15px;
-    box-shadow: 10px 0px 5px rgba(0, 0, 0, 0.3) !important;
+  background-color: #21CF1D;
+  border-radius: 15px;
 }
 
 .bt-interno{
-    background-color: #0c790a;
+  background-color: #21CF1D;
 }
 
 .main-button {
-    display: block;
-    align-items: center;
-    background: none;
-    border: none;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #21CF1D;
+  display: block;
+  align-items: center;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #21CF1D;
 }
 
 .submenu {
-    padding: 15px;
-}
-
-@media(min-width: 659px) and (max-width: 753.14px){
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 100px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-    }
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 12px;
-        text-align: left;
-        color: inherit;
-    }
-    
-}
-
-@media(min-width: 753.14px) and (max-width: 878.67px) {
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 130px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 12px;
-        text-align: left;
-        color: inherit;
-    }
-}
-
-@media(min-width: 878.67px) and (max-width: 1054.40px) {
-
-    .sidebar .icon {
-        display: none;
-    }
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 150px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 12px;
-        text-align: left;
-        color: inherit;
-    }
+  //padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 
 
-
-@media(min-width: 1198.18px) and (max-width: 1317px) {
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 160px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-    }
-
-    .sidebar .icon {
-        display: none;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 12px;
-        text-align: left;
-        color: inherit;
-    }
+.sidebar {
+  background-color: #fff;
+  border-radius: 0 10px 10px 0;
+  width: 230px;
+  padding: 20px;
+  transition: width 0.3s;
+  height: 100vh;
+  position: fixed;
 }
 
-@media(min-width: 1318px) and (max-width: 1464.44px) {
+.fonte{
+  font-size: 15px;
+}
 
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 230px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-    
-    .fonte{
-        font-size: 15px;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 12px;
-        text-align: left;
-        color: inherit;
-    }
-
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+  color: inherit;
 }
 
 
-@media(min-width: 1464.44px) and (max-width: 1647.50px) {
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 230px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        text-align: left;
-        color: inherit;
-    }
-
-}
-
-
-@media(min-width: 1647.50px) and (max-width: 1757.33px) {
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 250px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        text-align: left;
-        color: inherit;
-    }
-
-    .main-button{
-        font-size: 25px;
-    }
-
-}
-
-@media(min-width: 1757.33px) and (max-width: 1977px) {
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 280px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 18px;
-        text-align: left;
-        color: inherit;
-    }
-
-    .main-button{
-        font-size: 25px;
-    }
-}
-
-@media(min-width: 1977px) and (max-width: 2636px) {
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 320px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 20px;
-        text-align: left;
-        color: inherit;
-    }
-
-    .main-button{
-        font-size: 30px;
-    }
-
-}
-
-@media(min-width: 2636px) and (max-width: 3954px){
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 450px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 50px;
-        text-align: left;
-        color: inherit;
-        height: 50px;
-    }
-
-    .main-button{
-        font-size: 30px;
-        
-    }
-
-    .sidebar .icon {
-        display: none;
-    }
-
-
-}
-
-@media(min-width: 3954px) and (max-width: 5272px) {
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 600px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 50px;
-        text-align: center;
-        color: inherit;
-        height: 50px;
-    }
-
-    .main-button{
-        font-size: 70px;
-    }
-
-    .sidebar .icon {
-        display: none;
-    }
-
-}
-
-@media(min-width: 5272px){
-
-    .sidebar {
-        background-color: #fff;
-        border-radius: 0 10px 10px 0;
-        width: 795px;
-        padding: 20px;
-        transition: width 0.3s;
-        height: 100vh; 
-        position: fixed;
-    }
-
-    .nav-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 70px;
-        text-align: center;
-        color: inherit;
-        height: 80px;
-    }
-
-    .main-button{
-        font-size: 100px;
-    }
-
-    .sidebar .icon {
-        display: none;
-    }
-
-}

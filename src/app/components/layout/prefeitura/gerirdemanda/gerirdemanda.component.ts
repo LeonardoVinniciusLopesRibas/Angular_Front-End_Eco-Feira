@@ -4,6 +4,8 @@ import {StatusDemanda} from "../../../../enum/status-demanda";
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {DemandaService} from "../../../../services/demanda/demanda.service";
+import Swal from "sweetalert2";
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-gerirdemanda',
@@ -35,8 +37,11 @@ export class GerirdemandaComponent {
       next: lista => {
         this.demandas = lista;
       },
-      error: err =>{
-
+      error: erro => {
+        if (erro.status === 404) {
+          this.demandas = [];
+          NotificationSwal.swalFire("Não há demandas em aberto.", "info");
+        }
       }
     })
   }

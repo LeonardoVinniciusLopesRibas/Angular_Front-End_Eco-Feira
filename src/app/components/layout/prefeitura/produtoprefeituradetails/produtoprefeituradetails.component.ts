@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import {FormsModule} from '@angular/forms';
 import {Produtoprefeituraresponselist} from '../../../../model/produtoprefeitura/dto/produtoprefeituraresponselist';
 import {ProdutoprefeituraService} from '../../../../services/produtoprefeitura/produtoprefeitura.service';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-produtoprefeituradetails',
@@ -112,24 +113,12 @@ export class ProdutoprefeituradetailsComponent {
       if (result.isConfirmed) {
         this.produtoPrefeituraService.desativar(idProduto).subscribe({
           next: (res) => {
-            const mensagem = res.message || "Produto desativado com sucesso!";
-            Swal.fire({
-              title: "Sucesso",
-              text: mensagem,
-              icon: "success",
-              confirmButtonText: "OK",
-            });
+            NotificationSwal.swalFire("Produto desativado com sucesso.", "success");
             this.listarProduto();
           },
           error: (erro) => {
-            const errorMessage = erro.error?.message || erro.message || 'Erro desconhecido';
-            Swal.fire({
-              title: "Erro",
-              text: errorMessage,
-              icon: "error",
-              confirmButtonText: "OK",
-            });
-            console.error(erro);
+
+            console.error("Ocorreu um erro: ",erro);
           },
         });
       }
@@ -150,24 +139,12 @@ export class ProdutoprefeituradetailsComponent {
       if (result.isConfirmed) {
         this.produtoPrefeituraService.reativar(idProduto).subscribe({
           next: (res) => {
-            const mensagem = res.message || "Produto reativado com sucesso!";
-            Swal.fire({
-              title: "Sucesso",
-              text: mensagem,
-              icon: "success",
-              confirmButtonText: "OK",
-            });
+            NotificationSwal.swalFire("Produto reativado com sucesso.", "success");
             this.getDesativados();
           },
           error: (erro) => {
-            const errorMessage = erro.error?.message || erro.message || 'Erro desconhecido';
-            Swal.fire({
-              title: "Erro",
-              text: errorMessage,
-              icon: "error",
-              confirmButtonText: "OK",
-            });
-            console.error(erro);
+
+            console.error("Ocorreu um erro ao reativar: ", erro);
           },
         });
       }

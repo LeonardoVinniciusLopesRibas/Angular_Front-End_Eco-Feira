@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/layout/login/login.component';
 import { loginGuard } from './auth/login.guard';
 import { PrincipalprodutorComponent } from './components/layout/produtor/principalprodutor/principalprodutor.component';
-import { VisaogeralcardsprodutorComponent } from './components/layout/produtor/visaogeralcardsprodutor/visaogeralcardsprodutor.component';
 import { ProdutodetailsComponent } from './components/layout/produtor/produtodetails/produtodetails.component';
 import { GrupoprodutosdetailsComponent } from './components/layout/produtor/grupoprodutosdetails/grupoprodutosdetails.component';
 import { GrupoprodutoseditnewComponent } from './components/layout/produtor/grupoprodutoseditnew/grupoprodutoseditnew.component';
@@ -27,12 +26,11 @@ export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'novoacesso', component: NovoacessoComponent},
-    {path: 'admin/produtor', redirectTo: 'admin/produtor/centraldados', pathMatch: 'full'},
+    {path: 'admin/produtor', redirectTo: 'admin/produtor/demandas', pathMatch: 'full'},
     {path: 'admin/prefeitura', redirectTo: 'admin/prefeitura/demanda', pathMatch: 'full'},
     {
         path: 'admin/produtor', component: PrincipalprodutorComponent, canActivate: [loginGuard],
         children: [
-            {path: 'centraldados', component: VisaogeralcardsprodutorComponent, canActivate: [loginGuard]},
             {path: 'produto', component: ProdutodetailsComponent, canActivate: [loginGuard]},
             {path: 'produto/novo', component: ProdutoeditnewComponent, canActivate: [loginGuard]},
             {path: 'produto/edit/:id', component: ProdutoeditnewComponent, canActivate: [loginGuard]},

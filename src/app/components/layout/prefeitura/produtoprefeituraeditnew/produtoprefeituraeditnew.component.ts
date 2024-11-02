@@ -53,11 +53,7 @@ export class ProdutoprefeituraeditnewComponent {
         this.produtoprefeiturarequest.valorCompra = this.produtoResponseUnique.valorCompra;
       },
       error: erro => {
-        Swal.fire({
-          title: 'Ocorreu um erro',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        console.error("Ocorreu um erro ao buscar o produto: ",erro)
       }
     });
   }
@@ -107,46 +103,50 @@ export class ProdutoprefeituraeditnewComponent {
       //this.produtoprefeiturarequest.idEmpresa = this.prefeituraId;
       this.produtoPrefeituraService.put(this.produtoprefeiturarequest, this.produtoResponseUnique.id).subscribe({
         next: mensagem => {
-          Swal.fire({
-            title: 'Produto atualizada com sucesso!',
-            icon: 'success',
-            confirmButtonText: 'Ok',
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Produto atualizado com sucesso."
           });
           this.router.navigate(['admin/prefeitura/produto']);
         },
         error: erro => {
-          const errorMessage = erro.error || 'Erro desconhecido';
-          Swal.fire({
-            title: 'Ocorreu um erro!',
-            text: "",
-            icon: 'success',
-            position: "top-end",
-            confirmButtonText: 'Ok',
-          });
+          console.error("Ocorreu um erro: ", erro);
         }
       });
     } else {
       //this.produtoProdutorRequest.idEmpresa = this.empresaId;
       this.produtoPrefeituraService.post(this.produtoprefeiturarequest, this.prefeituraId).subscribe({
         next: (res) => {
-          Swal.fire({
+          const Toast = Swal.mixin({
+            toast: true,
             position: "top-end",
-            icon: "success",
-            title: 'Produto criada com sucesso!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Produto cadastrado com sucesso."
           });
           this.router.navigate(['/admin/prefeitura/produto']);
         },
         error: (erro) => {
-          const errorMessage = erro.error || 'Erro desconhecido';
-          Swal.fire({
-            title: 'Ocorreu um erro!',
-            text: "",
-            icon: 'success',
-            position: "top-end",
-            confirmButtonText: 'Ok',
-          });
+          console.error("Ocorreu um erro: ", erro)
 
         }
       });

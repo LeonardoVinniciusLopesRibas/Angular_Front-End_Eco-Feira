@@ -13,6 +13,7 @@ import {RouterLink, ActivatedRoute, Router} from "@angular/router";
 import {
   Demandaprodutosassociadosrequest
 } from "../../../../model/demandaprodutosassociados/dto/demandaprodutosassociadosrequest";
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-gerenciardemandas',
@@ -80,21 +81,7 @@ export class GerenciardemandasComponent {
 
   abrirModalQuantidade() {
     if (!this.selectNameId) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        icon: "error",
-        title: "Primeiro selecione um produto"
-      });
+      NotificationSwal.swalFire("Primeiro selecione o produto.", "info");
     } else {
       this.mostrarModal = true;
     }

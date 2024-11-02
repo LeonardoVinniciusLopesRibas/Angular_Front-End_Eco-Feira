@@ -8,6 +8,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Categoriaresponseunique } from '../../../../model/categoria/dto/categoriaresponseunique';
 import { Categoria } from '../../../../model/categoria/categoria';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-grupoprodutoseditnew',
@@ -50,11 +51,7 @@ export class GrupoprodutoseditnewComponent {
         this.categoriaRequest.descricaoGrupo = this.categoriaResponseUnique.descricaoGrupoProduto;
       },
       error: erro => {
-        Swal.fire({
-          title: 'Ocorreu um erro',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        console.error("Ocorreu um erro: ", erro)
       }
     });
 
@@ -62,21 +59,7 @@ export class GrupoprodutoseditnewComponent {
 
   postput() {
     if((this.categoriaRequest.descricaoGrupo || '').trim().length === 0){
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        icon: "error",
-        title: "Descrição não foi informada"
-      });
+      NotificationSwal.swalFire("Descrição não foi informada.", "info");
       return;
     }else if (this.categoriaResponseUnique.idGrupoProduto > 0) {
       this.categoriaRequest.usuarioId = this.usuario;
@@ -84,16 +67,12 @@ export class GrupoprodutoseditnewComponent {
 
       this.categoriaService.put(this.categoriaRequest, this.categoriaResponseUnique.idGrupoProduto).subscribe({
         next: mensagem => {
-          Swal.fire({
-            title: 'Categoria atualizada com sucesso!',
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
+          NotificationSwal.swalFire("Categoria atualizada com sucesso.", "success");
           this.router.navigate(['admin/produtor/grupoprodutos'])
         },
         error: erro => {
           console.error(erro);
-          
+
         }
       });
     }
@@ -104,24 +83,11 @@ export class GrupoprodutoseditnewComponent {
 
       this.categoriaService.post(this.categoriaRequest).subscribe({
         next: (res) => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: 'Categoria criada com sucesso!',
-            showConfirmButton: false,
-            timer: 1500
-          });
+          NotificationSwal.swalFire("Categoria criada com sucesso.", "success");
           this.router.navigate(['/admin/produtor/grupoprodutos']);
         },
         error: (erro) => {
           console.error('Erro ao criar categoria:', erro);
-          Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: 'Erro ao criar categoria!',
-            showConfirmButton: false,
-            timer: 1500
-          });
         }
       });
     }

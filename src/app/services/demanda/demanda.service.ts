@@ -84,4 +84,11 @@ export class DemandaService {
       responseType: 'text', });
   }
 
+  getByIbge(ibge: number): Observable<DemandaDtoResponse[]>{
+    const token = this.loginService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<DemandaDtoResponse[]>(`${API_BASE_URL}api/demanda/getDemandasByIbge/${ibge}`, {headers});
+  }
+
 }

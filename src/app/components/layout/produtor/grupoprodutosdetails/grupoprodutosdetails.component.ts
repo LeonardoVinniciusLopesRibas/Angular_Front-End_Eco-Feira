@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-grupoprodutosdetails',
@@ -51,14 +52,7 @@ export class GrupoprodutosdetailsComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listCategorias = [];
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: 'A lista está vazia!',
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error("Não foram encontrado categorias: ", erro)
         }
       },
     });
@@ -93,20 +87,11 @@ export class GrupoprodutosdetailsComponent {
       if (result.isConfirmed) {
         this.categoriaService.delete(id).subscribe({
           next: (res) => {
-            Swal.fire('Deletado!', 'O item foi deletado com sucesso.', 'success');
+            NotificationSwal.swalFire("Grupo deletado com sucesso.", "success");
             this.listarCategorias();
           },
           error: (erro) => {
-            const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: errorMessage,
-              showConfirmButton: true,
-              confirmButtonText: "Fechar",
-              timer: 3000
-            });
+            console.error("Ocorreu um erro: ", erro)
           },
         });
       }

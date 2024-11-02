@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NovoacessoService } from '../../../../services/novoacesso/novoacesso.service';
 import { Novoacesso } from '../../../../model/novoacesso/novoacesso';
 import { UsuarioService } from '../../../../services/usuario/usuario.service';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-usuariodetails',
@@ -50,14 +51,7 @@ export class UsuariodetailsComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listUsuarios = [];
-          Swal.fire({
-            position: "top-end",
-            icon: 'success',
-            title: 'Não foi encontrado usuários',
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",  
-            timer: 3000
-          });
+          NotificationSwal.swalFire("Não há usuários pendentes.", "info");
         }
       },
     });
@@ -83,15 +77,7 @@ export class UsuariodetailsComponent {
       if (result.isConfirmed) {
         this.novoacessoService.delete(id).subscribe({
           next: retorno =>{
-            const retornos = retorno.next;
-            Swal.fire({
-              position: "top-end",
-              icon: 'success',
-              title: retornos,
-              showConfirmButton: true,
-              confirmButtonText: "Fechar",  
-              timer: 3000
-            });
+            NotificationSwal.swalFire("Usuário recusado com sucesso.", "success");
             this.listarUsuarios();
           },
           error: erro => {
@@ -116,15 +102,7 @@ export class UsuariodetailsComponent {
       if (result.isConfirmed) {
         this.usuarioService.post(id, this.idEmpresa).subscribe({
           next: retorno =>{
-            const retornos = retorno.next;
-            Swal.fire({
-              position: "top-end",
-              icon: 'success',
-              title: 'Usuário aceito com sucesso',
-              showConfirmButton: true,
-              confirmButtonText: "Fechar",  
-              timer: 3000
-            });
+            NotificationSwal.swalFire("Usuário aceito com sucesso.", "success");
             this.listarUsuarios();
           },
           error: erro => {
@@ -139,7 +117,7 @@ export class UsuariodetailsComponent {
 
           }
         })
-        
+
       }
     });
   }

@@ -24,6 +24,7 @@ import { Prefeiturarequest } from '../../../../model/prefeitura/dto/prefeiturare
 import { ContatoService } from '../../../../services/contato/contato.service';
 import { Contatorequest } from '../../../../model/contato/dto/contatorequest';
 import { Contatoresponselist } from '../../../../model/contato/dto/contatoresponselist';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-ajustesprefeitura',
@@ -116,12 +117,8 @@ export class AjustesprefeituraComponent {
         this.contatos = lista;
       },
       error: (erro) => {
-        console.error(erro);
-        Swal.fire({
-          icon: 'error',
-          title: '',
-          text: "Não foram encontrado contatos",
-        });
+        console.error("Erro ao encontrar contatos", erro);
+
       }
     });
   }
@@ -143,15 +140,7 @@ export class AjustesprefeituraComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listPais = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: errorMessage,
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error("Erro ao encontrar países", erro);
         }
       }
     })
@@ -165,15 +154,7 @@ export class AjustesprefeituraComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listEstado = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: errorMessage,
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error("Erro ao encontrar estados", erro);
         }
       }
 
@@ -188,15 +169,7 @@ export class AjustesprefeituraComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listCidade = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: errorMessage,
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error("Erro ao encontrar cidades", erro);
         }
       }
 
@@ -237,7 +210,7 @@ export class AjustesprefeituraComponent {
 
         this.enderecoService.put(this.enderecoRequest, this.enderecoId).subscribe({
           next: retorno =>{
-            alert('atualizadooo!!!')
+            //alert('atualizadooo!!!')
           },
           error: erro => {
             console.error(erro);
@@ -248,11 +221,7 @@ export class AjustesprefeituraComponent {
         this.router.navigate(['/login']);
         this.loginService.removerToken();
         localStorage.removeItem('usuario');
-        Swal.fire({
-          title: "Deslogado!",
-          text: "Por gentileza acesse novamente",
-          icon: "success"
-        });
+        NotificationSwal.swalFire("Atualizado com sucesso.!", "success");
       }
     });
   }
@@ -261,20 +230,13 @@ export class AjustesprefeituraComponent {
     this.novoContato.prefeituraId = this.prefeituraId;
     this.contatoService.post(this.novoContato, this.prefeituraId).subscribe({
       next: () => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Contato adicionado com sucesso!',
-        });
+        NotificationSwal.swalFire("Contato adicionado com sucesso.", "success");
         this.carregarContatos();
         this.fecharModal();
       },
       error: (erro) => {
-        console.error(erro);
-        Swal.fire({
-          icon: 'error',
-          title: 'Erro ao adicionar contato',
-          text: erro.message,
-        });
+        console.error("Erro ao adicionar novo contato: ",erro);
+
       }
     });
   }
@@ -293,16 +255,12 @@ export class AjustesprefeituraComponent {
       if (result.isConfirmed) {
         this.contatoService.delete(idPrefeitura).subscribe({
           next: () => {
-            Swal.fire('Deletado!', 'O contato foi removido.', 'success');
-            this.carregarContatos(); 
+            NotificationSwal.swalFire("Contato removido com sucesso.", "success");
+            this.carregarContatos();
           },
           error: (erro) => {
-            console.error(erro);
-            Swal.fire({
-              icon: 'error',
-              title: 'Erro ao deletar contato',
-              text: erro.message,
-            });
+            console.error("Erro ao excluir contato: ",erro);
+
           }
         });
       }

@@ -18,6 +18,7 @@ import { Enderecorequest } from '../../../../model/endereco/dto/enderecorequest'
 import { Empresarequest } from '../../../../model/empresa/dto/empresarequest';
 import { EmpresaService } from '../../../../services/empresa/empresa.service';
 import { EnderecoService } from '../../../../services/endereco/endereco.service';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-ajustes',
@@ -118,15 +119,7 @@ export class AjustesComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listPais = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: errorMessage,
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error("Ocorreu um erro:", erro);
         }
       }
     })
@@ -140,15 +133,7 @@ export class AjustesComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listEstado = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: errorMessage,
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error("Ocorreu um erro: ", erro)
         }
       }
 
@@ -163,15 +148,7 @@ export class AjustesComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listCidade = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: errorMessage,
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error("Ocorreu um erro: ", erro)
         }
       }
 
@@ -215,7 +192,7 @@ export class AjustesComponent {
 
         this.enderecoService.put(this.enderecoRequest, this.enderecoId).subscribe({
           next: retorno =>{
-            alert('atualizadooo!!!')
+            //alert('atualizadooo!!!')
           },
           error: erro => {
             console.error(erro);
@@ -226,11 +203,7 @@ export class AjustesComponent {
         this.router.navigate(['/login']);
         this.loginService.removerToken();
         localStorage.removeItem('usuario');
-        Swal.fire({
-          title: "Deslogado!",
-          text: "Por gentileza acesse novamente",
-          icon: "success"
-        });
+        NotificationSwal.swalFire("Deslogado.", "success");
       }
     });
   }

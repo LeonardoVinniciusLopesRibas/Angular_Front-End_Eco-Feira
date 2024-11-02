@@ -1,10 +1,90 @@
 .container-demandas {
-  margin-top: 50px;
-  padding: 40px;
+  margin-top: 30px;
+  padding: 20px 40px;
   width: 100%;
+  border-radius: 10px;
   height: 500px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 4.8px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   overflow-y: auto;
+  font-family: Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #555;
 }
 
+.table-header, .internal-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 2fr 1fr 50px;
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #ececec;
+}
+
+.table-header {
+  background-color: #fafafa;
+  color: #666;
+}
+
+.internal-container {
+  font-weight: normal;
+}
+
+.internal-container div {
+  padding: 8px 10px;
+}
+
+.zebra {
+  background-color: #f9f9f9;
+}
+
+.internal-container:hover {
+  background-color: #f1f1f1;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.status-aberta {
+  background-color: #4CAF50;
+}
+
+.status-concluida {
+  background-color: #2196F3;
+}
+
+.status-cancelada {
+  background-color: #F44336;
+}
+
+.info-icon {
+  position: relative;
+  margin-left: 8px;
+  cursor: pointer;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.info-icon:hover {
+  color: #0056b3;
+}
+
+.tooltip {
+  position: fixed;
+  background-color: #fafafa;
+  color: #333;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-size: 0.9rem;
+  width: 190px;
+  z-index: 1000;
+  white-space: nowrap;
+  pointer-events: none;
+  margin-top: 8px;
+  line-height: 1.4;
+  text-align: left;
+}

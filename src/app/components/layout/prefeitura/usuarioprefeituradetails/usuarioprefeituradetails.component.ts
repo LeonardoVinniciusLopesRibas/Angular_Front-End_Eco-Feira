@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NovoacessoService } from '../../../../services/novoacesso/novoacesso.service';
 import { Novoacesso } from '../../../../model/novoacesso/novoacesso';
 import { UsuarioService } from '../../../../services/usuario/usuario.service';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-usuarioprefeituradetails',
@@ -50,13 +51,20 @@ export class UsuarioprefeituradetailsComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listUsuarios = [];
-          Swal.fire({
+          const Toast = Swal.mixin({
+            toast: true,
             position: "top-end",
-            icon: 'success',
-            title: 'Não foi encontrado usuários',
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",  
-            timer: 3000
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "info",
+            title: "Nenhum usuário pendente."
           });
         }
       },
@@ -83,14 +91,21 @@ export class UsuarioprefeituradetailsComponent {
       if (result.isConfirmed) {
         this.novoacessoService.delete(id).subscribe({
           next: retorno =>{
-            
-            Swal.fire({
+
+            const Toast = Swal.mixin({
+              toast: true,
               position: "top-end",
-              icon: 'success',
-              title: "Recusado com sucesso",
-              showConfirmButton: true,
-              confirmButtonText: "Fechar",  
-              timer: 3000
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              }
+            });
+            Toast.fire({
+              icon: "info",
+              title: "Usuário recusado!"
             });
             this.listarUsuarios();
           },
@@ -117,14 +132,7 @@ export class UsuarioprefeituradetailsComponent {
         this.usuarioService.postPrefeitura(id, this.idPrefeitura).subscribe({
           next: retorno =>{
             const retornos = retorno.next;
-            Swal.fire({
-              position: "top-end",
-              icon: 'success',
-              title: 'Usuário aceito com sucesso',
-              showConfirmButton: true,
-              confirmButtonText: "Fechar",  
-              timer: 3000
-            });
+            NotificationSwal.swalFire("Usuário aceito.", "success");
             this.listarUsuarios();
           },
           error: erro => {
@@ -136,10 +144,10 @@ export class UsuarioprefeituradetailsComponent {
             this.listarUsuarios();
           },
           error: erro =>{
-
+            console.error("Ocorreu um erro: ", erro)
           }
         })
-        
+
       }
     });
   }

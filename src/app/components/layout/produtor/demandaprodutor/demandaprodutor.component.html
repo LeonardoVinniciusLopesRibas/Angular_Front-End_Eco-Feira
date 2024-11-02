@@ -1,4 +1,23 @@
 <div class="container-demandas">
-
+  <div class="table-header">
+    <div>ID</div>
+    <div>Descrição</div>
+    <div>Valor Total</div>
+    <div>Prazo Máximo</div>
+    <div>Status</div>
+  </div>
+  <div class="internal-container" *ngFor="let demandasListadas of demandaDtoResponse; let i = index" [class.zebra]="i % 2 === 0">
+    <div>{{demandasListadas.idDemanda}}</div>
+    <div>{{demandasListadas.descricao}}</div>
+    <div>{{demandasListadas.valorTotalPrefeitura | currency:'BRL'}}</div>
+    <div>{{demandasListadas.prazoMaximo | date:'dd/MM/yyyy' }}</div>
+    <span class="status-indicator" [ngClass]="getStatusClass(demandasListadas.statusDemanda)"></span>
+    <span class="info-icon" (mouseenter)="showTooltip[demandasListadas.idDemanda] = true"
+          (mouseleave)="showTooltip[demandasListadas.idDemanda] = false">
+        <i class="fas fa-info-circle"></i>
+        <div class="tooltip" *ngIf="showTooltip[demandasListadas.idDemanda]">
+          Verde: ABERTA<br>Azul: CONCLUÍDA<br>Vermelha: CANCELADA
+        </div>
+      </span>
+  </div>
 </div>
-

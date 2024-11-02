@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { LoginService } from '../../../../auth/login.service';
 import { UsuarioResponseDto } from '../../../../auth/usuarioResponseDto';
 import {MatIconModule} from "@angular/material/icon";
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-sidebarprefeitura',
@@ -47,11 +48,8 @@ export class SidebarprefeituraComponent {
         this.router.navigate(['/login']);
         this.loginService.removerToken();
         localStorage.removeItem('usuario');
-        Swal.fire({
-          title: "Deslogado!",
-          text: `O usuário ${this.usuarioLogado?.usuario} foi deslogado com sucesso!`,
-          icon: "success",
-        });
+        NotificationSwal.swalFire(`O usuário: ${this.usuarioLogado?.usuario} saiu.`, "success");
+
       }
     });
   }

@@ -1,52 +1,48 @@
 <div class="container-sidebar">
-    <div class="sidebar" [class.collapsed]="isCollapsed">
-        <button class="main-button d-flex align-items-center">
-            <img src="../../../../assets/icons/iconSideBar.png" alt="Icone de Usuário" class="icon-main m-3 icon">
-            <span class="d-none d-md-inline fonte">Eco-Feira</span>
-        </button>
-        <div>
-            <div class="input-group mb-3 nav-item" [routerLink]="['/admin/produtor/centraldados']">
-                <img src="../../../../assets/icons/sidebar/iconVisaoGeralBlack.png" alt="Icone de Usuário" class="icon">
-                <button class="nav-button">Visão Geral</button>
-            </div>
+  <div class="sidebar" [class.collapsed]="isCollapsed">
+    <button class="main-button d-flex align-items-center">
+      <img src="../../../../assets/icons/iconSideBar.png" alt="Icone de Usuário" class="icon-main m-3 icon">
+      <span class="d-none d-md-inline fonte">Eco-Feira</span>
+    </button>
+    <div>
+      <div class="input-group mb-3 nav-item" (click)="toggleCadastro()">
+        <i class="fa-solid fa-folder-plus icon"></i>
+        <button class="nav-button">Cadastros</button>
+      </div>
 
-            <div class="input-group mb-3 nav-item" (click)="toggleCadastro()">
-                <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-                <button class="nav-button">Cadastros</button>
-            </div>
-
-            <div class="sub-menus" *ngIf="showCadastroSubmenu">
-                <div class="submenu">
-                    <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/produtor/produto']">
-                        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-                        <button class="nav-button " style="color: #fff;">Produto</button>
-                    </div>
-                    <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/produtor/usuarios']">
-                        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-                        <button class="nav-button" style="color: #fff;">Usuário</button>
-                    </div>
-                    <div class="input-group mb-3 nav-item bt-interno" [routerLink]="['/admin/produtor/grupoprodutos']">
-                        <img src="../../../../assets/icons/sidebar/iconDocumentoBlack.png" alt="Icone de Documento" class="icon">
-                        <button class="nav-button" style="color: #fff;">Grupo</button>
-                    </div>
-                </div>
-            </div>
-            <div class="input-group mb-3 nav-item" [routerLink]="['/admin/produtor/demandas']">
-                <img src="../../../../assets/icons/sidebar/iconCoracaoBlack.png" alt="Icone de Coração" class="icon">
-                <button class="nav-button">Demanda</button>
-            </div>
-            <div class="input-group mb-3 nav-item">
-                <img src="../../../../assets/icons/sidebar/iconChatRelatorioBlack.png" alt="Icone de Relatório" class="icon">
-                <button class="nav-button">Relatórios</button>
-            </div>
-            <div class="input-group mb-3 nav-item" [routerLink]="['/admin/produtor/ajustes']">
-                <img src="../../../../assets/icons/sidebar/iconAjustesBlack.png" alt="Icone de Ajustes" class="icon">
-                <button class="nav-button">Ajustes</button>
-            </div>
-            <div class="input-group mb-3 nav-item" (click)="deslogar()">
-                <img src="../../../../assets/icons/sidebar/iconLogout.png" alt="Icone de Ajustes" class="icon">
-                <button class="nav-button">Sair</button>
-            </div>
+      <div class="sub-menus" *ngIf="showCadastroSubmenu">
+        <div class="submenu">
+          <!--<div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/produto']">
+            <i class="fa-solid fa-boxes-stacked icon"></i>
+            <button class="nav-button " style="color: #fff;">Produto</button>
+          </div>-->
+          <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/usuarios']">
+            <i class="fa-solid fa-user icon"></i>
+            <button class="nav-button" style="color: #fff;">Usuário</button>
+          </div>
+          <!--<div class="input-group mb-3 nav-item bt-interno cor-branca-icon"
+               [routerLink]="['/admin/produtor/grupoprodutos']">
+            <i class="fa-solid fa-layer-group icon"></i>
+            <button class="nav-button" style="color: #fff;">Grupo</button>
+          </div>-->
         </div>
+      </div>
+      <div class="input-group mb-3 nav-item" [routerLink]="['/admin/produtor/demandas']">
+        <i class="fa-solid fa-apple-whole icon"></i>
+        <button class="nav-button">Demanda</button>
+      </div>
+      <!--<div class="input-group mb-3 nav-item">
+        <i class="fa-solid fa-file-export icon"></i>
+        <button class="nav-button">Relatórios</button>
+      </div>-->
+      <div class="input-group mb-3 nav-item" [routerLink]="['/admin/produtor/ajustes']">
+        <i class="fa-solid fa-gear icon"></i>
+        <button class="nav-button">Ajustes</button>
+      </div>
+      <div class="input-group mb-3 nav-item" (click)="deslogar()">
+        <i class="fa-solid fa-right-from-bracket icon"></i>
+        <button class="nav-button">Sair</button>
+      </div>
     </div>
+  </div>
 </div>

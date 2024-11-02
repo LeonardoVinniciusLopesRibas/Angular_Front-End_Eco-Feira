@@ -14,6 +14,7 @@ import { Produtoprodutorrequest } from '../../../../model/produtoprodutor/dto/pr
 import { Categoriaresponse } from '../../../../model/categoria/dto/categoriaresponse';
 import { CommonModule } from '@angular/common';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-produtoeditnew',
@@ -60,15 +61,7 @@ export class ProdutoeditnewComponent {
       error: erro => {
         if (erro.status === 404) {
           this.listCategorias = [];
-          const errorMessage = erro.error || erro.message || 'Erro desconhecido';
-          Swal.fire({
-            position: "top-end",
-            icon: 'error',
-            title: errorMessage,
-            showConfirmButton: true,
-            confirmButtonText: "Fechar",
-            timer: 3000
-          });
+          console.error(erro)
         }
       },
     });
@@ -87,32 +80,14 @@ export class ProdutoeditnewComponent {
         this.produtoProdutorRequest.idEmpresa = this.produtoProdutorResponseUnique.idProduto;
       },
       error: erro => {
-        Swal.fire({
-          title: 'Ocorreu um erro',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        console.error(erro)
       }
     });
   }
 
   postput() {
     if((this.produtoProdutorRequest.nome || '').trim().length === 0){
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        icon: "error",
-        title: "Nome não foi informado"
-      });
+      NotificationSwal.swalFire("Nome não foi informado.", "success");
       return;
     } else if (isNaN(this.produtoProdutorRequest.valorCusto) || this.produtoProdutorRequest.valorCusto < 0) {
       const Toast = Swal.mixin({
@@ -166,8 +141,8 @@ export class ProdutoeditnewComponent {
       });
       return;
     }
-    
-    
+
+
     if (this.produtoProdutorResponseUnique.idProduto > 0) {
        this.id = this.produtoProdutorResponseUnique.idProduto;
       this.produtoProdutorRequest.idEmpresa = this.empresaId;

@@ -4,6 +4,7 @@ import { LoginService } from '../../../../auth/login.service';
 import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import { UsuarioResponseDto } from '../../../../auth/usuarioResponseDto';
+import {NotificationSwal} from "../../../../util/NotificationSwal";
 
 @Component({
   selector: 'app-sidebarprodutor',
@@ -17,7 +18,7 @@ export class SidebarprodutorComponent {
   isCollapsed = false;
   showCadastroSubmenu = false;
   usuarioLogado: UsuarioResponseDto | null = null;
-  
+
   router = inject(Router);
   loginService = inject(LoginService);
 
@@ -27,7 +28,7 @@ export class SidebarprodutorComponent {
       this.usuarioLogado = JSON.parse(usuarioString);
     }
   }
- 
+
   toggleCadastro() {
     this.showCadastroSubmenu = !this.showCadastroSubmenu;
   }
@@ -47,11 +48,7 @@ export class SidebarprodutorComponent {
         this.router.navigate(['/login']);
         this.loginService.removerToken();
         localStorage.removeItem('usuario');
-        Swal.fire({
-          title: "Deslogado!",
-          text: "O usuário "+this.usuarioLogado?.usuario+" foi deslogado com sucesso!",
-          icon: "success"
-        });
+        NotificationSwal.swalFire("O usuário "+this.usuarioLogado?.usuario+" foi deslogado com sucesso!", "success");
       }
     });
   }
