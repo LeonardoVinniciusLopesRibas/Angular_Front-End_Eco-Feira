@@ -62,7 +62,6 @@
 
 .info-icon {
   position: relative;
-  margin-left: 8px;
   cursor: pointer;
   color: #007bff;
   transition: color 0.3s ease;
@@ -87,4 +86,8 @@
   margin-top: 8px;
   line-height: 1.4;
   text-align: left;
+}
+
+.alinhamento{
+  text-align: center;
 }
