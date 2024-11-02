@@ -1,6 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { Categoriaresponse } from '../../../../model/categoria/dto/categoriaresponse';
-import { CategoriaService } from '../../../../services/categoria/categoria.service';
 import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
@@ -27,7 +25,6 @@ export class UsuarioprefeituradetailsComponent {
   itemsPerPage: number = 10;
   testCategorias: any[] = [];
   pageSizeOptions: number[] = [10, 20, 50, 200];
-  categoriaResponse: Categoriaresponse = new Categoriaresponse();
   isDropdownOpen: boolean[] = [];
   cnpj: string = '';
   idPrefeitura: number = 0;

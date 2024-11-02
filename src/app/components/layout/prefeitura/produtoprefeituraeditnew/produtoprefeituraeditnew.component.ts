@@ -9,11 +9,12 @@ import { ProdutoprefeituraService } from '../../../../services/produtoprefeitura
 import { Produtoprefeiturarequest } from '../../../../model/produtoprefeitura/dto/produtoprefeiturarequest';
 import { Produtoprefeituraresponseunique } from '../../../../model/produtoprefeitura/dto/produtoprefeituraresponseunique';
 import { Produtoprefeitura } from '../../../../model/produtoprefeitura/produtoprefeitura';
+import {NgxMaskDirective} from "ngx-mask";
 
 @Component({
   selector: 'app-produtoprefeituraeditnew',
   standalone: true,
-  imports: [MdbRippleModule, FormsModule, RouterLink, CommonModule, MdbFormsModule],
+  imports: [MdbRippleModule, FormsModule, RouterLink, CommonModule, MdbFormsModule, NgxMaskDirective],
   templateUrl: './produtoprefeituraeditnew.component.html',
   styleUrl: './produtoprefeituraeditnew.component.scss'
 })

@@ -14,18 +14,20 @@ import {
   Demandaprodutosassociadosrequest
 } from "../../../../model/demandaprodutosassociados/dto/demandaprodutosassociadosrequest";
 import {NotificationSwal} from "../../../../util/NotificationSwal";
+import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
 
 @Component({
   selector: 'app-gerenciardemandas',
   standalone: true,
-  imports: [
-    FormsModule,
-    NgSelectModule,
-    CurrencyPipe,
-    NgClass,
-    CommonModule,
-    RouterLink
-  ],
+    imports: [
+        FormsModule,
+        NgSelectModule,
+        CurrencyPipe,
+        NgClass,
+        CommonModule,
+        RouterLink,
+        MdbFormsModule
+    ],
   templateUrl: './gerenciardemandas.component.html',
   styleUrl: './gerenciardemandas.component.scss'
 })

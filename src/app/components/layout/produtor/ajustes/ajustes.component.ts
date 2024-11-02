@@ -19,11 +19,12 @@ import { Empresarequest } from '../../../../model/empresa/dto/empresarequest';
 import { EmpresaService } from '../../../../services/empresa/empresa.service';
 import { EnderecoService } from '../../../../services/endereco/endereco.service';
 import {NotificationSwal} from "../../../../util/NotificationSwal";
+import {NgSelectComponent} from "@ng-select/ng-select";
 
 @Component({
   selector: 'app-ajustes',
   standalone: true,
-  imports: [MdbRippleModule, FormsModule, RouterLink, CommonModule, MdbFormsModule, NgxMaskDirective],
+  imports: [MdbRippleModule, FormsModule, RouterLink, CommonModule, MdbFormsModule, NgxMaskDirective, NgSelectComponent],
   templateUrl: './ajustes.component.html',
   styleUrl: './ajustes.component.scss'
 })
@@ -206,5 +207,12 @@ export class AjustesComponent {
         NotificationSwal.swalFire("Deslogado.", "success");
       }
     });
+  }
+  limparEstado(){
+    this.empresa.endereco.cidade.estado.idEstado = -1;
+  }
+
+  limparCidade(){
+    this.empresa.endereco.cidade.idCidade = -1;
   }
 }

@@ -7,141 +7,20 @@
   box-shadow: 0px 0px 4.8px 0px rgba(0, 0, 0, 0.5);
 }
 
-.container-title {
-  display: flex;
+.filter{
+  margin-top: 40px;
+  gap: 250px;
 }
 
-.container-pagination {
-  display: flex;
-
-}
-
-.div-input-search {
-  width: 50%;
-  height: 60px;
-  left: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
-  display: grid;
-  place-items: center;
-}
-
-.div-button-back {
-  width: 25%;
-  margin-left: 10px;
-  margin-right: 10px;
-  display: grid;
-  place-items: center;
-}
-
-.div-button-new {
-  width: 25%;
-  margin-left: 10px;
-  margin-right: 10px;
-  display: grid;
-  place-items: center;
-}
-
-.div-table {
-  width: auto;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 320px;
-  padding: 10px;
-  overflow-x: auto;
-}
-
-.div-internal-table {
-  width: auto;
-  height: 300px;
-}
-
-.div-pagination {
-  height: 60px;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  padding-top: 14px;
-  width: 40%;
-}
-
-.div-pagination-internal {
-  display: grid;
-  place-items: center;
-}
-
-.div-dropdown {
-  height: 60px;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  width: 40%;
-  display: grid;
-  place-items: center;
-
-}
-
-.internal-container-input-search {
-  display: flex;
-}
-
-.input-search {
+.select{
   border: none !important;
+  outline: none !important;
   box-shadow: none !important;
+  display: flex;
   border-bottom: 1px solid #000 !important;
   background-color: transparent !important;
   outline: none !important;
-  transition: transform 0.2s ease;
-}
-
-.input-search:focus {
-  border: none !important;
-  outline: none !important;
-  border-bottom: 1px solid #000 !important;
-  background-color: transparent !important;
-  outline: none !important;
-  box-shadow: none !important;
-  transform: translateX(-3px);
-}
-
-.input-search:focus+.icon-lupa {
-  border: none !important;
-  outline: none !important;
-  border-radius: 10px;
-  box-shadow: none !important;
-  transform: translateX(-3px);
-}
-
-.icon-lupa {
-  margin: 5px;
-  width: 32px;
-  height: 32px;
-  background-image: url(../../../../../assets/icons/icon-lupa/lupa32px.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: transform 0.2s ease;
-}
-
-.pagination {
-  margin: 0;
-  font-weight: 500;
-}
-
-
-.div-pagination-setting {
-  display: flex;
-  outline: none !important;
-  border-bottom: 1px solid #000 !important;
-  background-color: transparent !important;
-  outline: none !important;
-}
-
-.label-itens {
-  width: 125px;
-  font-weight: 500;
+  margin-bottom: 15px
 }
 
 .select-pagination {
@@ -271,7 +150,6 @@ tr:nth-child(even) td {
   pointer-events: none;
 }
 
-/* Estado padrão */
 .btn-check-aberta {
   background-color: green;
   color: white;

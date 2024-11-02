@@ -25,11 +25,12 @@ import { ContatoService } from '../../../../services/contato/contato.service';
 import { Contatorequest } from '../../../../model/contato/dto/contatorequest';
 import { Contatoresponselist } from '../../../../model/contato/dto/contatoresponselist';
 import {NotificationSwal} from "../../../../util/NotificationSwal";
+import {NgSelectComponent} from "@ng-select/ng-select";
 
 @Component({
   selector: 'app-ajustesprefeitura',
   standalone: true,
-  imports: [MdbRippleModule, FormsModule, RouterLink, CommonModule, MdbFormsModule, NgxMaskDirective],
+    imports: [MdbRippleModule, FormsModule, RouterLink, CommonModule, MdbFormsModule, NgxMaskDirective, NgSelectComponent],
   templateUrl: './ajustesprefeitura.component.html',
   styleUrl: './ajustesprefeitura.component.scss'
 })
@@ -111,6 +112,10 @@ export class AjustesprefeituraComponent {
     this.listarCidades();
   }
 
+  onPaisChange(selectNameId: string) {
+
+  }
+
   carregarContatos() {
     this.contatoService.get(this.prefeituraId.toString()).subscribe({
       next: (lista: Contatoresponselist[]) => {
@@ -144,6 +149,7 @@ export class AjustesprefeituraComponent {
         }
       }
     })
+    //this.prefeitura.endereco.cidade.estado.idEstado = -1;
   }
 
   listarEstados() {
@@ -267,5 +273,12 @@ export class AjustesprefeituraComponent {
     });
   }
 
+  limparEstado(){
+    this.prefeitura.endereco.cidade.estado.idEstado = -1;
+  }
+
+  limparCidade(){
+    this.prefeitura.endereco.cidade.idCidade = -1;
+  }
 
 }

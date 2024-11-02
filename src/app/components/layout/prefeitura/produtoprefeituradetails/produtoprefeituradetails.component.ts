@@ -8,11 +8,12 @@ import {FormsModule} from '@angular/forms';
 import {Produtoprefeituraresponselist} from '../../../../model/produtoprefeitura/dto/produtoprefeituraresponselist';
 import {ProdutoprefeituraService} from '../../../../services/produtoprefeitura/produtoprefeitura.service';
 import {NotificationSwal} from "../../../../util/NotificationSwal";
+import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
 
 @Component({
   selector: 'app-produtoprefeituradetails',
   standalone: true,
-  imports: [RouterLink, NgxPaginationModule, CommonModule, MdbRippleModule, FormsModule],
+  imports: [RouterLink, NgxPaginationModule, CommonModule, MdbRippleModule, FormsModule, MdbFormsModule],
   templateUrl: './produtoprefeituradetails.component.html',
   styleUrl: './produtoprefeituradetails.component.scss'
 })

@@ -1,17 +1,15 @@
 <div class="container-grupo-produtos">
   <div class="container-title">
-    <div class="div-button-back">
-
-      <button class="btn btn-success fw-bold" [routerLink]="['/admin/produtor/centraldados']">
-        <i class="fa-solid fa-arrow-left"></i>
-      </button>
-
-    </div>
     <div class="div-input-search">
       <div class="internal-container-input-search">
-        <input class="input-search" [(ngModel)]="query" placeholder="Pesquisar"
-               (keydown.enter)="recebeQuery(query)"/>
+        <mdb-form-control>
+          <input mdbInput type="text" id="descricao" class="form-control input-search all-inputs-menor"
+                 [(ngModel)]="query" style="width: 250px;" (keydown.enter)="recebeQuery(query)"/>
+          <label mdbLabel class="form-label" for="descricao">Pesquisar produto</label>
+        </mdb-form-control>
+        <div class="lupa" (click)="recebeQuery(query)">
         <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
       </div>
     </div>
     <div class="div-button-new">
@@ -83,7 +81,7 @@
               </button>
             </div>
           </td>
-          <td class="rounded-right">R{{ produtoResponse.valorCompra | currency }}</td>
+          <td class="rounded-right"> <i class="fa-solid fa-brazilian-real-sign"></i> {{ produtoResponse.valorCompra}}</td>
         </tr>
         </tbody>
 

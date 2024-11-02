@@ -14,7 +14,7 @@ import {NotificationSwal} from "../../../../util/NotificationSwal";
   styleUrl: './sidebarprodutor.component.scss'
 })
 export class SidebarprodutorComponent {
-
+  activeSubmenu: string | null = null;
   isCollapsed = false;
   showCadastroSubmenu = false;
   usuarioLogado: UsuarioResponseDto | null = null;
@@ -51,5 +51,9 @@ export class SidebarprodutorComponent {
         NotificationSwal.swalFire("O usuário "+this.usuarioLogado?.usuario+" foi deslogado com sucesso!", "success");
       }
     });
+  }
+
+  toggleSubmenu(menu: string) {
+    this.activeSubmenu = this.activeSubmenu === menu ? null : menu;
   }
 }

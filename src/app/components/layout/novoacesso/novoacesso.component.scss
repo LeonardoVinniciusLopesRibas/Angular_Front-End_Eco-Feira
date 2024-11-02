@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 100% da altura da viewport */
-    background-color: #f0f2f5; /* Cor de fundo suave */
+    height: 100vh;
+    background-color: #f0f2f5;
 }
 
 .content {
@@ -15,16 +15,16 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #ffffff; /* Cor de fundo do card */
+    background-color: #ffffff;
 }
 
 .title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333333; /* Cor do texto do título */
-    text-align: center; /* Centraliza o texto do título */
-    width: 100%; /* Garante que o título ocupe toda a largura do container */
+    color: #333333;
+    text-align: center;
+    width: 100%;
 }
 
 .input {
@@ -35,7 +35,7 @@
     border-radius: 0 !important;
     box-shadow: none !important;
     margin: 10px;
-    width: 100%; /* Garante que o input use toda a largura disponível */
+    width: 100%;
 }
 
 .input:focus {
@@ -49,8 +49,8 @@
     display: flex;
     gap: 10px;
     margin-top: 20px;
-    width: 100%; /* Garante que o grupo de botões use toda a largura disponível */
-    justify-content: space-between; /* Distribui o espaço entre os botões */
+    width: 100%;
+    justify-content: space-between;
 }
 
 .btn {
@@ -59,8 +59,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    flex: 1; /* Garante que os botões tenham a mesma largura */
-    text-align: center; /* Alinha o texto dos botões no centro */
+    flex: 1;
+    text-align: center;
 }
 
 .btn-submit {

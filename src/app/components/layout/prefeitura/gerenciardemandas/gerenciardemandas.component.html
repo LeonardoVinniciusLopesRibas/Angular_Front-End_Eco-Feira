@@ -1,36 +1,35 @@
 <div class="container-demandas">
 
   <h4 class="title">Nova demanda</h4>
-
+<div class="labels">
   <div>
-    <label class="padron-width">Descrição da Demanda</label>
-    <input type="text" class="all-inputs" [(ngModel)]="gerenciarDemanda.descricao"
-           placeholder="Informe a descrição, produto predominante..."/>
+
+    <mdb-form-control>
+      <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="gerenciarDemanda.descricao"/>
+      <label mdbLabel class="form-label" for="form1">Informe a descrição, produto predominante...</label>
+    </mdb-form-control>
   </div>
 
-  <div>
-    <label class="padron-width">Prazo Máximo</label>
-    <input type="date" class="all-inputs" [(ngModel)]="gerenciarDemanda.prazoMaximo"
-           (ngModelChange)="onDateChange($event)" placeholder="Selecione o prazo"/>
+  <div class="form-control mb-4">
+    <label class="form-label" for="calendar">Prazo Máximo</label>
+    <input type="date" class="form-control" id="calendar" [(ngModel)]="gerenciarDemanda.prazoMaximo"
+           (ngModelChange)="onDateChange($event)" placeholder="Selecione o prazo" />
   </div>
 
-  <div class="d-flex">
-    <div class="padron-width-select">
-      <ng-select [items]="produtoDtoResponse"
-                 bindLabel="nome"
-                 bindValue="id"
-                 [(ngModel)]="selectNameId"
-                 [placeholder]="!selectNameId ? 'Selecione um produto' : ''"
-                 (change)="onProdutoChange($event)">
-      </ng-select>
-    </div>
-    <button class="btn btn-info" (click)="abrirModalQuantidade()">
+  <div class="select-produtos">
+    <ng-select [items]="produtoDtoResponse"
+               bindLabel="nome"
+               bindValue="id"
+               [(ngModel)]="selectNameId"
+               [placeholder]="!selectNameId ? 'Selecione um produto' : ''"
+               (change)="onProdutoChange($event)" class="select">
+    </ng-select>
+    <button class="btn btn-info button" (click)="abrirModalQuantidade()">
       <i class="fa-solid fa-plus"></i>&nbsp;
       Adicionar Produto
     </button>
   </div>
 
-  <!-- Tabela de Produtos -->
   <div class="tabela-container">
     <table class="table">
       <thead class="table-header">
@@ -58,23 +57,28 @@
     </table>
   </div>
 
-  <div class="d-flex">
-    <div class="valor-total">
-      <label>Total: {{ calcularValorTotal() | currency:'BRL' }}</label>
-    </div>
-    <button class="btn button-salvar" (click)="salvarDemanda()"><i class="fa-solid fa-floppy-disk"></i>&nbsp;
+  <div class="button-final">
+    <label class="peso-label">Total: {{ calcularValorTotal() | currency:'BRL' }}</label>
+    <button class="btn btn-success peso-button" (click)="salvarDemanda()"><i class="fa-solid fa-floppy-disk"></i>&nbsp;
       Salvar
     </button>
   </div>
-<!---->
+
+</div>
+
+
+
+
   <div class="modal" [ngClass]="{'show-modal': mostrarModal}">
     <div class="modal-content">
       <h4>Informe a quantidade</h4>
       <input type="number" [(ngModel)]="quantidadeProduto" min="1" class="all-inputs-modal"/>
       <button class="btn btn-primary button-confirm" (click)="adicionarProduto()">
-        <i class="fa-solid fa-check"></i>&nbsp;Confirmar</button>
+        <i class="fa-solid fa-check"></i>&nbsp;Confirmar
+      </button>
       <button class="btn btn-secondary" (click)="fecharModal()">
-        <i class="fa-solid fa-xmark"></i>&nbsp;Cancelar</button>
+        <i class="fa-solid fa-xmark"></i>&nbsp;Cancelar
+      </button>
     </div>
   </div>
 

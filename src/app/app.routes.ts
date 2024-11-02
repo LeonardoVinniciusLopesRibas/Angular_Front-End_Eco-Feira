@@ -2,12 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/layout/login/login.component';
 import { loginGuard } from './auth/login.guard';
 import { PrincipalprodutorComponent } from './components/layout/produtor/principalprodutor/principalprodutor.component';
-import { ProdutodetailsComponent } from './components/layout/produtor/produtodetails/produtodetails.component';
-import { GrupoprodutosdetailsComponent } from './components/layout/produtor/grupoprodutosdetails/grupoprodutosdetails.component';
-import { GrupoprodutoseditnewComponent } from './components/layout/produtor/grupoprodutoseditnew/grupoprodutoseditnew.component';
 import { NovoacessoComponent } from './components/layout/novoacesso/novoacesso.component';
 import { UsuariodetailsComponent } from './components/layout/produtor/usuariodetails/usuariodetails.component';
-import { ProdutoeditnewComponent } from './components/layout/produtor/produtoeditnew/produtoeditnew.component';
 import { AjustesComponent } from './components/layout/produtor/ajustes/ajustes.component';
 import { PrincipalprefeituraComponent } from './components/layout/prefeitura/principalprefeitura/principalprefeitura.component';
 import { DemandaprefeituraComponent } from './components/layout/prefeitura/demandaprefeitura/demandaprefeitura.component';
@@ -21,6 +17,8 @@ import {
   EditaregerenciardemandaComponent
 } from "./components/layout/prefeitura/editaregerenciardemanda/editaregerenciardemanda.component";
 import {DemandaprodutorComponent} from "./components/layout/produtor/demandaprodutor/demandaprodutor.component";
+import {MinhasdemandasComponent} from "./components/layout/produtor/minhasdemandas/minhasdemandas.component";
+
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -31,15 +29,10 @@ export const routes: Routes = [
     {
         path: 'admin/produtor', component: PrincipalprodutorComponent, canActivate: [loginGuard],
         children: [
-            {path: 'produto', component: ProdutodetailsComponent, canActivate: [loginGuard]},
-            {path: 'produto/novo', component: ProdutoeditnewComponent, canActivate: [loginGuard]},
-            {path: 'produto/edit/:id', component: ProdutoeditnewComponent, canActivate: [loginGuard]},
-            {path: 'grupoprodutos', component: GrupoprodutosdetailsComponent, canActivate: [loginGuard]},
-            {path: 'grupoprodutos/novo', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
-            {path: 'grupoprodutos/edit/:id', component: GrupoprodutoseditnewComponent, canActivate: [loginGuard]},
             {path: 'usuarios', component: UsuariodetailsComponent, canActivate: [loginGuard]},
             {path: 'ajustes', component: AjustesComponent, canActivate: [loginGuard]},
-            {path: 'demandas', component: DemandaprodutorComponent, canActivate: [loginGuard]}
+            {path: 'demandas', component: DemandaprodutorComponent, canActivate: [loginGuard]},
+            {path: 'myDemandas', component: MinhasdemandasComponent, canActivate: [loginGuard]}
 
         ]
     },{

@@ -1,32 +1,55 @@
 <div class="container-grupoprodutos-edit-new">
-    <div class="input-group-cadastro">
-        @if (produtoResponseUnique.id > 0) {
-        <label class="fw-bold label-title">EDIÇÃO DE PRODUTOS</label>
+  <div class="input-group-cadastro">
+    @if (produtoResponseUnique.id > 0) {
+      <label class="fw-bold label-title">EDIÇÃO DE PRODUTOS</label>
 
-        }@else {
-        <label class="fw-bold label-title">CADASTRO DE PRODUTOS</label>
-        }
+    } @else {
+      <label class="fw-bold label-title">CADASTRO DE PRODUTOS</label>
+    }
+    <div class="input-field">
+      <div class="d-flex gap">
         <div>
-            <label>Descrição do produto</label>
-            <input type="text" class="all-inputs" [(ngModel)]="produtoResponseUnique.nome"
-                placeholder="Informe a descrição do produto" />
+          <mdb-form-control>
+            <input mdbInput type="text" id="descricao" class="form-control all-inputs-menor"
+                   [(ngModel)]="produtoResponseUnique.nome" style="width: 500px;"/>
+            <label mdbLabel class="form-label" for="descricao">Descrição do produto</label>
+          </mdb-form-control>
         </div>
         <div>
-            <label>Valor de custo</label>
-            <input type="number" class="all-inputs-menor" [(ngModel)]="produtoResponseUnique.valorCompra"
-                placeholder="R$" required="Informe o valor" />
+          <mdb-form-control>
+            <input
+              style="width: 250px;"
+              mdbInput
+              type="text"
+              id="valorCompra"
+              class="form-control all-inputs-menor"
+              [(ngModel)]="produtoResponseUnique.valorCompra"
+              [mask]="'separator.2'"
+              prefix="R$ "
+              thousandSeparator="."
+              decimalMarker=","/>
+            <label mdbLabel class="form-label" for="valorCompra">Valor de venda</label>
+          </mdb-form-control>
+
         </div>
+      </div>
 
-
+      <div class="container-buttons">
         <div class="div-button d-flex">
-            <button class="btn btn-info button-sucesso" [routerLink]="['/admin/prefeitura/produto']">
-              <i class="fa-solid fa-arrow-left"></i> Voltar</button>
-            @if (produtoResponseUnique.id > 0) {
-            <button class="btn btn-success button-sucesso" (click)="postput()"><i class="fa-solid fa-floppy-disk"></i> Editar</button>
-            }
-            @else {
-            <button class="btn btn-success button-sucesso" (click)="postput()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
-            }
+          <button class="btn btn-info button-sucesso" [routerLink]="['/admin/prefeitura/produto']">
+            <i class="fa-solid fa-arrow-left"></i> Voltar
+          </button>
+          @if (produtoResponseUnique.id > 0) {
+            <button class="btn btn-success button-sucesso" (click)="postput()"><i class="fa-solid fa-floppy-disk"></i>
+              Editar
+            </button>
+          } @else {
+            <button class="btn btn-success button-sucesso" (click)="postput()"><i class="fa-solid fa-floppy-disk"></i>
+              Salvar
+            </button>
+          }
         </div>
+      </div>
     </div>
+  </div>
 </div>
