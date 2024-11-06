@@ -1,52 +1,41 @@
 <div class="container-grupo-produtos">
-    <div class="container-title">
-        <div class="div-button-back">
+  <div class="container-title">
+    <div class="div-button-back">
 
-            <button class="btn btn-success fw-bold" [routerLink]="['/admin/produtor/centraldados']">Voltar</button>
+      <button class="btn btn-success fw-bold" [routerLink]="['/admin/produtor/centraldados']">Voltar</button>
 
-        </div>
     </div>
+  </div>
 
-    <div class="container-pagination">
-        <div class="div-pagination">
-            <div class="div-pagination-internal">
-                <pagination-controls (pageChange)="page = $event" class="pagination text-dark"></pagination-controls>
-            </div>
-        </div>
-        <div class="div-dropdown">
-            <div class="div-pagination-setting">
-                <label class="label-itens">Itens por página:</label>
-                <select class="select-pagination" (change)="onItemsPerPageChange($event)" [value]="itemsPerPage">
-                    <option *ngFor="let option of pageSizeOptions" [value]="option">{{option}}</option>
-                </select>
-            </div>
-        </div>
+  <div class="container-pagination">
+    <div class="div-pagination">
+      <div class="div-pagination-internal">
+        <pagination-controls (pageChange)="page = $event" class="pagination text-dark"></pagination-controls>
+      </div>
     </div>
-
-    <div class="div-table">
-        <div class="div-internal-table">
-            <table border="1" class="table-grupoprodutos">
-                <thead>
-                    <tr class="titulo-table">
-                        <th class="rounded-left">Id</th>
-                        <th>E-mail</th>
-                        <th class="rounded-right">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="linha"
-                      *ngFor="let usuario of listUsuarios | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-                      <td class="rounded-left">{{usuario.id}}</td>
-                      <td>{{usuario.email}}</td>
-                      <td  class="rounded-right">
-                        <button class="btn btn-danger fw-bold button-acoes" (click)="recusar(usuario.id)">Recusar</button>
-                        <button class="btn btn-success fw-bold button-acoes" (click)="aceitar(usuario.id)">Aceitar</button>
-                      </td>
-                    </tr>
-                  </tbody>
-
-            </table>
-
-        </div>
+    <div class="div-dropdown">
+      <div class="div-pagination-setting">
+        <label class="label-itens">Itens por página:</label>
+        <select class="select-pagination" (change)="onItemsPerPageChange($event)" [value]="itemsPerPage">
+          <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
+        </select>
+      </div>
     </div>
+  </div>
+
+  <div class="d-flex flex-column ">
+    <div class="d-flex flex-row gap-3">
+      <div class="flex-grow-1 ms-4">Id</div>
+      <div class="flex-xxl-grow-1">E-mail</div>
+      <div class="flex-sm-grow-1">Ações</div>
+    </div>
+    <div class="d-flex flex-row gap-3" *ngFor="let usuario of listUsuarios | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+      <div class="flex-grow-1 ms-4">{{usuario.id}}</div>
+      <div class="flex-xxl-grow-1 ">{{usuario.email}}</div>
+      <div class="flex-sm-grow-1">
+        <button class="btn btn-danger fw-bold button-acoes" (click)="recusar(usuario.id)">Recusar</button>
+        <button class="btn btn-success fw-bold button-acoes" (click)="aceitar(usuario.id)">Aceitar</button>
+      </div>
+    </div>
+  </div>
 </div>

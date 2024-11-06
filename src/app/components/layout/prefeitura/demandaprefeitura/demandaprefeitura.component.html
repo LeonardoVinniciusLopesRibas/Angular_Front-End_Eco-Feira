@@ -2,9 +2,9 @@
 
   <div class="d-flex filter">
     <pagination-controls (pageChange)="page = $event" class="pagination text-dark"></pagination-controls>
-    <div class="select">
-      <label>Itens por página:</label>
-      <select (change)="onItemsPerPageChange($event)" [value]="itemsPerPage">
+    <div class="">
+      <label class="label">Itens por página:</label>
+      <select class="select" (change)="onItemsPerPageChange($event)" [value]="itemsPerPage">
         <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
       </select>
     </div>
@@ -69,43 +69,31 @@
     </div>
   </div>
 
-
-  <div class="div-table">
-    <div class="div-internal-table">
-      <table class="table-grupoprodutos">
-        <thead class="table-header">
-        <tr class="titulo-table">
-          <th class="rounded-left">Id</th>
-          <th>Descrição</th>
-          <th>Prazo Máximo</th>
-          <th>Valor</th>
-          <th class="rounded-right">Status</th>
-
-        </tr>
-        </thead>
-        <tbody class="table-body">
-        <tr
-          class="linha"
-          *ngFor="let demandaResponse of filteredDemandas | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index"
-        >
-          <td class="rounded-left">{{ demandaResponse.idDemanda }}</td>
-          <td>{{ demandaResponse.descricao }}</td>
-          <td>{{ demandaResponse.prazoMaximo | date:'dd/MM/yyyy' }}</td>
-          <td><i class="fa-solid fa-brazilian-real-sign"></i> &nbsp;{{ demandaResponse.valorTotalPrefeitura }}</td>
-          <td class="rounded-right">
-            <span [ngClass]="getStatusClass(demandaResponse.statusDemanda)"></span>
-            <span class="info-icon" (mouseenter)="showTooltip[demandaResponse.idDemanda] = true"
-                  (mouseleave)="showTooltip[demandaResponse.idDemanda] = false">
-            <i class="fas fa-info-circle"></i>
-              <div class="tooltip" *ngIf="showTooltip[demandaResponse.idDemanda]">
-                Verde: ABERTA<br>Azul: CONCLUÍDA<br>Vermelha: CANCELADA
-              </div>
-            </span>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-row gap-3 header">
+      <div class="column title column-id">Id</div>
+      <div class="column title column-descricao">Descrição</div>
+      <div class="column title column-prazomaximo">Prazo Máximo</div>
+      <div class="column title column-valor">Valor</div>
+      <div class="column column-valor"></div>
+    </div>
+    <div class="overflow-y-scroll table">
+      <div class="d-flex flex-row gap-3"*ngFor="let demandaResponse of filteredDemandas | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+        <div class="column column-id">{{ demandaResponse.idDemanda }}</div>
+        <div class="column column-descricao">{{ demandaResponse.descricao }}</div>
+        <div class="column column-prazomaximo">{{ demandaResponse.prazoMaximo | date:'dd/MM/yyyy' }}</div>
+        <div class="column column-valor">{{ demandaResponse.valorTotalPrefeitura }}</div>
+        <span [ngClass]="getStatusClass(demandaResponse.statusDemanda)"></span>
+        <span class="info-icon" (mouseenter)="showTooltip[demandaResponse.idDemanda] = true"
+              (mouseleave)="showTooltip[demandaResponse.idDemanda] = false">
+          <i class="fas fa-info-circle"></i>
+          <div class="tooltip" *ngIf="showTooltip[demandaResponse.idDemanda]">
+            Verde: ABERTA<br>Azul: CONCLUÍDA<br>Vermelha: CANCELADA
+          </div>
+        </span>
+      </div>
     </div>
   </div>
+
 
 </div>

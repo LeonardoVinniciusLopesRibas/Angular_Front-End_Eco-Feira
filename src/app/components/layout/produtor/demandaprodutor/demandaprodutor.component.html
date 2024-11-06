@@ -15,10 +15,10 @@
     <div class="peso-prazomaximo">{{ demandasListadas.prazoMaximo | date:'dd/MM/yyyy' }}</div>
     <div class="d-flex gap-1 peso-acoes">
       <div class="d-flex gap-3">
-        <button class="btn btn-secondary" (click)="aceitarDemanda(demandasListadas.idDemanda)">
+        <button class="btn btn-secondary aceitar" (click)="aceitarDemanda(demandasListadas.idDemanda)">
           <i class="fa-solid fa-check me-1"></i>Aceitar
         </button>
-        <button class="btn btn-secondary" (click)="abrirModalEspiar(demandasListadas.idDemanda)">
+        <button class="btn btn-secondary espiar" (click)="abrirModalEspiar(demandasListadas.idDemanda)">
           <i class="fa-solid fa-eye me-1"></i>Espiar
         </button>
       </div>
@@ -31,7 +31,7 @@
     <div class="d-flex">
       <h4>Produtos da Demanda</h4>
       <div class="button-fechar">
-        <button class="btn btn-secondary" (click)="fecharModalEspiar()">
+        <button class="btn btn-secondary btn-fechar" (click)="fecharModalEspiar()">
           <i class="fa-solid fa-xmark"></i>&nbsp;
         </button>
       </div>
