@@ -5,30 +5,30 @@
       <span class="d-none d-md-inline fonte">Eco-Feira</span>
     </button>
 
-    <div class="input-group mb-3 nav-item" (click)="toggleSubmenu('cadastro')">
+    <div class="input-group nav-item" (click)="toggleSubmenu('cadastro')" [class.active]="activeSubmenu === 'cadastro'">
       <i class="fa-solid fa-folder-plus icon"></i>
       <button class="nav-button">Cadastros</button>
     </div>
-    <div class="sub-menus" *ngIf="activeSubmenu === 'cadastro'">
+    <div class="sub-menus" *ngIf="activeSubmenu === 'cadastro'" [class.active]="activeSubmenu === 'cadastro'">
       <div class="submenu">
-        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/produto']">
+        <div class="input-group nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/produto']">
           <i class="fa-solid fa-boxes-stacked icon"></i>
           <button class="nav-button" style="color: #fff;">Produto</button>
         </div>
-        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/usuarios']">
+        <div class="input-group  nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/usuarios']">
           <i class="fa-solid fa-user icon"></i>
           <button class="nav-button" style="color: #fff;">Usuário</button>
         </div>
       </div>
     </div>
 
-    <div class="input-group mb-3 nav-item" (click)="toggleSubmenu('demanda')">
+    <div class="input-group mt-3 nav-item" (click)="toggleSubmenu('demanda')" [class.active]="activeSubmenu === 'demanda'">
       <i class="fa-solid fa-apple-whole icon"></i>
       <button class="nav-button">Demandas</button>
     </div>
-    <div class="sub-menus" *ngIf="activeSubmenu === 'demanda'">
+    <div class="sub-menus" *ngIf="activeSubmenu === 'demanda'" [class.active]="activeSubmenu === 'demanda'">
       <div class="submenu">
-        <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/demanda']">
+        <div class="input-group  nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/prefeitura/demanda']">
           <i class="fa-solid fa-eye icon"></i>
           <button class="nav-button" style="color: #fff;">Ver</button>
         </div>
@@ -38,6 +38,7 @@
         </div>
       </div>
     </div>
+    &nbsp;
 
     <div class="input-group mb-3 nav-item" [routerLink]="['/admin/prefeitura/ajustes']">
       <i class="fa-solid fa-gear icon"></i>

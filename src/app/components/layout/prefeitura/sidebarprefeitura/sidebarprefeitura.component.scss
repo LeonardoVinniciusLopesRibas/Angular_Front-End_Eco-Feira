@@ -14,8 +14,6 @@
     height: auto;
 }
 
-
-
 .nav-item {
     display: block;
     align-items: center;
@@ -25,6 +23,21 @@
     border-radius: 15px;
 }
 
+.nav-item.active {
+  background-color: #0da90a;
+  color: #fff;
+  padding-left: 20px;
+  transition: background-color 0.3s, padding-left 0.3s;
+  margin-bottom: 0;
+}
+
+.sub-menus.open {
+  max-height: 500px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
 .cor-branca-icon{
   color: #fff;
 }
@@ -33,6 +46,17 @@
     background-color: #0da90a;
     padding-left: 20px;
   color: #fff;
+}
+
+.nav-item.active {
+  background-color: #0a9c0d; /* Cor de fundo para o botão pai quando ativo */
+  color: #fff; /* Altere a cor do texto se necessário */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.nav-item.active:hover {
+  background-color: #0da90a; /* Cor ao passar o mouse quando o submenu está ativo */
 }
 
 .icon {
@@ -50,8 +74,17 @@
 }
 
 .sub-menus {
-    background-color: #21CF1D;
-    border-radius: 15px;
+  background-color: #21CF1D;
+  border-radius: 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.sub-menus.active {
+  max-height: 500px; /* Expande o submenu com animação (ajuste conforme o conteúdo) */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .bt-interno{

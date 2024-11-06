@@ -35,6 +35,11 @@
   color: #fff;
 }
 
+.bt-internal{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .icon {
   padding-right: 10px;
   font-size: 16px;
@@ -69,12 +74,16 @@
   color: #21CF1D;
 }
 
-.submenu {
-  //padding: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+
+.sub-menus.active {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
+.nav-item.active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
 
 .sidebar {
@@ -100,4 +109,9 @@
   color: inherit;
 }
 
-
+.nav-item.active {
+  background-color: #0da90a;
+  color: #fff;
+  padding-left: 20px;
+  transition: background-color 0.3s, padding-left 0.3s;
+}

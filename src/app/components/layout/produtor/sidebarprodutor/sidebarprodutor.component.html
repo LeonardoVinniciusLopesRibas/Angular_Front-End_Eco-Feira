@@ -5,36 +5,37 @@
       <span class="d-none d-md-inline fonte">Eco-Feira</span>
     </button>
     <div>
-      <div class="input-group mb-3 nav-item" (click)="toggleSubmenu('cadastro')">
+      <div class="input-group  nav-item" (click)="toggleSubmenu('cadastro')" [class.active]="activeSubmenu === 'cadastro'">
         <i class="fa-solid fa-folder-plus icon"></i>
         <button class="nav-button">Cadastros</button>
       </div>
 
-      <div class="sub-menus" *ngIf="activeSubmenu === 'cadastro'">
+      <div class="sub-menus" *ngIf="activeSubmenu === 'cadastro'" [class.active]="activeSubmenu === 'cadastro'">
         <div class="submenu">
-          <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/usuarios']">
+          <div class="input-group mb-3 bt-internal nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/usuarios']">
             <i class="fa-solid fa-user icon"></i>
             <button class="nav-button" style="color: #fff;">Usuário</button>
           </div>
         </div>
       </div>
-      <div class="input-group mb-3 nav-item" (click)="toggleSubmenu('demanda')">
+
+      <div class="input-group mt-3 nav-item" (click)="toggleSubmenu('demanda')" [class.active]="activeSubmenu === 'demanda'">
         <i class="fa-solid fa-apple-whole icon"></i>
         <button class="nav-button">Demanda</button>
       </div>
-      <div class="sub-menus" *ngIf="activeSubmenu === 'demanda'">
+      <div class="sub-menus" *ngIf="activeSubmenu === 'demanda'" [class.active]="activeSubmenu === 'demanda'">
         <div class="submenu">
-          <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/demandas']">
+          <div class="input-group mb-3 bt-internal nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/demandas']">
             <i class="fa-solid fa-eye icon"></i>
             <button class="nav-button" style="color: #fff;">Ao Vivo</button>
           </div>
-          <div class="input-group mb-3 nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/myDemandas']">
+          <div class="input-group mb-3 bt-internal nav-item bt-interno cor-branca-icon" [routerLink]="['/admin/produtor/myDemandas']">
             <i class="fa-solid fa-user-tie icon"></i>
             <button class="nav-button" style="color: #fff;">Minhas Demandas</button>
           </div>
         </div>
       </div>
-      <div class="input-group mb-3 nav-item" [routerLink]="['/admin/produtor/ajustes']">
+      <div class="input-group mb-3 mt-3 nav-item" [routerLink]="['/admin/produtor/ajustes']">
         <i class="fa-solid fa-gear icon"></i>
         <button class="nav-button">Ajustes</button>
       </div>
