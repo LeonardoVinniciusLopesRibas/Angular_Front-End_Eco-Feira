@@ -5,9 +5,131 @@
   height: 700px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-  overflow-y: auto;
+
   font-family: Arial, sans-serif;
   background-color: #fdfdfd;
   color: #555;
   flex-direction: column;
+}
+
+.over{
+  overflow-y: auto;
+  height: 600px;
+}
+
+.zebra {
+  background-color: #f8f9fa;
+}
+
+.shadow-sm:hover {
+  background-color: #e2e6ea;
+  cursor: pointer;
+}
+
+.status-aberta {
+  display: inline-block;
+  width: 50px;
+  height: 10px;
+  background-color: green;
+}
+
+.status-concluida {
+  display: inline-block;
+  width: 50px;
+  height: 10px;
+  background-color: blue;
+}
+
+.status-cancelada {
+  display: inline-block;
+  width: 50px;
+  height: 10px;
+  background-color: red;
+}
+
+.btn-check-aberta {
+  background-color: green;
+  color: white;
+}
+
+.btn-check-cancelada {
+  background-color: red;
+  color: white;
+}
+
+.btn-check-concluida {
+  background-color: blue;
+  color: white;
+}
+
+.btn-check-aberta:hover {
+  background-color: #02a202;
+  color: white;
+}
+
+.btn-check-cancelada:hover {
+  background-color: #fa1a1a;
+  color: white;
+}
+
+.btn-check-concluida:hover {
+  background-color: #2222ff;
+  color: white;
+}
+
+input[type="radio"]:checked + .btn-check-aberta {
+  background-color: #008000;
+  border: 2px solid #004d00;
+  color: white;
+}
+
+input[type="radio"]:checked + .btn-check-cancelada {
+  background-color: #cc0000;
+  border: 2px solid #990000;
+  color: white;
+}
+
+input[type="radio"]:checked + .btn-check-concluida {
+  background-color: #0000cc;
+  border: 2px solid #000099;
+  color: white;
+}
+
+.info-icon {
+  position: relative;
+  margin-left: 8px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.info-icon:hover {
+  color: #0056b3;
+}
+
+.tooltip {
+  position: fixed;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1000;
+  width: 200px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.peso-id{
+  width: 80px;
+}
+
+.peso-descricao{
+  width: 600px;
+}
+
+.peso-prazo .peso-valortotal{
+  width: 300px;
+}
+
+.peso-info{
+  margin-left: 250px;
 }

@@ -4,5 +4,6 @@ export class Demandaprodutosassociadosunique {
   produtoPrefeitura!: string;
   quantidade!: number;
   valorPrefeitura!: number;
+  saldo!: number;
 
 }

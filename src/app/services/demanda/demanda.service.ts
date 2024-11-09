@@ -91,4 +91,11 @@ export class DemandaService {
     return this.http.get<DemandaDtoResponse[]>(`${API_BASE_URL}api/demanda/getDemandasByIbge/${ibge}/${idEmpresa}`, {headers});
   }
 
+  getDemandasToProductor(idEmpresa: number): Observable<DemandaDtoResponse[]>{
+    const token = this.loginService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<DemandaDtoResponse[]>(`${this.API}/get/demandas/do/produtor/${idEmpresa}`, {headers});
+  }
+
 }

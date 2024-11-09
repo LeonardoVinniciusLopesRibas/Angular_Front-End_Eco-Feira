@@ -42,6 +42,7 @@
         <th>Produto</th>
         <th>Quantidade</th>
         <th>Preço Unitário</th>
+        <th>Atendido</th>
       </tr>
       </thead>
       <tbody>
@@ -49,6 +50,7 @@
         <td>{{ produto.produtoPrefeitura }}</td>
         <td>{{ produto.quantidade }}</td>
         <td>{{ produto.valorPrefeitura | currency:'BRL' }}</td>
+        <td>{{ produto.saldo}}%</td>
       </tr>
       </tbody>
     </table>

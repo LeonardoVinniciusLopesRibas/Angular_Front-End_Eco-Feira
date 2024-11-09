@@ -10,5 +10,6 @@ export class Demandaprodutosassociados {
   prefeitura!: Prefeituraassociation;
   quantidade!: number;
   valorPrefeitura!: number;
+  saldo!: number;
 
 }

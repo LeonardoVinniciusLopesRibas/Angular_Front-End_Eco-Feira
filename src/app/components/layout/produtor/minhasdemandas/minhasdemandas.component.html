@@ -1,5 +1,40 @@
 <div class="container-demandas">
 
-
+  <div class="d-flex flex-column">
+    <div class="fw-bold text-center">
+      Minhas Demandas
+    </div>
+    <div class="over">
+      <div class="shadow-sm m-3 p-2" *ngFor="let myDemandas of demandaDtoResponse; let i = index"
+           [ngClass]="{'zebra': i % 2 === 0}">
+        <div class="d-flex flex-row p-3" [routerLink]="['/admin/produtor/atender/gerenciar/'+myDemandas.idDemanda]">
+          <div class="mt-4 peso-id">
+            Id: {{ myDemandas.idDemanda }}
+          </div>
+          <div class="mt-4 fw-bold peso-descricao">
+            Descrição: {{ myDemandas.descricao }}
+          </div>
+          <div class="d-flex flex-column">
+            <div class="m-2 peso-valortotal">
+              Valor: {{ myDemandas.valorTotalPrefeitura | currency:'BRL' }}
+            </div>
+            <div class="m-2 peso-prazo">
+              Prazo máximo: {{ myDemandas.prazoMaximo | date:'dd/MM/yyyy' }}
+            </div>
+          </div>
+          <div class="mt-4 peso-info">
+            <span [ngClass]="getStatusClass(myDemandas.statusDemanda)" class="mt-2"></span>
+            <span class="info-icon" (mouseenter)="showTooltip[myDemandas.idDemanda] = true"
+                  (mouseleave)="showTooltip[myDemandas.idDemanda] = false">
+          <i class="fas fa-info-circle"></i>
+          <div class="tooltip" *ngIf="showTooltip[myDemandas.idDemanda]">
+            Verde: ABERTA<br>Azul: CONCLUÍDA<br>Vermelha: CANCELADA
+          </div>
+        </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

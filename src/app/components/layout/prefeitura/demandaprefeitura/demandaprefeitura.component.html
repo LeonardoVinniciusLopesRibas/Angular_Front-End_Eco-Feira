@@ -8,7 +8,7 @@
         <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
       </select>
     </div>
-    <div>
+    <div class="margin-button-new">
       <button class="btn btn-warning fw-bold" [routerLink]="['/admin/prefeitura/demanda/new']">
         <i class="fa-solid fa-plus"></i>
       </button>
@@ -81,7 +81,6 @@
       <div class="d-flex flex-row gap-3"*ngFor="let demandaResponse of filteredDemandas | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
         <div class="column column-id">{{ demandaResponse.idDemanda }}</div>
         <div class="column column-descricao">{{ demandaResponse.descricao }}</div>
-        <div class="column column-prazomaximo">{{ demandaResponse.prazoMaximo | date:'dd/MM/yyyy' }}</div>
         <div class="column column-valor">{{ demandaResponse.valorTotalPrefeitura }}</div>
         <span [ngClass]="getStatusClass(demandaResponse.statusDemanda)"></span>
         <span class="info-icon" (mouseenter)="showTooltip[demandaResponse.idDemanda] = true"

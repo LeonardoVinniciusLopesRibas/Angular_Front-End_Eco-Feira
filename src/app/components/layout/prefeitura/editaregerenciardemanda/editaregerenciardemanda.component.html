@@ -39,8 +39,10 @@
     <div class="produtos-list">
       <div class="produto" *ngFor="let demandaproduto of demandaprodutoassociadosunique; let i = index" [ngClass]="{'zebrado': i % 2 === 0}">
         <div class="d-flex">
-          <div class="produto-id">ID: {{ demandaproduto.idDemandaProduto }}</div>
-          <div class="produto-nome">Produto: {{ demandaproduto.produtoPrefeitura }}</div>
+          <div class="produto-id mt-3">ID: {{ demandaproduto.idDemandaProduto }}</div>
+          <div class="produto-nome mt-3">Produto: {{ demandaproduto.produtoPrefeitura }}</div>
+          <div class="flex-grow-1"></div>
+          <div class="fw-bold mt-3">Atendido: {{demandaproduto.saldo}}%</div>
           <div class="flex-grow-1"></div>
           <div class="button-container mt-auto justify-content-end">
             <div class="produto-quantidade">Quantidade: {{ demandaproduto.quantidade }}</div>
