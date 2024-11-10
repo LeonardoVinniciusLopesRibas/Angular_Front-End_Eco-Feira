@@ -1,9 +1,11 @@
-import { Component, ElementRef, HostListener, inject } from '@angular/core';
-import { Demandaresponseunique } from '../../../../model/demanda/dto/demandaresponseunique';
-import { StatusDemanda } from '../../../../enum/status-demanda';
-import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { Demandaprodutosassociadosunique } from '../../../../model/demandaprodutosassociados/dto/demandaprodutosassociadosunique';
+import {Component, ElementRef, HostListener, inject, OnInit} from '@angular/core';
+import {Demandaresponseunique} from '../../../../model/demanda/dto/demandaresponseunique';
+import {StatusDemanda} from '../../../../enum/status-demanda';
+import {ActivatedRoute} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {
+  Demandaprodutosassociadosunique
+} from '../../../../model/demandaprodutosassociados/dto/demandaprodutosassociadosunique';
 import {FormsModule} from "@angular/forms";
 import Swal from "sweetalert2";
 import {DemandaService} from "../../../../services/demanda/demanda.service";
@@ -17,7 +19,7 @@ import {NotificationSwal} from "../../../../util/NotificationSwal";
   templateUrl: './editaregerenciardemanda.component.html',
   styleUrl: './editaregerenciardemanda.component.scss',
 })
-export class EditaregerenciardemandaComponent {
+export class EditaregerenciardemandaComponent implements OnInit {
   demandaResponseUnique: Demandaresponseunique = new Demandaresponseunique();
   activatedRoute = inject(ActivatedRoute);
   demandaprodutoassociadosunique: Demandaprodutosassociadosunique[] = [];
@@ -28,6 +30,7 @@ export class EditaregerenciardemandaComponent {
   demandaService = inject(DemandaService);
   id!: number;
   demandarequestput: Demandarequestput = new Demandarequestput();
+  isMonitoring: boolean = false;
 
   constructor(private eRef: ElementRef) {
 
@@ -38,6 +41,32 @@ export class EditaregerenciardemandaComponent {
       this.findProducts(id);
     }
 
+  }
+
+  ngOnInit() {
+    this.startMonitoring();
+  }
+
+
+  startMonitoring() {
+    if (!this.isMonitoring) {
+      this.isMonitoring = true;
+      setInterval(() => {
+        this.monitorSaldo();
+      }, 1000);
+    }
+  }
+
+  monitorSaldo() {
+    let allProductsCompleted = this.demandaprodutoassociadosunique.every((produto) => produto.saldo === 100);
+
+    if (allProductsCompleted) {
+      this.concluirDemandaAutomaticamente();
+    }
+  }
+
+  isCancelarDisabled(): boolean {
+    return this.demandaprodutoassociadosunique.some(produto => produto.saldo > 0);
   }
 
   findById(id: number) {
@@ -51,7 +80,7 @@ export class EditaregerenciardemandaComponent {
     });
   }
 
-  findProducts(idDemanda: number){
+  findProducts(idDemanda: number) {
     this.demandaService.getProducts(idDemanda).subscribe({
       next: value => {
         this.demandaprodutoassociadosunique = value;
@@ -78,7 +107,7 @@ export class EditaregerenciardemandaComponent {
   opcaoSelecionada(opcao: string) {
     console.log(`Opção selecionada: ${opcao}`);
 
-    switch(opcao) {
+    switch (opcao) {
       case 'EstenderPrazo':
         this.abrirModal();
         break;
@@ -153,7 +182,7 @@ export class EditaregerenciardemandaComponent {
           next: value => {
             NotificationSwal.swalFire("Demanda cancelada com sucesso.", "success");
           }
-          ,error: err => {
+          , error: err => {
             console.log('O erro é: ', err);
           }
         })
@@ -173,7 +202,26 @@ export class EditaregerenciardemandaComponent {
       confirmButtonText: "Sim, concluir!",
     }).then((result) => {
       if (result.isConfirmed) {
-        alert('aaa')
+        this.demandaService.putConcluido(this.id).subscribe({
+          next: () => {
+            NotificationSwal.swalFire("Demanda concluída com sucesso.", "success");
+          },
+          error: err => {
+            console.error('Erro ao concluir demanda', err);
+          }
+        });
+      }
+    });
+  }
+
+  concluirDemandaAutomaticamente() {
+    this.demandaService.putConcluido(this.id).subscribe({
+      next: () => {
+        this.findById(this.id);
+        this.findProducts(this.id);
+      },
+      error: err => {
+        console.error('Erro ao concluir demanda', err);
       }
     });
   }
@@ -190,7 +238,6 @@ export class EditaregerenciardemandaComponent {
         return '';
     }
   }
-
 
 
 }

@@ -136,6 +136,11 @@
 
 .produto-nome{
   margin-left: 15px;
+  width: 200px;
+}
+
+.produto-atendido{
+  width: 300px;
 }
 
 .produto.zebrado {
@@ -150,4 +155,10 @@
   text-align: center;
   margin-top: 10px;
   width: 100%;
+}
+
+.dropdown li.disabled {
+  cursor: not-allowed;
+  color: #d3d3d3;
+  pointer-events: none;
 }

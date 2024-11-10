@@ -84,6 +84,14 @@ export class DemandaService {
       responseType: 'text', });
   }
 
+  putConcluido(id: number): Observable<any> {
+    const token = this.loginService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.API}/put/concluido/${id}`, null, { headers,observe: 'response',
+      responseType: 'text', });
+  }
+
   getByIbge(ibge: number, idEmpresa: number): Observable<DemandaDtoResponse[]>{
     const token = this.loginService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

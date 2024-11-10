@@ -81,6 +81,7 @@
       <div class="d-flex flex-row gap-3"*ngFor="let demandaResponse of filteredDemandas | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
         <div class="column column-id">{{ demandaResponse.idDemanda }}</div>
         <div class="column column-descricao">{{ demandaResponse.descricao }}</div>
+        <div class="column column-prazomaximo">{{demandaResponse.prazoMaximo | date:"dd/MM/yyyy"}} </div>
         <div class="column column-valor">{{ demandaResponse.valorTotalPrefeitura }}</div>
         <span [ngClass]="getStatusClass(demandaResponse.statusDemanda)"></span>
         <span class="info-icon" (mouseenter)="showTooltip[demandaResponse.idDemanda] = true"
