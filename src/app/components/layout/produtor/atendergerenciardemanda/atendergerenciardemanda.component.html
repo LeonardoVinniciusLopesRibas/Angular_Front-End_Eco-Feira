@@ -1,1 +1,52 @@
-<p>atendergerenciardemanda works!</p>
+<div class="container-demandas">
+  <div class="fw-bold text-center">Gerenciar demanda</div>
+
+  <div *ngIf="demandaResponseUnique">
+    <div class="shadow-sm p-3 m-3">
+      <div class="d-flex flex-row">
+        <div class="peso-id">Id: {{ demandaResponseUnique.id }}</div>
+        <div class="peso-descricao">Descrição: {{ demandaResponseUnique.descricao }}</div>
+        <div class="d-flex flex-column peso-combo">
+          <div>Prazo máximo: {{ demandaResponseUnique.prazoMaximo | date:'dd/MM/yyyy' }}</div>
+          <div>Valor total:{{ demandaResponseUnique.valorTotalPrefeitura | currency:'BRL' }}</div>
+        </div>
+      </div>
+
+
+      <div class="demanda-table">
+        <div class="row-header">
+          <div class="cell cell-id">Id</div>
+          <div class="cell cell-desc">Descrição</div>
+          <div class="cell cell-quantidade">Quantidade</div>
+          <div class="cell cell-atendido">% Atendido</div>
+          <div class="cell cell-atendido">Atendido</div>
+          <div class="cell cell-valor">Valor</div>
+        </div>
+
+        <div *ngFor="let produtos of demandaProdutos" class="row-item">
+          <div class="cell cell-id">{{ produtos.idDemandaProduto }}</div>
+          <div class="cell cell-desc">{{ produtos.produtoPrefeitura }}</div>
+          <div class="cell cell-quantidade">{{ produtos.quantidade }}</div>
+          <div class="cell cell-atendido">{{ produtos.saldo }}%</div>
+          <div class="cell cell-atendido">
+            {{ getQuantidadeAtendida(produtos) }}
+          </div>
+          <div class="cell cell-valor">{{ produtos.valorPrefeitura | currency: 'BRL' }}</div>
+          <mdb-form-control>
+            <input mdbInput type="number" id="quantidade-{{produtos.idDemandaProduto}}"
+                   class="form-control" [(ngModel)]="quantidadeMap[produtos.idDemandaProduto]" />
+            <label mdbLabel class="form-label" for="quantidade-{{produtos.idDemandaProduto}}">
+              Informe a quantidade
+            </label>
+          </mdb-form-control>
+        </div>
+      </div>
+
+      <div class="button-sucess">
+        <button class="btn btn-success" (click)="atender()"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Atender</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
