@@ -91,6 +91,8 @@ export class AtendergerenciardemandaComponent {
         ).subscribe({
           next: response => {
             NotificationSwal.swalFire(`Produto atendido com sucesso!`, 'success');
+            this.findDemanda(this.id);
+            this.getProducts(this.id);
           },
           error: err => {
             console.error(`Erro ao atender produto ${produto.idDemandaProduto}:`, err);
