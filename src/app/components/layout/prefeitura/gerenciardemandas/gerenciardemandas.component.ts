@@ -131,6 +131,15 @@ export class GerenciardemandasComponent {
     try {
       this.gerenciarDemanda.valorTotalPrefeitura = this.calcularValorTotal();
 
+      const dataAtual = new Date();
+      const novaDataSelecionada = new Date(this.gerenciarDemanda.prazoMaximo);
+
+      if (novaDataSelecionada <= dataAtual) {
+        NotificationSwal.swalFire("A nova data precisa ser maior que a atual.", "info");
+        return;
+      }
+
+
       if ((this.gerenciarDemanda.descricao || '').trim().length === 0) {
         await Swal.fire({
           icon: 'error',
