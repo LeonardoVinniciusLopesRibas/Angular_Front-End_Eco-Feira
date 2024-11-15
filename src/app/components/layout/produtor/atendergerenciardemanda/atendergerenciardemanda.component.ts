@@ -82,6 +82,11 @@ export class AtendergerenciardemandaComponent {
         return;
       }
 
+      if (quantidade < 0) {
+        NotificationSwal.swalFire("A quantidade não pode ser negativa", "error");
+        return;
+      }
+
       if (quantidade > 0) {
         this.demandaQuantidadeAssociaProdutor.atende(
           this.idProdutor,
@@ -108,20 +113,3 @@ export class AtendergerenciardemandaComponent {
     return Math.round(quantidadeTotal * percentualAtendido);
   }
 }
-
-
-/*
-* this.demandaProdutos.forEach(produto => {
-      const quantidade = produto.quantidade; // quantidade informada no input
-      if (quantidade > 0) {
-        this.demandaQuantidadeAssociaProdutor.atende(
-          this.idProdutor,
-          this.id,
-          produto.idDemandaProduto,
-          quantidade
-        ).subscribe({
-          next: () => NotificationSwal.swalFire("Sucesso", "success"),
-          error: err => console.error(`Erro ao atender produto ${produto.idDemandaProduto}:`, err)
-        });
-      }
-    });*/

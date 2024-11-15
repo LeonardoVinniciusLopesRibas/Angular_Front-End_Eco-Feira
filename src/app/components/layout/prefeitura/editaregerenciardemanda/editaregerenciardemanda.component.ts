@@ -11,6 +11,12 @@ import Swal from "sweetalert2";
 import {DemandaService} from "../../../../services/demanda/demanda.service";
 import {Demandarequestput} from "../../../../model/demanda/dto/demandarequestput";
 import {NotificationSwal} from "../../../../util/NotificationSwal";
+import {
+  DemandaquantidadeatendeprodutorService
+} from "../../../../services/demandaquantidadeatendeprodutor/demandaquantidadeatendeprodutor.service";
+import {
+  Demandaquantidadeatendidaresponselist
+} from "../../../../model/demandaquantidadeatendidaprodutor/dto/demandaquantidadeatendidaresponselist";
 
 @Component({
   selector: 'app-editaregerenciardemanda',
@@ -25,12 +31,16 @@ export class EditaregerenciardemandaComponent implements OnInit {
   demandaprodutoassociadosunique: Demandaprodutosassociadosunique[] = [];
   isDropdownOpen: boolean[] = [];
   mostrarModal: boolean = false;
+  mostrarModal2: boolean = false;
   novaData: string = '';
   descricao!: string;
   demandaService = inject(DemandaService);
   id!: number;
   demandarequestput: Demandarequestput = new Demandarequestput();
   isMonitoring: boolean = false;
+  demandaQuantidadeAtendeProdutor = inject(DemandaquantidadeatendeprodutorService);
+  quantidadeAtendida: Demandaquantidadeatendidaresponselist[] = [];
+
 
   constructor(private eRef: ElementRef) {
 
@@ -62,6 +72,8 @@ export class EditaregerenciardemandaComponent implements OnInit {
 
     if (allProductsCompleted) {
       this.concluirDemandaAutomaticamente();
+    }else{
+      this.abrirDemandaAutomaticamente();
     }
   }
 
@@ -131,6 +143,36 @@ export class EditaregerenciardemandaComponent implements OnInit {
 
   fecharModal() {
     this.mostrarModal = false;
+  }
+
+
+  abrirModal2(idDemandaProduto: number): void {
+    // Buscar os dados de atendimento e abrir o modal
+    this.demandaQuantidadeAtendeProdutor.getAtendimento(this.demandaResponseUnique.id, idDemandaProduto).subscribe({
+      next: value => {
+        this.quantidadeAtendida = value; // Atualiza a lista com os dados retornados
+        this.mostrarModal2 = true; // Exibe o modal
+      },
+      error: (err) => {
+        console.error('Erro ao carregar atendimentos:', err);
+      }
+    });
+  }
+  fecharModal2(): void {
+    this.mostrarModal2 = false; // Fecha o modal
+  }
+
+  excluirAtendimento(id: number, quantidade: number): void {
+    // Chamar o serviço para excluir o atendimento
+    this.demandaQuantidadeAtendeProdutor.deletarAtendimento(id, this.demandaResponseUnique.id, quantidade).subscribe({
+      next: () => {
+        // Remove o item excluído da lista local
+        this.quantidadeAtendida = this.quantidadeAtendida.filter(item => item.id !== id);
+      },
+      error: (err) => {
+        console.error('Erro ao excluir atendimento:', err);
+      }
+    });
   }
 
   editarSalvar() {
@@ -226,6 +268,18 @@ export class EditaregerenciardemandaComponent implements OnInit {
     });
   }
 
+  abrirDemandaAutomaticamente() {
+    this.demandaService.putAberto(this.id).subscribe({
+      next: () => {
+        this.findById(this.id);
+        this.findProducts(this.id);
+      },
+      error: err => {
+        console.error('Erro ao abrir demanda', err);
+      }
+    });
+  }
+
   getStatusClass(status: string) {
     switch (status) {
       case 'ABERTA':
@@ -238,6 +292,5 @@ export class EditaregerenciardemandaComponent implements OnInit {
         return '';
     }
   }
-
 
 }

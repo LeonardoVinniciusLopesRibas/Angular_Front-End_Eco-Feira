@@ -7,7 +7,7 @@ import {DemandaService} from "../demanda/demanda.service";
 })
 export class MonitoramentoDemandaService {
 
-  private isMonitoring: boolean = false;
+  /*private isMonitoring: boolean = false;
   private demandaConcluidaSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private demandaService: DemandaService) {}
@@ -49,5 +49,5 @@ export class MonitoramentoDemandaService {
 
   get demandaConcluida$() {
     return this.demandaConcluidaSubject.asObservable();
-  }
+  }*/
 }

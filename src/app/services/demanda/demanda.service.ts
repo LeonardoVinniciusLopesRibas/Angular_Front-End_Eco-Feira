@@ -37,6 +37,13 @@ export class DemandaService {
     return this.http.get<DemandaDtoResponse[]>(`${this.API}/getAberta?idPrefeitura=${idPrefeitura}`, {headers});
   }
 
+  getFechada(idPrefeitura: number): Observable<DemandaDtoResponse[]> {
+    const token = this.loginService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<DemandaDtoResponse[]>(`${this.API}/getFechada?idPrefeitura=${idPrefeitura}`, {headers});
+  }
+
   post(demandaDtoRequest: DemandaDtoRequest): Observable<number> {
     const token = this.loginService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -89,6 +96,14 @@ export class DemandaService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.put(`${this.API}/put/concluido/${id}`, null, { headers,observe: 'response',
+      responseType: 'text', });
+  }
+
+  putAberto(id: number): Observable<any> {
+    const token = this.loginService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.API}/put/aberto/${id}`, null, { headers,observe: 'response',
       responseType: 'text', });
   }
 

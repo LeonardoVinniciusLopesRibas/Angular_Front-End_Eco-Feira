@@ -29,6 +29,7 @@ import {MinhasdemandasComponent} from "./components/layout/produtor/minhasdemand
 import {
   AtendergerenciardemandaComponent
 } from "./components/layout/produtor/atendergerenciardemanda/atendergerenciardemanda.component";
+import {DemandaconcluidaComponent} from "./components/layout/prefeitura/demandaconcluida/demandaconcluida.component";
 
 
 export const routes: Routes = [
@@ -58,7 +59,8 @@ export const routes: Routes = [
       {path: 'produto/edit/:id', component: ProdutoprefeituraeditnewComponent, canActivate: [loginGuard]},
       {path: 'usuarios', component: UsuarioprefeituradetailsComponent, canActivate: [loginGuard]},
       {path: 'ajustes', component: AjustesprefeituraComponent, canActivate: [loginGuard]},
-      {path: 'gerenciareeditardemanda/:id', component: EditaregerenciardemandaComponent, canActivate: [loginGuard]}
+      {path: 'gerenciareeditardemanda/:id', component: EditaregerenciardemandaComponent, canActivate: [loginGuard]},
+      {path: 'demandas/concluida', component: DemandaconcluidaComponent, canActivate: [loginGuard]}
 
     ]
   }

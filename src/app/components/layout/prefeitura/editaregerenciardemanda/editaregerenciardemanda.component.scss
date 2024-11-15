@@ -162,3 +162,24 @@
   color: #d3d3d3;
   pointer-events: none;
 }
+
+
+.header > div, .row-item > div {
+  flex: 1;
+}
+
+.header {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.row-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.row-item div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
