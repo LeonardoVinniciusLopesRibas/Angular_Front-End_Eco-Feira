@@ -32,6 +32,13 @@
           </mdb-form-control>
 
         </div>
+        <div>
+          <div>
+            <select class="select all-inputs-menor" [(ngModel)]="produtoResponseUnique.unidadeMedida">
+              <option *ngFor="let option of unidadeMedida" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div class="container-buttons">

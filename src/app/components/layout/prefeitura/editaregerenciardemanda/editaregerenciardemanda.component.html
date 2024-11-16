@@ -24,12 +24,7 @@
                 [class.disabled]="isCancelarDisabled()">
                 Cancelar Demanda
               </li>
-              <li
-                (click)="opcaoSelecionada('Concluir')"
-                [class.disabled]="demandaResponseUnique.statusDemanda === 'CONCLUIDA'"
-                [ngClass]="{'disabled': demandaResponseUnique.statusDemanda === 'CONCLUIDA'}">
-                Concluir Demanda
-              </li>
+
             </ul>
           </div>
         </div>
@@ -55,7 +50,7 @@
           <div class="fw-bold mt-3 produto-atendido">Atendido: {{demandaproduto.saldo}}%</div>
           <div class="flex-grow-1"></div>
           <div class="button-container mt-auto justify-content-end">
-            <div class="produto-quantidade">Quantidade: {{ demandaproduto.quantidade }}</div>
+            <div class="produto-quantidade">Quantidade: {{ demandaproduto.quantidade }}{{demandaproduto.unidadeMedida}}</div>
             <div class="produto-valor">Valor Unitário: R{{ demandaproduto.valorPrefeitura | currency }}</div>
           </div>
           <div>
@@ -124,7 +119,7 @@
             <div class=" ">{{ item.id }}</div>
             <div class="ms-3 content">{{ item.produtor }}</div>
             <div class="ms-3 content">{{ item.cnpj }}</div>
-            <div class="ms-3 content">{{ item.quantidade }}</div>
+            <div class="ms-3 content">{{ item.quantidade}}{{item.unidadeMedida}}</div>
             <div class="ms-3 content">
               <button class="btn btn-danger btn-sm" (click)="excluirAtendimento(item.id, item.quantidade)">
                 Excluir

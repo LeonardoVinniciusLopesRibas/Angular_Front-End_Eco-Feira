@@ -126,9 +126,6 @@ export class EditaregerenciardemandaComponent implements OnInit {
       case 'Cancelar':
         this.cancelarDemanda();
         break;
-      case 'Concluir':
-        this.concluirDemanda();
-        break;
       default:
         console.warn('Opção não reconhecida');
         break;

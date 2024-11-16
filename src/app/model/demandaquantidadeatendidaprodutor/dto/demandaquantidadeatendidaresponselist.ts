@@ -1,4 +1,5 @@
 import {Empresaassociation} from "../../empresa/empresaassociation";
+import {Unidademedida} from "../../../enum/unidademedida";
 
 export class Demandaquantidadeatendidaresponselist {
 
@@ -6,5 +7,6 @@ export class Demandaquantidadeatendidaresponselist {
   produtor!: string;
   cnpj!: string;
   quantidade!: number;
+  unidadeMedida!: Unidademedida;
 
 }

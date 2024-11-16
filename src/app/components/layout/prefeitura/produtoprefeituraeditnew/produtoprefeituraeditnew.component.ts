@@ -10,6 +10,7 @@ import { Produtoprefeiturarequest } from '../../../../model/produtoprefeitura/dt
 import { Produtoprefeituraresponseunique } from '../../../../model/produtoprefeitura/dto/produtoprefeituraresponseunique';
 import { Produtoprefeitura } from '../../../../model/produtoprefeitura/produtoprefeitura';
 import {NgxMaskDirective} from "ngx-mask";
+import {Unidademedida} from "../../../../enum/unidademedida";
 
 @Component({
   selector: 'app-produtoprefeituraeditnew',
@@ -28,6 +29,7 @@ export class ProdutoprefeituraeditnewComponent {
   produtoprefeiturarequest: Produtoprefeiturarequest = new Produtoprefeiturarequest();
   produtoResponseUnique: Produtoprefeituraresponseunique = new Produtoprefeituraresponseunique();
   produtoPrefeitura: Produtoprefeitura = new Produtoprefeitura();
+  unidadeMedida: string[] = Object.values(Unidademedida);
 
   id!: number;
   constructor() {
@@ -62,6 +64,7 @@ export class ProdutoprefeituraeditnewComponent {
   postput() {
     this.produtoprefeiturarequest.nome = this.produtoResponseUnique.nome;
     this.produtoprefeiturarequest.valorCompra = this.produtoResponseUnique.valorCompra;
+    this.produtoprefeiturarequest.unidadeMedida = this.produtoResponseUnique.unidadeMedida;
     if((this.produtoprefeiturarequest.nome || '').trim().length === 0){
       const Toast = Swal.mixin({
         toast: true,

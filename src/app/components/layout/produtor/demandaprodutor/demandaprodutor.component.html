@@ -48,7 +48,7 @@
       <tbody>
       <tr *ngFor="let produto of produtosDemanda">
         <td>{{ produto.produtoPrefeitura }}</td>
-        <td>{{ produto.quantidade }}</td>
+        <td>{{ produto.quantidade }}{{produto.unidadeMedida}}</td>
         <td>{{ produto.valorPrefeitura | currency:'BRL' }}</td>
         <td>{{ produto.saldo}}%</td>
       </tr>

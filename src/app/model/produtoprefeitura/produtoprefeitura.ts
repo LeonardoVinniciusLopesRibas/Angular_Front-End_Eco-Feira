@@ -1,4 +1,5 @@
 import { Prefeituraassociation } from "../prefeitura/prefeituraassociation";
+import {Unidademedida} from "../../enum/unidademedida";
 
 export class Produtoprefeitura {
 
@@ -9,5 +10,6 @@ export class Produtoprefeitura {
     ativo!: boolean;
     dataHoraCriacao!: string;
     dataHoraAlteracao!: string;
+    unidadeMedida!: string;
 
 }
